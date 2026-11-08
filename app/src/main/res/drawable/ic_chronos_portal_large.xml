@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- بوابة كرونوس الزمنية الكبيرة لشاشة التحميل 120dp -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- حلقة خارجية متوهجة -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="3.5"
+        android:pathData="M60,10 A50,50 0 1,1 10,60" />
+    <path
+        android:strokeColor="@color/chronos_violet"
+        android:strokeWidth="2.5"
+        android:pathData="M60,20 A40,40 0 1,1 20,60" />
+    <!-- حلقة داخلية -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="3"
+        android:pathData="M60,30 A30,30 0 1,0 90,60" />
+    <!-- عقارب البوابة الزمنية -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M60,60 L60,36" />
+    <path
+        android:strokeColor="@color/chronos_violet"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M60,60 L78,78" />
+    <!-- نواة الطاقة الزمنية -->
+    <path
+        android:fillColor="@color/chronos_cyan"
+        android:pathData="M60,60m-5,0a5,5 0 1,1 10,0a5,5 0 1,1 -10,0" />
+</vector>

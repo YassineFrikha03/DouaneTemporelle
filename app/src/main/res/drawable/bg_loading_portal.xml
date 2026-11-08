@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- خلفية بوابة التحميل الزمنية بتدرج لوني عميق -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:type="radial"
+        android:gradientRadius="400dp"
+        android:startColor="#1A2D4E"
+        android:centerColor="#0C1527"
+        android:endColor="#050811" />
+</shape>

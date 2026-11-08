@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- لوحة ألوان نظام كرونوس الرسمية - المرحلة 01 -->
-    <!-- Fond principal et surfaces -->
+    <!-- لوحة ألوان نظام كرونوس الرسمية - مظهر متقدم ومحسن -->
+    <!-- Mode Dark Navy (Par défaut) -->
     <color name="bg_chronos_deep">#080D18</color>
     <color name="bg_chronos_card">#101A2B</color>
     <color name="bg_chronos_input">#0D1524</color>
     <color name="border_chronos_card">#1E293B</color>
     <color name="border_chronos_focused">#00D9FF</color>
 
-    <!-- Couleurs primaires et accents -->
+    <!-- Mode Light Tactique -->
+    <color name="bg_chronos_light">#F1F5F9</color>
+    <color name="bg_chronos_card_light">#FFFFFF</color>
+    <color name="bg_chronos_input_light">#E2E8F0</color>
+    <color name="border_chronos_card_light">#CBD5E1</color>
+    <color name="text_primary_light">#0F172A</color>
+    <color name="text_secondary_light">#475569</color>
+
+    <!-- Couleurs primaires et accents néon -->
     <color name="chronos_cyan">#00D9FF</color>
     <color name="chronos_cyan_dark">#0097A7</color>
     <color name="chronos_cyan_glow">#3300D9FF</color>

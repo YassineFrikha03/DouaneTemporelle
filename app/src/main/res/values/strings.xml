@@ -1,6 +1,11 @@
 <resources>
-    <!-- اسم التطبيق والنظام - المرحلة 01 -->
+    <!-- اسم التطبيق والنظام -->
     <string name="app_name">Douane Temporelle</string>
+
+    <!-- Écran de chargement futuriste -->
+    <string name="loading_system_title">INITIALISATION CHRONOS</string>
+    <string name="loading_system_subtitle">Synchronisation des corridors spatio-temporels…</string>
+    <string name="desc_theme_toggle">Basculer le mode d\'affichage</string>
 
     <!-- En-tête de marque Chronos -->
     <string name="brand_chronos">CHRONOS</string>
