@@ -1,3 +1,57 @@
 <resources>
-    <string name="app_name">DouaneTemporelle</string>
+    <string name="app_name">Douane Temporelle</string>
+
+    <!-- Activité 1 : Enregistrement -->
+    <string name="titre_douane">DOUANE TEMPORELLE</string>
+    <string name="sous_titre_douane">MINISTÈRE DU TEMPS • SECTEUR FRONTALIER #77</string>
+    <string name="titre_formulaire">ENREGISTREMENT DU VOYAGEUR</string>
+    <string name="desc_formulaire">Veuillez identifier le voyageur et ses coordonnées spatio-temporelles.</string>
+
+    <string name="label_nom">Nom complet du voyageur</string>
+    <string name="hint_nom">Ex: Marty McFly, John Titor...</string>
+    <string name="erreur_nom">Le nom du voyageur est obligatoire !</string>
+
+    <string name="label_annee_naissance">Année d\'origine / Naissance</string>
+    <string name="hint_annee_naissance">Ex: 1990</string>
+    <string name="erreur_annee_naissance">Veuillez saisir une année de naissance valide !</string>
+
+    <string name="label_annee_destination">Année de destination temporelle</string>
+    <string name="hint_annee_destination">Ex: 2050 ou 1789</string>
+    <string name="erreur_annee_destination">Veuillez saisir une année de destination valide !</string>
+
+    <string name="label_motif_voyage">Motif du saut temporel</string>
+    <string name="motif_tourisme">🏖️ Tourisme</string>
+    <string name="motif_modification">⚡ Modification du passé</string>
+    <string name="motif_fuite">🏃 Fuite</string>
+    <string name="erreur_motif">Veuillez sélectionner un motif de voyage !</string>
+
+    <string name="btn_inspecter_profil">INSPECTER LE PROFIL</string>
+
+    <string name="apercu_attente">En attente des coordonnées temporelles...</string>
+    <string name="apercu_futur">⚡ Saut vers le Futur (%1$d ans plus tard)</string>
+    <string name="apercu_passe">🌀 Saut vers le Passé (%1$d ans plus tôt)</string>
+    <string name="apercu_present">⏱️ Voyage dans la même année (Stase temporelle)</string>
+
+    <!-- Activité 2 : Scanner de Paradoxe & Passeport -->
+    <string name="titre_activite_2">SCANNER DE PARADOXE</string>
+    <string name="titre_passeport">PASSEPORT CHRONOLOGIQUE</string>
+    <string name="numero_visa">CHRONO-ID: #%1$s</string>
+    <string name="label_voyageur_verif">VOYAGEUR :</string>
+    <string name="label_age_temporel">ÂGE TEMPOREL CALCULÉ :</string>
+    <string name="label_coordonnees">COORDONNÉES :</string>
+    <string name="label_motif_verif">MOTIF DÉCLARÉ :</string>
+    <string name="valeur_coordonnees_format">%1$d ➔ %2$d (%3$s)</string>
+    <string name="valeur_age_format">%1$d ans</string>
+    <string name="alerte_paradoxe_danger">⚠️ RISQUE CRITIQUE DE PARADOXE : La différence temporelle (%1$d ans) est un NOMBRE PREMIER et le motif est "Modification du passé". Approbation verrouillée !</string>
+    <string name="alerte_paradoxe_safe">✅ SCAN DE SÉCURITÉ CONFORME : Aucun paradoxe temporel critique détecté.</string>
+    <string name="btn_approuver">APPROUVER LE SAUT TEMPOREL</string>
+    <string name="btn_refuser">REFUSER (RISQUE DE PARADOXE)</string>
+
+    <!-- Activité 3 : Verdict -->
+    <string name="titre_verdict">VERDICT DOUANIER</string>
+    <string name="message_approuve">Bon voyage %1$s !</string>
+    <string name="message_refuse">%1$s est en état d\'arrestation temporelle !</string>
+    <string name="desc_approuve">Le saut spatio-temporel a été validé. Vos balises chronologiques sont synchronisées.</string>
+    <string name="desc_refuse">Interdiction formelle de quitter cette époque. La police temporelle a été alertée.</string>
+    <string name="btn_nouveau_voyageur">NOUVEAU VOYAGEUR</string>
 </resources>
