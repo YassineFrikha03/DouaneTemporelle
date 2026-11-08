@@ -9,34 +9,41 @@
     <string name="btn_entrer_douane">ACCÉDER AU POSTE DE CONTRÔLE</string>
     <string name="mention_securite_intro">🔒 Système de détection de paradoxe actif</string>
 
-    <!-- Activité 1 : Enregistrement -->
+    <!-- Activité 1 : Formulaire d'Enregistrement Amélioré -->
     <string name="titre_douane">DOUANE TEMPORELLE</string>
-    <string name="sous_titre_douane">MINISTÈRE DU TEMPS • SECTEUR FRONTALIER #77</string>
-    <string name="titre_formulaire">ENREGISTREMENT DU VOYAGEUR</string>
-    <string name="desc_formulaire">Veuillez identifier le voyageur et ses coordonnées spatio-temporelles.</string>
+    <string name="sous_titre_douane">MINISTÈRE DU TEMPS • CONTRÔLE CHRONOLOGIQUE</string>
+    <string name="desc_formulaire">Formulaire officiel d\'inspection préalable au saut temporel.</string>
 
+    <!-- Section 1 -->
+    <string name="section_1_titre">01 • IDENTITÉ DU VOYAGEUR</string>
     <string name="label_nom">Nom complet du voyageur</string>
     <string name="hint_nom">Ex: Marty McFly, John Titor...</string>
+    <string name="aide_nom">Saisissez l\'identité civile complète du voyageur</string>
     <string name="erreur_nom">Le nom du voyageur est obligatoire !</string>
 
-    <string name="label_annee_naissance">Année d\'origine / Naissance</string>
+    <!-- Section 2 -->
+    <string name="section_2_titre">02 • COORDONNÉES CHRONOLOGIQUES</string>
+    <string name="label_annee_naissance">Origine (Année naissance)</string>
     <string name="hint_annee_naissance">Ex: 1990</string>
-    <string name="erreur_annee_naissance">Veuillez saisir une année de naissance valide !</string>
+    <string name="erreur_annee_naissance">Année de naissance requise !</string>
 
-    <string name="label_annee_destination">Année de destination temporelle</string>
-    <string name="hint_annee_destination">Ex: 2050 ou 1789</string>
-    <string name="erreur_annee_destination">Veuillez saisir une année de destination valide !</string>
+    <string name="label_annee_destination">Arrivée (Année destination)</string>
+    <string name="hint_annee_destination">Ex: 2050</string>
+    <string name="erreur_annee_destination">Année de destination requise !</string>
 
-    <string name="label_motif_voyage">Motif du saut temporel</string>
-    <string name="motif_tourisme">🏖️ Tourisme</string>
-    <string name="motif_modification">⚡ Modification du passé</string>
-    <string name="motif_fuite">🏃 Fuite</string>
-    <string name="erreur_motif">Veuillez sélectionner un motif de voyage !</string>
+    <string name="apercu_attente">Saisissez les deux années pour calculer le saut temporel</string>
+    <string name="apercu_futur">⚡ Trajectoire : Saut vers le Futur (+%1$d ans)</string>
+    <string name="apercu_passe">🌀 Trajectoire : Saut vers le Passé (-%1$d ans)</string>
+    <string name="apercu_present">⏱️ Trajectoire : Même époque (Stase temporelle)</string>
 
-    <string name="btn_inspecter_profil">INSPECTER LE PROFIL</string>
+    <!-- Section 3 -->
+    <string name="section_3_titre">03 • MOTIF DU SAUT TEMPOREL</string>
+    <string name="section_3_desc">Sélectionnez la raison officielle du déplacement :</string>
+    <string name="motif_tourisme">🏖️ Tourisme (Voyage récréatif autorisé)</string>
+    <string name="motif_modification">⚡ Modification du passé (⚠️ Risque de paradoxe)</string>
+    <string name="motif_fuite">🏃 Fuite (Évasion temporelle)</string>
 
-    <string name="apercu_attente">En attente des coordonnées temporelles...</string>
-    <string name="apercu_futur">⚡ Saut vers le Futur (%1$d ans plus tard)</string>
-    <string name="apercu_passe">🌀 Saut vers le Passé (%1$d ans plus tôt)</string>
-    <string name="apercu_present">⏱️ Voyage dans la même année (Stase temporelle)</string>
+    <!-- Bouton -->
+    <string name="btn_inspecter_profil">INSPECTER LE PROFIL DU VOYAGEUR</string>
+    <string name="footer_securite">🔒 Données sécurisées selon le Protocole Chronologique Standard</string>
 </resources>

@@ -13,9 +13,9 @@
         android:id="@+id/layout_container_yf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingTop="28dp"
-        android:paddingEnd="20dp"
+        android:paddingStart="18dp"
+        android:paddingTop="24dp"
+        android:paddingEnd="18dp"
         android:paddingBottom="36dp">
 
         <!-- En-tête : Badge Secteur Temporel -->
@@ -35,14 +35,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Logo / Horloge Temporelle -->
+        <!-- Logo Officiel Douane Temporelle -->
         <ImageView
             android:id="@+id/iv_logo_temporel_yf"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="12dp"
             android:contentDescription="@string/titre_douane"
-            android:src="@drawable/ic_time_portal"
+            android:src="@drawable/ic_app_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_badge_secteur_yf" />
@@ -52,12 +52,12 @@
             android:id="@+id/tv_titre_douane_yf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:fontFamily="sans-serif-black"
-            android:letterSpacing="0.05"
+            android:letterSpacing="0.06"
             android:text="@string/titre_douane"
             android:textColor="@color/time_text_primary"
-            android:textSize="24sp"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_logo_temporel_yf" />
@@ -66,53 +66,66 @@
             android:id="@+id/tv_desc_douane_yf"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="2dp"
             android:gravity="center"
             android:text="@string/desc_formulaire"
             android:textColor="@color/time_text_secondary"
-            android:textSize="13sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_titre_douane_yf" />
 
-        <!-- Carte Formulaire d'Enregistrement -->
+        <!-- CARTE PRINCIPALE DU FORMULAIRE : STRUCTURE AMÉLIORÉE & LISIBLE -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_formulaire_yf"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             app:cardBackgroundColor="@color/time_card_bg"
-            app:cardCornerRadius="18dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_desc_douane_yf"
             app:strokeColor="@color/time_card_stroke"
-            app:strokeWidth="1dp">
+            app:strokeWidth="1.2dp">
 
             <LinearLayout
                 android:id="@+id/layout_card_content_yf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="18dp">
 
-                <!-- Champ 1 : Nom du voyageur -->
+                <!-- ================= SECTION 01 : IDENTITÉ ================= -->
+                <TextView
+                    android:id="@+id/tv_section_1_badge_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_section_header"
+                    android:text="@string/section_1_titre"
+                    android:textColor="@color/time_cyan"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/til_nom_yf"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:hint="@string/label_nom"
                     android:textColorHint="@color/time_text_muted"
                     app:boxBackgroundColor="@color/time_input_bg"
-                    app:boxCornerRadiusBottomEnd="12dp"
-                    app:boxCornerRadiusBottomStart="12dp"
-                    app:boxCornerRadiusTopEnd="12dp"
-                    app:boxCornerRadiusTopStart="12dp"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
                     app:boxStrokeColor="@color/time_cyan"
                     app:boxStrokeErrorColor="@color/time_red"
                     app:errorTextColor="@color/time_red"
+                    app:helperText="@string/aide_nom"
+                    app:helperTextTextColor="@color/time_text_muted"
                     app:hintTextColor="@color/time_cyan"
                     app:startIconDrawable="@drawable/ic_person_voyager"
                     app:startIconTint="@color/time_cyan">
@@ -125,19 +138,30 @@
                         android:inputType="textCapWords|textPersonName"
                         android:maxLines="1"
                         android:textColor="@color/time_text_primary"
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- Section Coordonnées Temporelles (Naiss. & Dest.) -->
+                <!-- ================= SECTION 02 : COORDONNÉES ================= -->
+                <TextView
+                    android:id="@+id/tv_section_2_badge_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_section_header"
+                    android:text="@string/section_2_titre"
+                    android:textColor="@color/time_purple"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
                 <LinearLayout
                     android:id="@+id/layout_annees_yf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:baselineAligned="false"
                     android:orientation="horizontal">
 
-                    <!-- Champ 2 : Année de Naissance -->
+                    <!-- Champ Année Naissance -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_annee_naissance_yf"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -148,14 +172,14 @@
                         android:hint="@string/label_annee_naissance"
                         android:textColorHint="@color/time_text_muted"
                         app:boxBackgroundColor="@color/time_input_bg"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
-                        app:boxStrokeColor="@color/time_cyan"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
+                        app:boxStrokeColor="@color/time_purple"
                         app:boxStrokeErrorColor="@color/time_red"
                         app:errorTextColor="@color/time_red"
-                        app:hintTextColor="@color/time_cyan"
+                        app:hintTextColor="@color/time_purple"
                         app:startIconDrawable="@drawable/ic_calendar_birth"
                         app:startIconTint="@color/time_purple">
 
@@ -167,10 +191,10 @@
                             android:inputType="numberSigned"
                             android:maxLength="5"
                             android:textColor="@color/time_text_primary"
-                            android:textSize="15sp" />
+                            android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <!-- Champ 3 : Année de Destination -->
+                    <!-- Champ Année Destination -->
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_annee_destination_yf"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -181,10 +205,10 @@
                         android:hint="@string/label_annee_destination"
                         android:textColorHint="@color/time_text_muted"
                         app:boxBackgroundColor="@color/time_input_bg"
-                        app:boxCornerRadiusBottomEnd="12dp"
-                        app:boxCornerRadiusBottomStart="12dp"
-                        app:boxCornerRadiusTopEnd="12dp"
-                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusBottomEnd="10dp"
+                        app:boxCornerRadiusBottomStart="10dp"
+                        app:boxCornerRadiusTopEnd="10dp"
+                        app:boxCornerRadiusTopStart="10dp"
                         app:boxStrokeColor="@color/time_cyan"
                         app:boxStrokeErrorColor="@color/time_red"
                         app:errorTextColor="@color/time_red"
@@ -200,59 +224,71 @@
                             android:inputType="numberSigned"
                             android:maxLength="5"
                             android:textColor="@color/time_text_primary"
-                            android:textSize="15sp" />
+                            android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
-                <!-- Feedback interactif UI/UX : Calcul dynamique du saut temporel -->
+                <!-- Zone d'aperçu dynamique du saut temporel -->
                 <TextView
                     android:id="@+id/tv_apercu_temporel_yf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:background="@drawable/bg_feedback_box"
+                    android:drawableStart="@drawable/ic_time_portal"
+                    android:drawablePadding="10dp"
                     android:text="@string/apercu_attente"
                     android:textColor="@color/time_text_secondary"
-                    android:textSize="13sp" />
+                    android:textSize="12sp" />
 
-                <!-- Champ 4 : Motif du voyage -->
+                <!-- ================= SECTION 03 : MOTIF DU VOYAGE ================= -->
+                <TextView
+                    android:id="@+id/tv_section_3_badge_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_section_header"
+                    android:text="@string/section_3_titre"
+                    android:textColor="@color/time_amber"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/tv_titre_motif_yf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:text="@string/label_motif_voyage"
-                    android:textColor="@color/time_text_primary"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="4dp"
+                    android:text="@string/section_3_desc"
+                    android:textColor="@color/time_text_secondary"
+                    android:textSize="12sp" />
 
                 <RadioGroup
                     android:id="@+id/rg_motif_yf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="6dp">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/rb_tourisme_yf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="2dp"
                         android:buttonTint="@color/time_cyan"
                         android:checked="true"
                         android:text="@string/motif_tourisme"
                         android:textColor="@color/time_text_primary"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/rb_modification_yf"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginBottom="2dp"
                         android:buttonTint="@color/time_amber"
                         android:text="@string/motif_modification"
                         android:textColor="@color/time_text_primary"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
                         android:id="@+id/rb_fuite_yf"
@@ -261,25 +297,25 @@
                         android:buttonTint="@color/time_purple"
                         android:text="@string/motif_fuite"
                         android:textColor="@color/time_text_primary"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </RadioGroup>
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Bouton d'Action Principal : Inspecter le profil -->
+        <!-- Bouton d'Action Principal Amélioré -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_inspecter_yf"
             android:layout_width="0dp"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="18dp"
             android:backgroundTint="@color/time_cyan"
-            android:letterSpacing="0.06"
+            android:letterSpacing="0.05"
             android:text="@string/btn_inspecter_profil"
             android:textColor="@color/time_space_dark"
-            android:textSize="15sp"
+            android:textSize="13.5sp"
             android:textStyle="bold"
-            app:cornerRadius="14dp"
+            app:cornerRadius="12dp"
             app:icon="@drawable/ic_scan_profile"
             app:iconGravity="textStart"
             app:iconPadding="10dp"
@@ -289,14 +325,14 @@
             app:layout_constraintTop_toBottomOf="@id/card_formulaire_yf"
             app:rippleColor="@color/white" />
 
-        <!-- Note de Sécurité Temporelle en bas -->
+        <!-- Footer Sécurité -->
         <TextView
             android:id="@+id/tv_footer_securite_yf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="14dp"
             android:gravity="center"
-            android:text="🔒 Données cryptées selon le Protocole Chronologique Standard"
+            android:text="@string/footer_securite"
             android:textColor="@color/time_text_muted"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"

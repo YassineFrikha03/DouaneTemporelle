@@ -17,7 +17,6 @@
     <path
         android:strokeColor="#818CF8"
         android:strokeWidth="1.5"
-        android:strokeDasharray="6,4"
         android:pathData="M64,20 A44,44 0 1,0 64,108 A44,44 0 1,0 64,20 Z" />
 
     <!-- 3. Bouclier de Douane Temporelle -->
