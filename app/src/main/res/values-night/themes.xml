@@ -1,7 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.DouaneTemporelle" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/time_cyan</item>
+        <item name="colorOnPrimary">@color/time_space_dark</item>
+        <item name="colorSecondary">@color/time_purple</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:windowBackground">@color/time_space_dark</item>
+        <item name="colorSurface">@color/time_card_bg</item>
+        <item name="colorOnSurface">@color/time_text_primary</item>
+        <item name="android:statusBarColor">@color/time_space_dark</item>
+        <item name="android:navigationBarColor">@color/time_space_dark</item>
     </style>
 </resources>

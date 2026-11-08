@@ -2,4 +2,27 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Palette Douane Temporelle (Cyber / Temporal Customs) -->
+    <color name="time_space_dark">#0B0F19</color>
+    <color name="time_card_bg">#131D2E</color>
+    <color name="time_card_stroke">#22324C</color>
+    <color name="time_input_bg">#1A253A</color>
+    
+    <!-- Couleurs d'accentuation néon & temporelles -->
+    <color name="time_cyan">#00E5FF</color>
+    <color name="time_cyan_dark">#0284C7</color>
+    <color name="time_cyan_alpha15">#2600E5FF</color>
+    <color name="time_purple">#818CF8</color>
+    <color name="time_purple_dark">#6366F1</color>
+    <color name="time_purple_alpha15">#26818CF8</color>
+    <color name="time_amber">#F59E0B</color>
+    <color name="time_amber_alpha15">#26F59E0B</color>
+    <color name="time_green">#10B981</color>
+    <color name="time_red">#EF4444</color>
+
+    <!-- Textes et contrastes -->
+    <color name="time_text_primary">#F8FAFC</color>
+    <color name="time_text_secondary">#94A3B8</color>
+    <color name="time_text_muted">#64748B</color>
 </resources>
