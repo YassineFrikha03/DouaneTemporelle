@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Douane Temporelle</string>
 
+    <!-- Écran d'Intro / Splash -->
+    <string name="titre_intro">DOUANE TEMPORELLE</string>
+    <string name="sous_titre_intro">MINISTÈRE DU TEMPS • CONTRÔLE FRONTALIER</string>
+    <string name="badge_poste_intro">POSTE CHRONOLOGIQUE #77 • SECTEUR ALPHA</string>
+    <string name="status_chargement_intro">Initialisation des protocoles spatio-temporels...</string>
+    <string name="btn_entrer_douane">ACCÉDER AU POSTE DE CONTRÔLE</string>
+    <string name="mention_securite_intro">🔒 Système de détection de paradoxe actif</string>
+
     <!-- Activité 1 : Enregistrement -->
     <string name="titre_douane">DOUANE TEMPORELLE</string>
     <string name="sous_titre_douane">MINISTÈRE DU TEMPS • SECTEUR FRONTALIER #77</string>

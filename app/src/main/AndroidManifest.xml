@@ -11,12 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DouaneTemporelle">
-        
-        <!-- Activité 1 : Formulaire d'enregistrement -->
+
+        <!-- شاشة المقدمة والشعار (Intro / Splash Screen Launcher) -->
         <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:name=".IntroActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +23,17 @@
             </intent-filter>
         </activity>
 
+        <!-- النشاط الأول : استمارة التسجيل -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- النشاط الثاني : فاحص التحقق -->
         <activity
             android:name=".VerificationActivity"
             android:exported="false" />
-            
+
     </application>
 
 </manifest>

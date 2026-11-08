@@ -1,0 +1,56 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="128dp"
+    android:height="128dp"
+    android:viewportWidth="128"
+    android:viewportHeight="128">
+
+    <!-- 1. Cercle extérieur et lueur néon temporelle -->
+    <path
+        android:fillColor="#1500E5FF"
+        android:pathData="M64,8 A56,56 0 1,0 64,120 A56,56 0 1,0 64,8 Z" />
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2.5"
+        android:pathData="M64,12 A52,52 0 1,0 64,116 A52,52 0 1,0 64,12 Z" />
+
+    <!-- 2. Anneau intermédiaire violet quantique -->
+    <path
+        android:strokeColor="#818CF8"
+        android:strokeWidth="1.5"
+        android:strokeDasharray="6,4"
+        android:pathData="M64,20 A44,44 0 1,0 64,108 A44,44 0 1,0 64,20 Z" />
+
+    <!-- 3. Bouclier de Douane Temporelle -->
+    <path
+        android:fillColor="#162035"
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="2"
+        android:pathData="M64,26 L88,36 V62 C88,78 78,92 64,98 C50,92 40,78 40,62 V36 Z" />
+
+    <!-- 4. Sablier / Vortex Temporel au centre -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M52,42 H76 L66,56 L76,70 H52 L62,56 Z" />
+    <path
+        android:fillColor="#818CF8"
+        android:pathData="M56,45 H72 L64,54 Z" />
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M56,67 H72 L64,58 Z" />
+
+    <!-- 5. Étoile centrale / Balise de synchronisation -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M64,53 L65.5,56 L68,56 L66,57.5 L67,60 L64,58.5 L61,60 L62,57.5 L60,56 L62.5,56 Z" />
+
+    <!-- 6. Repères horaires chronologiques (Notches) -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M62,14 H66 V20 H62 Z M62,108 H66 V114 H62 Z M14,62 H20 V66 H14 Z M108,62 H114 V66 H108 Z" />
+
+    <!-- 7. Ailes latérales temporelles -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="1.8"
+        android:pathData="M26,50 L38,54 M24,62 L36,62 M26,74 L38,70 M102,50 L90,54 M104,62 L92,62 M102,74 L90,70" />
+</vector>
