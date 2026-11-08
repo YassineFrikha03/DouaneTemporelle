@@ -316,6 +316,17 @@
                         android:textColor="@color/text_primary"
                         android:textSize="14sp" />
                 </RadioGroup>
+
+                <!-- رسالة خطأ عند عدم تحديد سبب السفر -->
+                <TextView
+                    android:id="@+id/txt_erreur_motif_oa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/err_motif_requis"
+                    android:textColor="@color/chronos_red_alert"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    android:layout_marginTop="6dp" />
             </LinearLayout>
 
             <!-- D. Action principale : Inspecter le profil -->

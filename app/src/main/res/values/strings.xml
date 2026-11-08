@@ -36,4 +36,13 @@
 
     <!-- Pied d'écran -->
     <string name="footer_protocol">PROTOCOLE DE SÉCURITÉ TEMPORELLE • CHRONOS</string>
+
+    <!-- رسائل التحقق من صحة المدخلات - المرحلة 02 -->
+    <string name="err_nom_requis">Veuillez entrer le nom complet du voyageur</string>
+    <string name="err_annee_naissance_requise">Veuillez entrer l\'année de naissance</string>
+    <string name="err_annee_naissance_invalide">Année de naissance invalide (nombre entier requis)</string>
+    <string name="err_annee_destination_requise">Veuillez entrer l\'année de destination</string>
+    <string name="err_annee_destination_invalide">Année de destination invalide (nombre entier requis)</string>
+    <string name="err_motif_requis">Veuillez sélectionner un motif de voyage obligatoire</string>
+    <string name="msg_formulaire_valide">Formulaire valide — prêt pour la vérification.</string>
 </resources>
