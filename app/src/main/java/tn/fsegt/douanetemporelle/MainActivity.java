@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * النشاط الرئيسي 1: بوابة تسجيل المسافرين عبر الزمن - نظام كرونوس
- * تم إنشاء الهيكل الأساسي في المرحلة 00
+ * المرحلة 01: ربط واجهة المستخدم الرسمية وتثبيت الهيكل الأساسي
  */
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // سيتم ربط الواجهة التفاعلية بالكامل في المرحلة 01
+        // تحميل واجهة الاستمارة الرسمية لنظام كرونوس مع المعرفات المنتهية بـ oa
+        setContentView(R.layout.activity_main);
     }
 }

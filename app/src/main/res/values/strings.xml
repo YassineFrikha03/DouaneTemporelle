@@ -1,6 +1,34 @@
 <resources>
-    <!-- اسم التطبيق والنظام -->
+    <!-- اسم التطبيق والنظام - المرحلة 01 -->
     <string name="app_name">Douane Temporelle</string>
-    <string name="chronos_brand">CHRONOS</string>
-    <string name="chronos_subtitle">SYSTÈME DE CONTRÔLE DOUANIER TEMPOREL</string>
+
+    <!-- En-tête de marque Chronos -->
+    <string name="brand_chronos">CHRONOS</string>
+    <string name="brand_subtitle">CONTRÔLE DES FRONTIÈRES TEMPORELLES</string>
+    <string name="status_system_online">SYSTÈME EN LIGNE</string>
+
+    <!-- Zone d'introduction -->
+    <string name="intro_title">Votre voyage commence ici</string>
+    <string name="intro_desc">Enregistrez les coordonnées temporelles du voyageur avant d\'autoriser l\'inspection sécurisée du profil.</string>
+
+    <!-- Formulaire d'enregistrement -->
+    <string name="label_nom_voyageur">NOM DU VOYAGEUR</string>
+    <string name="hint_nom_voyageur">Entrez votre nom complet</string>
+
+    <string name="label_annee_naissance">ANNÉE DE NAISSANCE</string>
+    <string name="hint_annee_naissance">1990</string>
+
+    <string name="label_annee_destination">ANNÉE DE DESTINATION</string>
+    <string name="hint_annee_destination">2050</string>
+
+    <string name="label_motif_voyage">MOTIF DU VOYAGE</string>
+    <string name="motif_tourisme">Tourisme</string>
+    <string name="motif_modification">Modification du passé</string>
+    <string name="motif_fuite">Fuite</string>
+
+    <!-- Action principale -->
+    <string name="btn_inspecter_profil">Inspecter le profil</string>
+
+    <!-- Pied d'écran -->
+    <string name="footer_protocol">PROTOCOLE DE SÉCURITÉ TEMPORELLE • CHRONOS</string>
 </resources>

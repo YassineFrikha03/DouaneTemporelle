@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- الواجهة الرئيسية 1: استمارة تسجيل المسافر الزمني - نظام كرونوس -->
+<!-- المعرفات تنتهي بالرمز oa لتوثيق هوية المطور -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_main_oa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_chronos_deep"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/layout_container_oa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- ============================================== -->
+        <!-- A. En-tête de marque Chronos                   -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:id="@+id/layout_header_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/img_crest_oa"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_chronos_crest"
+                android:contentDescription="@string/brand_chronos" />
+
+            <LinearLayout
+                android:id="@+id/layout_brand_titles_oa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_brand_oa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brand_chronos"
+                    android:textColor="@color/chronos_cyan"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1" />
+
+                <TextView
+                    android:id="@+id/txt_subtitle_oa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brand_subtitle"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="10sp"
+                    android:letterSpacing="0.05" />
+            </LinearLayout>
+
+            <!-- Indicateur visuel discret SYSTÈME EN LIGNE -->
+            <LinearLayout
+                android:id="@+id/layout_status_badge_oa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge_status"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp">
+
+                <ImageView
+                    android:id="@+id/img_status_dot_oa"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:src="@drawable/ic_status_dot"
+                    android:contentDescription="@string/status_system_online" />
+
+                <TextView
+                    android:id="@+id/txt_status_online_oa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="@string/status_system_online"
+                    android:textColor="@color/chronos_green_online"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.05" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- B. Zone d'introduction                        -->
+        <!-- ============================================== -->
+        <TextView
+            android:id="@+id/txt_intro_title_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="@string/intro_title"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_intro_desc_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:lineSpacingExtra="3dp"
+            android:text="@string/intro_desc"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <!-- ============================================== -->
+        <!-- C. Carte du formulaire                         -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:id="@+id/card_form_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_chronos"
+            android:orientation="vertical"
+            android:padding="18dp"
+            android:layout_marginBottom="20dp">
+
+            <!-- CHAMP 1 : NOM DU VOYAGEUR -->
+            <TextView
+                android:id="@+id/txt_lbl_nom_oa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_nom_voyageur"
+                android:textColor="@color/chronos_cyan"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/edt_nom_voyageur_oa"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="@string/hint_nom_voyageur"
+                android:textColorHint="@color/text_hint"
+                android:textColor="@color/text_primary"
+                android:inputType="textPersonName"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- CHAMP 2 : ANNÉE DE NAISSANCE -->
+            <TextView
+                android:id="@+id/txt_lbl_annee_naissance_oa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_annee_naissance"
+                android:textColor="@color/chronos_cyan"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/edt_annee_naissance_oa"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="@string/hint_annee_naissance"
+                android:textColorHint="@color/text_hint"
+                android:textColor="@color/text_primary"
+                android:inputType="number"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- CHAMP 3 : ANNÉE DE DESTINATION -->
+            <TextView
+                android:id="@+id/txt_lbl_annee_destination_oa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_annee_destination"
+                android:textColor="@color/chronos_cyan"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="6dp" />
+
+            <EditText
+                android:id="@+id/edt_annee_destination_oa"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_input_field"
+                android:hint="@string/hint_annee_destination"
+                android:textColorHint="@color/text_hint"
+                android:textColor="@color/text_primary"
+                android:inputType="number"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textSize="14sp"
+                android:layout_marginBottom="16dp" />
+
+            <!-- CHAMP 4 : MOTIF DU VOYAGE -->
+            <TextView
+                android:id="@+id/txt_lbl_motif_oa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_motif_voyage"
+                android:textColor="@color/chronos_cyan"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="8dp" />
+
+            <RadioGroup
+                android:id="@+id/rg_motif_oa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_motif_tourisme_oa"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:buttonTint="@color/chronos_cyan"
+                    android:text="@string/motif_tourisme"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_motif_modification_oa"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:buttonTint="@color/chronos_cyan"
+                    android:text="@string/motif_modification"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_motif_fuite_oa"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:buttonTint="@color/chronos_cyan"
+                    android:text="@string/motif_fuite"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- D. Action principale : Inspecter le profil     -->
+        <!-- ============================================== -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_inspecter_oa"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_btn_cyan"
+            android:text="@string/btn_inspecter_profil"
+            android:textColor="@color/bg_chronos_deep"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.04"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp" />
+
+        <!-- ============================================== -->
+        <!-- E. Pied d'écran discret                        -->
+        <!-- ============================================== -->
+        <TextView
+            android:id="@+id/txt_footer_protocol_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/footer_protocol"
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:letterSpacing="0.08"
+            android:layout_marginBottom="12dp" />
+
+    </LinearLayout>
+</ScrollView>

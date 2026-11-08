@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- شعار حلقة الزمن لنظام كرونوس 48dp -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- حلقة خارجية بلون السيان -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="2.5"
+        android:pathData="M24,4 A20,20 0 1,1 4,24" />
+    <!-- مؤشر زمني بنفسجي -->
+    <path
+        android:strokeColor="@color/chronos_violet"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:pathData="M24,12 L24,24 L32,32" />
+    <!-- نقطة المركز -->
+    <path
+        android:fillColor="@color/chronos_cyan"
+        android:pathData="M24,24m-2.5,0a2.5,2.5 0 1,1 5,0a2.5,2.5 0 1,1 -5,0" />
+</vector>

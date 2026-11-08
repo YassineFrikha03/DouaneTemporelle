@@ -1,21 +1,19 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- نمط كرونوس المستقبلي المظلم -->
+    <!-- نمط كرونوس المستقبلي المظلم - المرحلة 01 -->
     <style name="Theme.DouaneTemporelle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color -->
         <item name="colorPrimary">@color/chronos_cyan</item>
         <item name="colorPrimaryVariant">@color/chronos_cyan_dark</item>
-        <item name="colorOnPrimary">@color/bg_navy_deep</item>
+        <item name="colorOnPrimary">@color/bg_chronos_deep</item>
 
         <!-- Secondary brand color -->
         <item name="colorSecondary">@color/chronos_violet</item>
         <item name="colorSecondaryVariant">@color/chronos_violet_dark</item>
         <item name="colorOnSecondary">@color/white</item>
 
-        <!-- Status bar color -->
-        <item name="android:statusBarColor">@color/bg_navy_deep</item>
+        <!-- Status bar and background -->
+        <item name="android:statusBarColor">@color/bg_chronos_deep</item>
         <item name="android:windowLightStatusBar">false</item>
-
-        <!-- Window background -->
-        <item name="android:windowBackground">@color/bg_navy_deep</item>
+        <item name="android:windowBackground">@color/bg_chronos_deep</item>
     </style>
 </resources>
