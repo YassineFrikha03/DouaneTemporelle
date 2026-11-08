@@ -1,49 +1,49 @@
 <resources>
     <string name="app_name">Douane Temporelle</string>
 
-    <!-- Écran d'Intro / Splash -->
+    <!-- Ecran d'Intro / Splash -->
     <string name="titre_intro">DOUANE TEMPORELLE</string>
-    <string name="sous_titre_intro">MINISTÈRE DU TEMPS • CONTRÔLE FRONTALIER</string>
+    <string name="sous_titre_intro">MINISTERE DU TEMPS • CONTROLE FRONTALIER</string>
     <string name="badge_poste_intro">POSTE CHRONOLOGIQUE #77 • SECTEUR ALPHA</string>
     <string name="status_chargement_intro">Initialisation des protocoles spatio-temporels...</string>
-    <string name="btn_entrer_douane">ACCÉDER AU POSTE DE CONTRÔLE</string>
-    <string name="mention_securite_intro">🔒 Système de détection de paradoxe actif</string>
+    <string name="btn_entrer_douane">ACCEDER AU POSTE DE CONTROLE</string>
+    <string name="mention_securite_intro">Systeme de detection de paradoxe actif</string>
 
-    <!-- Activité 1 : Formulaire d'Enregistrement Amélioré -->
+    <!-- Activite 1 : Formulaire d'Enregistrement -->
     <string name="titre_douane">DOUANE TEMPORELLE</string>
-    <string name="sous_titre_douane">MINISTÈRE DU TEMPS • CONTRÔLE CHRONOLOGIQUE</string>
-    <string name="desc_formulaire">Formulaire officiel d\'inspection préalable au saut temporel.</string>
+    <string name="sous_titre_douane">MINISTERE DU TEMPS • CONTROLE CHRONOLOGIQUE</string>
+    <string name="desc_formulaire">Formulaire officiel d\'inspection prealable au saut temporel.</string>
 
     <!-- Section 1 -->
-    <string name="section_1_titre">01 • IDENTITÉ DU VOYAGEUR</string>
+    <string name="section_1_titre">01 • IDENTITE DU VOYAGEUR</string>
     <string name="label_nom">Nom complet du voyageur</string>
     <string name="hint_nom">Ex: Marty McFly, John Titor...</string>
-    <string name="aide_nom">Saisissez l\'identité civile complète du voyageur</string>
+    <string name="aide_nom">Saisissez l\'identite civile complete du voyageur</string>
     <string name="erreur_nom">Le nom du voyageur est obligatoire !</string>
 
     <!-- Section 2 -->
-    <string name="section_2_titre">02 • COORDONNÉES CHRONOLOGIQUES</string>
-    <string name="label_annee_naissance">Origine (Année naissance)</string>
+    <string name="section_2_titre">02 • COORDONNEES CHRONOLOGIQUES</string>
+    <string name="label_annee_naissance">Origine (Annee de naissance)</string>
     <string name="hint_annee_naissance">Ex: 1990</string>
-    <string name="erreur_annee_naissance">Année de naissance requise !</string>
+    <string name="erreur_annee_naissance">Annee de naissance requise !</string>
 
-    <string name="label_annee_destination">Arrivée (Année destination)</string>
+    <string name="label_annee_destination">Arrivee (Annee de destination)</string>
     <string name="hint_annee_destination">Ex: 2050</string>
-    <string name="erreur_annee_destination">Année de destination requise !</string>
+    <string name="erreur_annee_destination">Annee de destination requise !</string>
 
-    <string name="apercu_attente">Saisissez les deux années pour calculer le saut temporel</string>
-    <string name="apercu_futur">⚡ Trajectoire : Saut vers le Futur (+%1$d ans)</string>
-    <string name="apercu_passe">🌀 Trajectoire : Saut vers le Passé (-%1$d ans)</string>
-    <string name="apercu_present">⏱️ Trajectoire : Même époque (Stase temporelle)</string>
+    <string name="apercu_attente">Saisissez les deux annees pour calculer le saut temporel</string>
+    <string name="apercu_futur">Trajectoire : Saut vers le futur (+%1$d ans)</string>
+    <string name="apercu_passe">Trajectoire : Saut vers le passe (-%1$d ans)</string>
+    <string name="apercu_present">Trajectoire : Meme epoque (Stase temporelle)</string>
 
     <!-- Section 3 -->
     <string name="section_3_titre">03 • MOTIF DU SAUT TEMPOREL</string>
-    <string name="section_3_desc">Sélectionnez la raison officielle du déplacement :</string>
-    <string name="motif_tourisme">🏖️ Tourisme (Voyage récréatif autorisé)</string>
-    <string name="motif_modification">⚡ Modification du passé (⚠️ Risque de paradoxe)</string>
-    <string name="motif_fuite">🏃 Fuite (Évasion temporelle)</string>
+    <string name="section_3_desc">Selectionnez la raison officielle du deplacement :</string>
+    <string name="motif_tourisme">Tourisme</string>
+    <string name="motif_modification">Modification du passe</string>
+    <string name="motif_fuite">Fuite</string>
 
     <!-- Bouton -->
     <string name="btn_inspecter_profil">INSPECTER LE PROFIL DU VOYAGEUR</string>
-    <string name="footer_securite">🔒 Données sécurisées selon le Protocole Chronologique Standard</string>
+    <string name="footer_securite">Donnees securisees selon le Protocole Chronologique Standard</string>
 </resources>
