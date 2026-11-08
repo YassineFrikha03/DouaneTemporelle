@@ -1,0 +1,6 @@
+<resources>
+    <!-- اسم التطبيق والنظام -->
+    <string name="app_name">Douane Temporelle</string>
+    <string name="chronos_brand">CHRONOS</string>
+    <string name="chronos_subtitle">SYSTÈME DE CONTRÔLE DOUANIER TEMPOREL</string>
+</resources>
