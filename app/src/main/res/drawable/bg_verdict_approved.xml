@@ -1,0 +1,63 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="640dp"
+    android:viewportWidth="360"
+    android:viewportHeight="640">
+
+    <!-- 1. الخلفية الخضراء الزمردية العميقة للبوابة الزمنية المفتوحة -->
+    <path
+        android:fillColor="#042F24"
+        android:pathData="M0,0 H360 V640 H0 Z" />
+
+    <!-- 2. أشعة الضوء المنبعثة من مركز البوابة (Radial Portal Rays) -->
+    <path
+        android:strokeColor="#2510B981"
+        android:strokeWidth="1.5"
+        android:pathData="M180,220 L0,0 M180,220 L90,0 M180,220 L180,0 M180,220 L270,0 M180,220 L360,0 M180,220 L0,110 M180,220 L360,110 M180,220 L0,220 M180,220 L360,220 M180,220 L0,330 M180,220 L360,330 M180,220 L0,440 M180,220 L360,440 M180,220 L0,550 M180,220 L360,550 M180,220 L0,640 M180,220 L90,640 M180,220 L180,640 M180,220 L270,640 M180,220 L360,640" />
+
+    <!-- 3. موجات وحلقات العبور الزمردية المتوسعة (Expanding Quantum Rings) -->
+    <path
+        android:strokeColor="#4534D399"
+        android:strokeWidth="2.5"
+        android:pathData="M180,165 A55,55 0 1,0 180,275 A55,55 0 1,0 180,165 Z" />
+
+    <path
+        android:strokeColor="#3510B981"
+        android:strokeWidth="2"
+        android:pathData="M180,125 A95,95 0 1,0 180,315 A95,95 0 1,0 180,125 Z" />
+
+    <path
+        android:strokeColor="#3034D399"
+        android:strokeWidth="2"
+        android:pathData="M180,80 A140,140 0 1,0 180,360 A140,140 0 1,0 180,80 Z" />
+
+    <path
+        android:strokeColor="#2210B981"
+        android:strokeWidth="2"
+        android:pathData="M180,30 A190,190 0 1,0 180,410 A190,190 0 1,0 180,30 Z" />
+
+    <path
+        android:strokeColor="#1834D399"
+        android:strokeWidth="1.5"
+        android:pathData="M180,-20 A240,240 0 1,0 180,460 A240,240 0 1,0 180,-20 Z" />
+
+    <!-- 4. مؤشرات متجهات الانطلاق نحو المستقبل (Ascending Trajectory Vectors) -->
+    <path
+        android:strokeColor="#5034D399"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M180,95 L170,110 M180,95 L190,110 M180,50 L170,65 M180,50 L190,65 M180,15 L170,30 M180,15 L190,30" />
+
+    <!-- 5. جزيئات الطاقة الزمردية المتوهجة (Chrono-Particles) -->
+    <path
+        android:fillColor="#8034D399"
+        android:pathData="M180,140 A3,3 0 1,0 180,146 A3,3 0 1,0 180,140 Z M100,190 A2.5,2.5 0 1,0 100,195 A2.5,2.5 0 1,0 100,190 Z M260,190 A2.5,2.5 0 1,0 260,195 A2.5,2.5 0 1,0 260,190 Z M60,260 A3,3 0 1,0 60,266 A3,3 0 1,0 60,260 Z M300,260 A3,3 0 1,0 300,266 A3,3 0 1,0 300,260 Z M130,280 A2,2 0 1,0 130,284 A2,2 0 1,0 130,280 Z M230,280 A2,2 0 1,0 230,284 A2,2 0 1,0 230,280 Z" />
+
+    <!-- 6. إطارات وزوايا أمان العبور (Secure Gate Corners) -->
+    <path
+        android:strokeColor="#5010B981"
+        android:strokeWidth="2.5"
+        android:pathData="M16,24 H40 M16,24 V48 M344,24 H320 M344,24 V48 M16,616 H40 M16,616 V592 M344,616 H320 M344,616 V592" />
+
+</vector>

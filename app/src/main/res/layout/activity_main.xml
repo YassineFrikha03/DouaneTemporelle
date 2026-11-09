@@ -5,7 +5,7 @@
     android:id="@+id/scroll_main_yf"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/time_space_dark"
+    android:background="@drawable/bg_terminal_customs"
     android:fillViewport="true"
     tools:context=".MainActivity">
 

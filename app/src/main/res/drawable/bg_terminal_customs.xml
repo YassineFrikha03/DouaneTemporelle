@@ -1,0 +1,67 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="640dp"
+    android:viewportWidth="360"
+    android:viewportHeight="640">
+
+    <!-- 1. الخلفية الأساسية لمنصة الجمارك -->
+    <path
+        android:fillColor="#090E1D"
+        android:pathData="M0,0 H360 V640 H0 Z" />
+
+    <!-- 2. شبكة المربعات السيبرانية الدقيقة (Cybernetic Terminal Grid) -->
+    <!-- خطوط عمودية -->
+    <path
+        android:strokeColor="#1800E5FF"
+        android:strokeWidth="0.8"
+        android:pathData="M30,0 V640 M60,0 V640 M90,0 V640 M120,0 V640 M150,0 V640 M180,0 V640 M210,0 V640 M240,0 V640 M270,0 V640 M300,0 V640 M330,0 V640" />
+
+    <!-- خطوط أفقية -->
+    <path
+        android:strokeColor="#1800E5FF"
+        android:strokeWidth="0.8"
+        android:pathData="M0,40 H360 M0,80 H360 M0,120 H360 M0,160 H360 M0,200 H360 M0,240 H360 M0,280 H360 M0,320 H360 M0,360 H360 M0,400 H360 M0,440 H360 M0,480 H360 M0,520 H360 M0,560 H360 M0,600 H360" />
+
+    <!-- 3. علامة مائية عملاقة لقرص الساعة الزمنية والأسطرلاب (Chrono-Dial Watermark) -->
+    <!-- الحلقة الخارجية للساعة -->
+    <path
+        android:strokeColor="#22818CF8"
+        android:strokeWidth="2"
+        android:pathData="M180,180 A140,140 0 1,0 180,460 A140,140 0 1,0 180,180 Z" />
+
+    <!-- الحلقة الداخلية -->
+    <path
+        android:strokeColor="#1C00E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M180,210 A110,110 0 1,0 180,430 A110,110 0 1,0 180,210 Z" />
+
+    <!-- علامات الساعات والقرون (12 علامة محيطية) -->
+    <path
+        android:strokeColor="#3000E5FF"
+        android:strokeWidth="2"
+        android:pathData="M180,180 V195 M180,445 V460 M40,320 H55 M305,320 H320 M81,221 L92,232 M268,408 L279,419 M81,419 L92,408 M268,232 L279,221 M110,191 L118,204 M242,436 L250,449 M250,191 L242,204 M118,436 L110,449" />
+
+    <!-- محاور الساعة المركزية المتقاطعة -->
+    <path
+        android:strokeColor="#1A818CF8"
+        android:strokeWidth="1"
+        android:pathData="M180,160 V480 M20,320 H340 M67,207 L293,433 M67,433 L293,207" />
+
+    <!-- رمز الساعة الرملية في المركز (Hourglass Glyph) -->
+    <path
+        android:strokeColor="#2500E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M165,305 H195 L180,320 L195,335 H165 L180,320 Z" />
+
+    <!-- 4. زخارف مسارات الدوائر الإلكترونية في الزوايا (Circuit Tracks) -->
+    <path
+        android:strokeColor="#3500E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M10,20 H40 L60,40 H100 M350,20 H320 L300,40 H260 M10,620 H50 L70,600 H110 M350,620 H310 L290,600 H250" />
+
+    <!-- نقاط التوصيل الإلكترونية (Circuit Nodes) -->
+    <path
+        android:fillColor="#5000E5FF"
+        android:pathData="M100,38 A2,2 0 1,0 100,42 A2,2 0 1,0 100,38 Z M260,38 A2,2 0 1,0 260,42 A2,2 0 1,0 260,38 Z M110,598 A2,2 0 1,0 110,602 A2,2 0 1,0 110,598 Z M250,598 A2,2 0 1,0 250,602 A2,2 0 1,0 250,598 Z" />
+
+</vector>

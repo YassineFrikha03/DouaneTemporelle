@@ -90,8 +90,8 @@ public class ResultActivity extends AppCompatActivity {
      */
     private void appliquerVerdict() {
         if (verdictApprouve) {
-            // حالة القبول: خلفية خضراء ورسالة سفر سعيدة
-            llRacineResultatYf.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_verdict_approuve));
+            // حالة القبول: خلفية خضراء متدرجة ورسالة سفر سعيدة
+            llRacineResultatYf.setBackgroundResource(R.drawable.bg_verdict_approved);
             ivIconeVerdictYf.setImageResource(R.drawable.ic_verdict_approved);
             tvTitreVerdictYf.setText(R.string.titre_verdict_approuve);
             tvTitreVerdictYf.setTextColor(ContextCompat.getColor(this, R.color.time_green));
@@ -101,8 +101,8 @@ public class ResultActivity extends AppCompatActivity {
             tvMessagePersonnaliseYf.setText(message);
             tvDetailsVerdictYf.setText(R.string.details_verdict_approuve);
         } else {
-            // حالة الرفض: خلفية حمراء ورسالة توقيف زماني
-            llRacineResultatYf.setBackgroundColor(ContextCompat.getColor(this, R.color.bg_verdict_refuse));
+            // حالة الرفض: خلفية حمراء قرمزية متدرجة لحالة الإنذار والتوقيف الزمني
+            llRacineResultatYf.setBackgroundResource(R.drawable.bg_verdict_refused);
             ivIconeVerdictYf.setImageResource(R.drawable.ic_verdict_arrest);
             tvTitreVerdictYf.setText(R.string.titre_verdict_refuse);
             tvTitreVerdictYf.setTextColor(ContextCompat.getColor(this, R.color.time_red));

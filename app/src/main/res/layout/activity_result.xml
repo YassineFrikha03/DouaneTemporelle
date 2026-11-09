@@ -12,7 +12,7 @@
     android:id="@+id/ll_racine_resultat_yf"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_verdict_approuve"
+    android:background="@drawable/bg_verdict_approved"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp">

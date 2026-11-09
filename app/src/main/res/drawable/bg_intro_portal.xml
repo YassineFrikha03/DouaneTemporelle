@@ -1,0 +1,76 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="640dp"
+    android:viewportWidth="360"
+    android:viewportHeight="640">
+
+    <!-- 1. الخلفية الكونية الزرقاء الداكنة -->
+    <path
+        android:fillColor="#090E1C"
+        android:pathData="M0,0 H360 V640 H0 Z" />
+
+    <!-- 2. شبكة المنظور الأرضية للبوابة الزمنية (Perspective Floor Grid) -->
+    <path
+        android:strokeColor="#2500E5FF"
+        android:strokeWidth="1.2"
+        android:pathData="M180,240 L-20,640 M180,240 L50,640 M180,240 L120,640 M180,240 L180,640 M180,240 L240,640 M180,240 L310,640 M180,240 L380,640" />
+
+    <!-- خطوط أفقية متقاربة للمنظور الأرضي -->
+    <path
+        android:strokeColor="#2000E5FF"
+        android:strokeWidth="1"
+        android:pathData="M140,300 H220 M110,345 H250 M75,400 H285 M35,465 H325 M0,545 H360 M0,635 H360" />
+
+    <!-- 3. حلقات الدوامة الكمومية المتمركزة حول الشعار (Concentric Portal Rings) -->
+    <!-- حلقة 1 -->
+    <path
+        android:strokeColor="#3500E5FF"
+        android:strokeWidth="2"
+        android:pathData="M180,180 A60,60 0 1,0 180,300 A60,60 0 1,0 180,180 Z" />
+
+    <!-- حلقة 2 -->
+    <path
+        android:strokeColor="#28818CF8"
+        android:strokeWidth="1.5"
+        android:pathData="M180,140 A100,100 0 1,0 180,340 A100,100 0 1,0 180,140 Z" />
+
+    <!-- حلقة 3 -->
+    <path
+        android:strokeColor="#2500E5FF"
+        android:strokeWidth="2"
+        android:pathData="M180,95 A145,145 0 1,0 180,385 A145,145 0 1,0 180,95 Z" />
+
+    <!-- حلقة 4 كبرى -->
+    <path
+        android:strokeColor="#18818CF8"
+        android:strokeWidth="1.5"
+        android:pathData="M180,45 A195,195 0 1,0 180,435 A195,195 0 1,0 180,45 Z" />
+
+    <!-- 4. محاور البوابة وشعاع الطاقة المركزي -->
+    <path
+        android:strokeColor="#2000E5FF"
+        android:strokeWidth="1"
+        android:pathData="M0,240 H360 M180,0 V640" />
+
+    <!-- أشعة دوامة قطرية -->
+    <path
+        android:strokeColor="#1538BDF8"
+        android:strokeWidth="1"
+        android:pathData="M0,60 L360,420 M0,420 L360,60 M40,0 L320,480 M320,0 L40,480" />
+
+    <!-- 5. جزيئات ونجوم التدفق الزمني (Temporal Sparks) -->
+    <path
+        android:fillColor="#8000E5FF"
+        android:pathData="M180,75 A2.5,2.5 0 1,0 180,80 A2.5,2.5 0 1,0 180,75 Z M95,170 A2,2 0 1,0 95,174 A2,2 0 1,0 95,170 Z M265,170 A2,2 0 1,0 265,174 A2,2 0 1,0 265,170 Z M65,280 A2.5,2.5 0 1,0 65,285 A2.5,2.5 0 1,0 65,280 Z M295,280 A2.5,2.5 0 1,0 295,285 A2.5,2.5 0 1,0 295,280 Z M120,110 A2,2 0 1,0 120,114 A2,2 0 1,0 120,110 Z M240,110 A2,2 0 1,0 240,114 A2,2 0 1,0 240,110 Z" />
+
+    <path
+        android:fillColor="#80F59E0B"
+        android:pathData="M180,365 A2.5,2.5 0 1,0 180,370 A2.5,2.5 0 1,0 180,365 Z M140,195 A2,2 0 1,0 140,199 A2,2 0 1,0 140,195 Z M220,195 A2,2 0 1,0 220,199 A2,2 0 1,0 220,195 Z" />
+
+    <!-- 6. إشارات الزوايا التكنولوجية (HUD Corners) -->
+    <path
+        android:strokeColor="#3500E5FF"
+        android:strokeWidth="2"
+        android:pathData="M15,35 H35 M15,35 V55 M345,35 H325 M345,35 V55 M15,605 H35 M15,605 V585 M345,605 H325 M345,605 V585" />
+
+</vector>

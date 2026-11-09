@@ -1,0 +1,58 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="640dp"
+    android:viewportWidth="360"
+    android:viewportHeight="640">
+
+    <!-- 1. قاعدة طاولة المسح الضوئي -->
+    <path
+        android:fillColor="#080D1A"
+        android:pathData="M0,0 H360 V640 H0 Z" />
+
+    <!-- 2. شبكة المعايرة البصرية المليمترية (Optical Calibration Grid) -->
+    <path
+        android:strokeColor="#1800E5FF"
+        android:strokeWidth="0.8"
+        android:pathData="M20,0 V640 M340,0 V640 M0,30 H360 M0,610 H360" />
+
+    <!-- تدريجات مسطرة المعايرة على الحواف -->
+    <path
+        android:strokeColor="#2500E5FF"
+        android:strokeWidth="1"
+        android:pathData="M20,60 H28 M20,90 H25 M20,120 H28 M20,150 H25 M20,180 H28 M20,210 H25 M20,240 H28 M20,270 H25 M20,300 H28 M20,330 H25 M20,360 H28 M20,390 H25 M20,420 H28 M20,450 H25 M20,480 H28 M20,510 H25 M20,540 H28 M20,570 H25 M340,60 H332 M340,90 H335 M340,120 H332 M340,150 H335 M340,180 H332 M340,210 H335 M340,240 H332 M340,270 H335 M340,300 H332 M340,330 H335 M340,360 H332 M340,390 H335 M340,420 H332 M340,450 H335 M340,480 H332 M340,510 H335 M340,540 H332 M340,570 H335" />
+
+    <!-- 3. علامة مائية لدرع وشعار الجمارك في خلفية طاولة المسح -->
+    <path
+        android:strokeColor="#1538BDF8"
+        android:strokeWidth="1.5"
+        android:pathData="M180,190 L270,230 V350 C270,420 225,480 180,510 C135,480 90,420 90,350 V230 Z" />
+
+    <path
+        android:strokeColor="#1200E5FF"
+        android:strokeWidth="1.2"
+        android:pathData="M180,215 L250,247 V345 C250,402 215,452 180,478 C145,452 110,402 110,345 V247 Z" />
+
+    <!-- نجمة الشعار المركزية في العلامة المائية -->
+    <path
+        android:fillColor="#15F59E0B"
+        android:pathData="M180,310 L186,328 L205,328 L190,339 L195,357 L180,346 L165,357 L170,339 L155,328 L174,328 Z" />
+
+    <!-- خطوط أفقية لشعاع الليزر الضوئي الموزع (Optical Laser Scanlines) -->
+    <path
+        android:strokeColor="#2000E5FF"
+        android:strokeWidth="1.2"
+        android:pathData="M30,100 H330 M30,220 H330 M30,340 H330 M30,460 H330 M30,560 H330" />
+
+    <!-- 4. مؤشرات زوايا التركيز البصري (Targeting Corner Brackets) -->
+    <path
+        android:strokeColor="#4500E5FF"
+        android:strokeWidth="2.5"
+        android:pathData="M8,18 H32 M8,18 V42 M352,18 H328 M352,18 V42 M8,622 H32 M8,622 V598 M352,622 H328 M352,622 V598" />
+
+    <!-- علامات الصليب المرجعية للمعايرة (+) -->
+    <path
+        android:strokeColor="#3500E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M45,45 H55 M50,40 V50 M315,45 H325 M320,40 V50 M45,595 H55 M50,590 V600 M315,595 H325 M320,590 V600" />
+
+</vector>

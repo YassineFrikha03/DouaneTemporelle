@@ -1,0 +1,64 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="640dp"
+    android:viewportWidth="360"
+    android:viewportHeight="640">
+
+    <!-- 1. الخلفية الحمراء القرمزية لحالة الطوارئ والحظر -->
+    <path
+        android:fillColor="#3B070B"
+        android:pathData="M0,0 H360 V640 H0 Z" />
+
+    <!-- 2. أشرطة التحذير والخطوط المائلة لحالة الحظر والتوقيف (Emergency Hazard Stripes) -->
+    <!-- شريط أعلى -->
+    <path
+        android:strokeColor="#35EF4444"
+        android:strokeWidth="1.5"
+        android:pathData="M-20,40 L40,-20 M20,40 L80,-20 M60,40 L120,-20 M100,40 L160,-20 M140,40 L200,-20 M180,40 L240,-20 M220,40 L280,-20 M260,40 L320,-20 M300,40 L360,-20 M340,40 L400,-20" />
+
+    <!-- شريط أسفل -->
+    <path
+        android:strokeColor="#35EF4444"
+        android:strokeWidth="1.5"
+        android:pathData="M-20,660 L40,600 M20,660 L80,600 M60,660 L120,600 M100,660 L160,600 M140,660 L200,600 M180,660 L240,600 M220,660 L280,600 M260,660 L320,600 M300,660 L360,600 M340,660 L400,600" />
+
+    <!-- 3. أشعة الليزر الحمراء المتقاطعة للإغلاق الزمني (Lockdown Laser Beams) -->
+    <path
+        android:strokeColor="#45EF4444"
+        android:strokeWidth="2.5"
+        android:pathData="M0,0 L360,640 M360,0 L0,640 M0,320 H360 M180,0 V640" />
+
+    <!-- 4. حلقات حاجز العزل الزمني (Containment Forcefield Rings) -->
+    <path
+        android:strokeColor="#50F87171"
+        android:strokeWidth="2.5"
+        android:pathData="M180,165 A55,55 0 1,0 180,275 A55,55 0 1,0 180,165 Z" />
+
+    <path
+        android:strokeColor="#40EF4444"
+        android:strokeWidth="2"
+        android:pathData="M180,125 A95,95 0 1,0 180,315 A95,95 0 1,0 180,125 Z" />
+
+    <path
+        android:strokeColor="#35F87171"
+        android:strokeWidth="2"
+        android:pathData="M180,80 A140,140 0 1,0 180,360 A140,140 0 1,0 180,80 Z" />
+
+    <path
+        android:strokeColor="#25EF4444"
+        android:strokeWidth="2"
+        android:pathData="M180,30 A190,190 0 1,0 180,410 A190,190 0 1,0 180,30 Z" />
+
+    <!-- 5. ثماني أضلاع العزل الأمني في المركز (Security Octagon) -->
+    <path
+        android:strokeColor="#50EF4444"
+        android:strokeWidth="2"
+        android:pathData="M140,180 H220 L260,220 V300 L220,340 H140 L100,300 V220 Z" />
+
+    <!-- 6. مؤشرات زوايا الإنذار والحصار (Alarm Reticle Corners) -->
+    <path
+        android:strokeColor="#60EF4444"
+        android:strokeWidth="2.5"
+        android:pathData="M16,24 H40 M16,24 V48 M344,24 H320 M344,24 V48 M16,616 H40 M16,616 V592 M344,616 H320 M344,616 V592" />
+
+</vector>
