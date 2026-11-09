@@ -1,28 +1,134 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="120dp"
-    android:height="160dp"
+    android:height="240dp"
     android:viewportWidth="120"
-    android:viewportHeight="160">
-    <!-- Fond holographique -->
+    android:viewportHeight="240">
+
+    <!-- خلفية بطاقة الهوية / جواز السفر البيومتري -->
     <path
-        android:fillColor="#1A2744"
-        android:pathData="M10,0 H110 A10,10 0 0,1 120,10 V150 A10,10 0 0,1 110,160 H10 A10,10 0 0,1 0,150 V10 A10,10 0 0,1 10,0 Z" />
-    <!-- Tête / Silhouette -->
+        android:fillColor="#0B1329"
+        android:pathData="M8,4 H112 A8,8 0 0,1 120,12 V228 A8,8 0 0,1 112,236 H8 A8,8 0 0,1 0,228 V12 A8,8 0 0,1 8,4 Z" />
+
+    <!-- إطار أمني أزرق داكن -->
+    <path
+        android:strokeColor="#1E2E4E"
+        android:strokeWidth="1.5"
+        android:pathData="M4,8 H116 V232 H4 Z" />
+
+    <!-- ترويسة الفحص البيومتري (BIO-SCAN) -->
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M60,35 A22,22 0 1,0 60,79 A22,22 0 1,0 60,35 Z" />
-    <!-- Épaules -->
+        android:pathData="M15,14 H25 V16 H15 Z M28,14 H32 V16 H28 Z M35,14 H48 V16 H35 Z M95,14 H105 V16 H95 Z" />
+
+    <!-- زوايا شبكة التصويب والتعرف على الوجه (Face Targeting Reticle) -->
+    <!-- زاوية أعلى اليسار -->
     <path
-        android:fillColor="#00E5FF"
-        android:pathData="M60,88 C40,88 22,100 18,124 C28,134 44,140 60,140 C76,140 92,134 102,124 C98,100 80,88 60,88 Z" />
-    <!-- Lignes holographiques / Scan -->
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2"
+        android:pathData="M16,28 H28 M16,28 V40" />
+    <!-- زاوية أعلى اليمين -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2"
+        android:pathData="M104,28 H92 M104,28 V40" />
+    <!-- زاوية أسفل اليسار -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2"
+        android:pathData="M16,146 H28 M16,146 V134" />
+    <!-- زاوية أسفل اليمين -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2"
+        android:pathData="M104,146 H92 M104,146 V134" />
+
+    <!-- خطوط شبكة المسح البيومتري الخفيفة (Biometric Grid) -->
+    <path
+        android:strokeColor="#153664"
+        android:strokeWidth="1"
+        android:pathData="M20,55 L100,55 M20,85 L100,85 M20,115 L100,115 M60,28 L60,146" />
+
+    <!-- صورة الرأس البيومترية / ظل الوجه -->
+    <path
+        android:fillColor="#102544"
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M60,42 C45,42 38,54 38,72 C38,92 48,110 60,116 C72,110 82,92 82,72 C82,54 75,42 60,42 Z" />
+
+    <!-- خط الكتفين -->
+    <path
+        android:fillColor="#0D1F38"
+        android:strokeColor="#1E3E6A"
+        android:strokeWidth="1.5"
+        android:pathData="M60,120 C42,120 26,130 20,146 H100 C94,130 78,120 60,120 Z" />
+
+    <!-- نقاط القياس البيومتري للعينين (Retina & Facial Nodes) -->
+    <!-- العين اليسرى -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M48,68 A4,4 0 1,0 48,76 A4,4 0 1,0 48,68 Z" />
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M47,71 H49 V73 H47 Z" />
+
+    <!-- العين اليمنى -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M72,68 A4,4 0 1,0 72,76 A4,4 0 1,0 72,68 Z" />
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M71,71 H73 V73 H71 Z" />
+
+    <!-- خط قياس المسافة بين البؤبؤين (Pupillary Line) -->
+    <path
+        android:strokeColor="#818CF8"
+        android:strokeWidth="1"
+        android:pathData="M52,72 L68,72" />
+
+    <!-- نقطة مركز الأنف (+) -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="1.5"
+        android:pathData="M58,86 H62 M60,84 V88" />
+
+    <!-- خط الفم / الشفاه -->
     <path
         android:strokeColor="#38BDF8"
         android:strokeWidth="1.5"
-        android:pathData="M15,30 L105,30 M15,50 L105,50 M15,70 L105,70 M15,110 L105,110 M15,130 L105,130" />
-    <!-- Empreinte / Code barre bas -->
-    <path
-        android:fillColor="#818CF8"
-        android:pathData="M25,145 H30 V155 H25 Z M35,145 H38 V155 H35 Z M42,145 H48 V155 H42 Z M52,145 H55 V155 H52 Z M60,145 H66 V155 H60 Z M70,145 H73 V155 H70 Z M78,145 H85 V155 H78 Z M90,145 H95 V155 H90 Z" />
-</vector>
+        android:pathData="M52,100 Q60,104 68,100" />
 
+    <!-- شعاع الليزر لمسح الوجه (Laser Scan Beam) -->
+    <path
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="2.5"
+        android:pathData="M12,78 L108,78" />
+
+    <!-- فاصل أمني فوق الباركود -->
+    <path
+        android:strokeColor="#1E2E4E"
+        android:strokeWidth="1"
+        android:pathData="M8,160 H112" />
+
+    <!-- شارة التحقق البيومتري (VERIFIED 99.8%) -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M16,166 H20 V170 H16 Z M24,166 H40 V168 H24 Z M44,166 H60 V168 H44 Z M64,166 H80 V168 H64 Z M84,166 H104 V168 H84 Z" />
+
+    <!-- خطوط الباركود عالي الكثافة (High Density Barcode) -->
+    <path
+        android:fillColor="#E2E8F0"
+        android:pathData="M12,176 H15 V216 H12 Z M17,176 H18 V216 H17 Z M21,176 H24 V216 H21 Z M26,176 H27 V216 H26 Z M29,176 H33 V216 H29 Z M35,176 H36 V216 H35 Z M38,176 H42 V216 H38 Z M45,176 H46 V216 H45 Z M48,176 H52 V216 H48 Z M54,176 H57 V216 H54 Z M60,176 H61 V216 H60 Z M63,176 H67 V216 H63 Z M70,176 H72 V216 H70 Z M74,176 H75 V216 H74 Z M77,176 H81 V216 H77 Z M83,176 H86 V216 H83 Z M88,176 H89 V216 H88 Z M92,176 H96 V216 H92 Z M98,176 H100 V216 H98 Z M102,176 H104 V216 H102 Z M106,176 H108 V216 H106 Z" />
+
+    <!-- خطوط الحراسة للباركود باللون السيان (Guard Bars) -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M10,174 H12 V220 H10 Z M13,174 H14 V220 H13 Z M58,174 H59 V220 H58 Z M106,174 H107 V220 H106 Z M108,174 H110 V220 H108 Z" />
+
+    <!-- النص الأمني المكتوب تحت الباركود -->
+    <path
+        android:fillColor="#94A3B8"
+        android:pathData="M20,224 H28 V226 H20 Z M32,224 H44 V226 H32 Z M48,224 H60 V226 H48 Z M64,224 H76 V226 H64 Z M80,224 H92 V226 H80 Z M96,224 H100 V226 H96 Z" />
+
+</vector>

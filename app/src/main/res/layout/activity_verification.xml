@@ -231,6 +231,56 @@
                     android:textSize="10.5sp"
                     android:textStyle="bold" />
 
+                <!-- الفحص البيومتري للوجه والباركود الأمني للمسافر -->
+                <View
+                    android:id="@+id/v_separateur_biometrique_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/time_card_stroke" />
+
+                <TextView
+                    android:id="@+id/tv_label_scan_facial_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_scan_facial"
+                    android:textColor="@color/time_text_muted"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_valeur_scan_facial_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="6dp"
+                    android:text="@string/statut_scan_facial_conforme"
+                    android:textColor="@color/time_cyan"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <!-- عنصر الباركود الأمني المولد برمجياً بدقة عالية -->
+                <ImageView
+                    android:id="@+id/iv_code_barre_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginTop="2dp"
+                    android:contentDescription="@string/desc_code_barre"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/tv_code_barre_numero_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center"
+                    android:letterSpacing="0.08"
+                    android:textColor="@color/time_text_muted"
+                    android:textSize="9sp"
+                    tools:text="*TN-1234-MARTY MCFLY-2050*" />
+
             </LinearLayout>
         </ScrollView>
 

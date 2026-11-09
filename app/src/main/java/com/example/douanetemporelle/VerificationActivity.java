@@ -1,6 +1,9 @@
 package com.example.douanetemporelle;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 
 /**
- * 1. النشاط الثاني : فاحص التناقض الزمني وجواز السفر (VerificationActivity)
- * يستقبل بيانات المسافر، يتحقق من قاعدة الأعداد الأولية ومخاطر المفارقة،
- * ثم يوجه الحكم إلى النشاط الثالث ResultActivity عبر Intent صريح.
+ * 1. النشاط الثاني : فاحص التناقض الزمني وجواز السفر البيومتري (VerificationActivity)
+ * يستقبل بيانات المسافر، ينفذ الفحص البيومتري للوجه والباركود الأمني المشفر،
+ * يتحقق من قاعدة الأعداد الأولية، ثم ينقل الحكم إلى النشاط الثالث ResultActivity.
  */
 public class VerificationActivity extends AppCompatActivity {
 
@@ -25,6 +28,9 @@ public class VerificationActivity extends AppCompatActivity {
     private TextView tvValeurCoordonneesYf;
     private TextView tvValeurMotifYf;
     private TextView tvAlerteParadoxeYf;
+    private TextView tvValeurScanFacialYf;
+    private ImageView ivCodeBarreYf;
+    private TextView tvCodeBarreNumeroYf;
     private MaterialButton btnApprouverYf;
     private MaterialButton btnRefuserYf;
 
@@ -47,15 +53,18 @@ public class VerificationActivity extends AppCompatActivity {
         // 7. استخراج البيانات المنقولة عبر Intent الصريح من MainActivity
         recupererDonneesIntent();
 
-        // 8. حساب العمر الزمني وفحص قاعدة المفارقة الزمنية وتحديث العرض
+        // 8. حساب العمر الزمني، توليد الباركود وفحص شرط المفارقة
         traiterEtAfficherDonnees();
 
-        // 9. تفعيل مستمعات الأحداث للنقر على أزرار القرار
+        // 9. تشغيل تأثير المسح الضوئي البيومتري للوجه
+        animerScannerFacial();
+
+        // 10. تفعيل مستمعات الأحداث للنقر على أزرار القرار
         configurerActions();
     }
 
     /**
-     * 10. دالة ربط عناصر الواجهة بالمعرفات الخاصة بالطالب
+     * 11. دالة ربط عناصر الواجهة بالمعرفات الخاصة بالطالب
      */
     private void initialiserVues() {
         ivHologrammePasseportYf = findViewById(R.id.iv_hologramme_passeport_yf);
@@ -64,12 +73,15 @@ public class VerificationActivity extends AppCompatActivity {
         tvValeurCoordonneesYf = findViewById(R.id.tv_valeur_coordonnees_yf);
         tvValeurMotifYf = findViewById(R.id.tv_valeur_motif_yf);
         tvAlerteParadoxeYf = findViewById(R.id.tv_alerte_paradoxe_yf);
+        tvValeurScanFacialYf = findViewById(R.id.tv_valeur_scan_facial_yf);
+        ivCodeBarreYf = findViewById(R.id.iv_code_barre_yf);
+        tvCodeBarreNumeroYf = findViewById(R.id.tv_code_barre_numero_yf);
         btnApprouverYf = findViewById(R.id.btn_approuver_yf);
         btnRefuserYf = findViewById(R.id.btn_refuser_yf);
     }
 
     /**
-     * 11. دالة استخراج البيانات المرسلة باستخدام المفاتيح المولدة ديناميكياً
+     * 12. دالة استخراج البيانات المرسلة باستخدام المفاتيح المولدة ديناميكياً
      */
     private void recupererDonneesIntent() {
         Intent intent = getIntent();
@@ -89,7 +101,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 12. دالة حسابية للتحقق مما إذا كان الفارق الزمني عدداً أولياً (Nombre Premier)
+     * 13. دالة حسابية للتحقق مما إذا كان الفارق الزمني عدداً أولياً (Nombre Premier)
      * العدد الأولي هو عدد صحيح أكبر قطعا من 1 لا يقبل القسمة إلا على 1 وعلى نفسه
      *
      * @param nombre العدد المراد اختباره
@@ -109,7 +121,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 13. معالجة البيانات، حساب الفارق الزمني، وفحص شرط المفارقة لتعطيل الزر فور تحميل النشاط
+     * 14. معالجة البيانات، حساب الفارق الزمني، توليد الباركود، وفحص شرط المفارقة
      */
     private void traiterEtAfficherDonnees() {
         // حساب الفارق الزمني المطلق كعمر زمني للقفزة
@@ -122,14 +134,20 @@ public class VerificationActivity extends AppCompatActivity {
         tvValeurCoordonneesYf.setText(getString(R.string.format_coordonnees, anneeNaissance, anneeDestination, ageTemporel));
         tvValeurMotifYf.setText(motifVoyage);
 
-        // فحص شرط التناقض الزمني المطلوب في كراس الشروط:
+        // 15. توليد الباركود المشفر ديناميكياً وتطبيقه على التذكرة
+        String codeDonnees = "TN-" + MATRICULE_ETUDIANT + "-" + nomVoyageur.replaceAll("\\s+", "-").toUpperCase() + "-" + anneeDestination;
+        Bitmap bitmapCodeBarre = BarcodeUtil.genererCodeBarre(codeDonnees, 420, 70);
+        ivCodeBarreYf.setImageBitmap(bitmapCodeBarre);
+        tvCodeBarreNumeroYf.setText("*" + codeDonnees + "*");
+
+        // 16. فحص شرط التناقض الزمني المطلوب في كراس الشروط:
         // إذا كان السبب 'Modification du passé' والفارق الزمني عدداً أولياً -> تعطيل زر القبول فوراً
         boolean estMotifModification = "Modification du passé".equalsIgnoreCase(motifVoyage)
                 || "Modification du passe".equalsIgnoreCase(motifVoyage);
         boolean estPremier = isNombrePremier(ageTemporel);
 
         if (estMotifModification && estPremier) {
-            // 14. تعطيل زر الموافقة فوراً عند تحميل الشاشة
+            // تعطيل زر الموافقة فوراً عند تحميل الشاشة
             btnApprouverYf.setEnabled(false);
             btnApprouverYf.setAlpha(0.35f);
 
@@ -138,7 +156,7 @@ public class VerificationActivity extends AppCompatActivity {
             tvAlerteParadoxeYf.setTextColor(getColor(R.color.time_red));
             tvAlerteParadoxeYf.setText(getString(R.string.alerte_paradoxe_danger, ageTemporel));
         } else {
-            // 15. تمكين زر الموافقة في الحالة السليمة
+            // تمكين زر الموافقة في الحالة السليمة
             btnApprouverYf.setEnabled(true);
             btnApprouverYf.setAlpha(1.0f);
 
@@ -150,7 +168,18 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 16. إعداد أحداث النقر لأزرار الموافقة والرفض لإرسال الحكم إلى ResultActivity
+     * 17. تشغيل وميض حركي يحاكي مسح الليزر البيومتري للوجه على صورة جواز السفر
+     */
+    private void animerScannerFacial() {
+        ObjectAnimator animateurScan = ObjectAnimator.ofFloat(ivHologrammePasseportYf, "alpha", 0.55f, 1.0f);
+        animateurScan.setDuration(450);
+        animateurScan.setRepeatCount(3);
+        animateurScan.setRepeatMode(ValueAnimator.REVERSE);
+        animateurScan.start();
+    }
+
+    /**
+     * 18. إعداد أحداث النقر لأزرار الموافقة والرفض لإرسال الحكم إلى ResultActivity
      */
     private void configurerActions() {
         // حدث النقر على زر الموافقة على القفزة الزمنية
@@ -171,7 +200,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 17. إنشاء نية صريحة (Explicit Intent) نحو النشاط الثالث ResultActivity
+     * 19. إنشاء نية صريحة (Explicit Intent) نحو النشاط الثالث ResultActivity
      * مع نقل الحكم النهائي (booléen) واسم المسافر وفق المفاتيح الديناميكية
      *
      * @param verdictFinal الحكم النهائي (true: مقبول، false: مرفوض)
