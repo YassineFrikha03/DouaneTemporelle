@@ -6,7 +6,11 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PointF;
+import android.media.FaceDetector;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -22,9 +26,9 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.button.MaterialButton;
 
 /**
- * 1. النشاط الثاني : فاحص التناقض الزمني والتحقق الإجباري من الوجه ضد الروبوتات (VerificationActivity)
- * شرط أمني حاسم: في حال غياب أو عدم التحقق من الوجه، يتم رفض كافة أنواع السفر الزمنية تلقائياً.
- * يتم قفل زر الموافقة وتعطيل القفزة بالكامل لأي سبب كان ما لم يثبت المسافر هويته البيولوجية البشرية.
+ * 1. النشاط الثاني : فاحص التناقض الزمني والتحقق الإجباري الحقيقي من الوجه (VerificationActivity)
+ * شرط صارم: يجب أن ترصد الخوارزمية وجهاً بشرياً حقيقياً (FaceDetector)، وفي حال عدم وجود وجه
+ * يتم رفض كافة أنواع السفر الزمنية (Tourisme, Modification, Fuite) تلقائياً ويُقفل زر الموافقة.
  */
 public class VerificationActivity extends AppCompatActivity {
 
@@ -51,7 +55,7 @@ public class VerificationActivity extends AppCompatActivity {
     // 5. مشغل النشاط لالتقاط الصورة عبر الكاميرا والتحقق من الوجه
     private ActivityResultLauncher<Intent> lanceurCameraYf;
 
-    // 6. حالة الفحص البيومتري: هل تم التحقق والتأكد من وجود وجه بشري حقيقي؟
+    // 6. حالة الفحص البيومتري: هل تم رصد وجه بشري حقيقي مؤكد؟
     private boolean visageHumainValide = false;
 
     // 7. متغيرات تخزين البيانات المستلمة
@@ -87,7 +91,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 15. إعداد مشغل الكاميرا لفحص الوجه: في حال غياب الوجه يُرفض السفر بشكل قاطع
+     * 15. إعداد مشغل الكاميرا لمعالجة الصورة والتحقق الإلزامي من وجود وجه بشري
      */
     private void initialiserLanceurCamera() {
         lanceurCameraYf = registerForActivityResult(
@@ -98,25 +102,29 @@ public class VerificationActivity extends AppCompatActivity {
                         if (extras != null && extras.get("data") != null) {
                             Bitmap photoCapturee = (Bitmap) extras.get("data");
 
-                            // تطبيق الصورة الملتقطة على بطاقة الجواز
-                            ivHologrammePasseportYf.setImageBitmap(photoCapturee);
-                            ivHologrammePasseportYf.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-                            // فحص وجود الوجه والتأكد من أنه كائن بشري وليس شاشة فارغة أو روبوت
+                            // فحص وجود الوجه الصارم عبر FaceDetector حصراً
                             boolean visageDetecte = detecterVisage(photoCapturee);
 
                             if (visageDetecte) {
-                                // 16. حالة النجاح: تم التحقق من الوجه البشري
+                                // 16. حالة النجاح المؤكد: تم العثور على وجه إنساني حقيقي
                                 visageHumainValide = true;
+
+                                // رسم إطار التصويب البيومتري على الوجه المكتشف
+                                Bitmap photoAvecCiblage = dessinerCiblageVisage(photoCapturee);
+                                ivHologrammePasseportYf.setImageBitmap(photoAvecCiblage);
+                                ivHologrammePasseportYf.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
                                 tvValeurScanFacialYf.setText(R.string.statut_anti_robot_valide);
                                 tvValeurScanFacialYf.setTextColor(getColor(R.color.time_green));
 
-                                // إعادة تقييم شرط التناقض الزمني
+                                // إعادة تقييم شروط السفر
                                 evaluerConditionsVoyage();
 
-                                Toast.makeText(this, "Visage humain confirme : Test anti-robot reussi.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Visage humain detecte avec succes : voyageur confirme.", Toast.LENGTH_SHORT).show();
                             } else {
-                                // 17. حالة الفشل: الصورة ملتقطة ولكن لا تحتوي على ملامح وجه -> رفض كلي لكافة أنواع السفر
+                                // 17. حالة الفشل الصارم: لا يوجد أي وجه في الصورة -> رفض فوري لكافة الأسفار
+                                ivHologrammePasseportYf.setImageBitmap(photoCapturee);
+                                ivHologrammePasseportYf.setScaleType(ImageView.ScaleType.CENTER_CROP);
                                 appliquerRefusAbsoluSansVisage();
                             }
                             return;
@@ -130,66 +138,104 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 18. دالة الفحص الذكي للوجه باستخدام خوارزمية FaceDetector الرسمية وتحليل التباين
+     * 18. دالة الفحص البيومتري الصارم: تشترط وجود ملامح وجه بشري حقيقي حصراً
+     * تعتمد فقط على خوارزمية FaceDetector الرسمية، وإذا لم تجد وجهاً تُرجع false حتماً
      */
-    private boolean detecterVisage(Bitmap bitmap) {
-        if (bitmap == null || bitmap.getWidth() < 10 || bitmap.getHeight() < 10) {
+    private boolean detecterVisage(Bitmap bitmapOriginal) {
+        if (bitmapOriginal == null) {
             return false;
         }
 
+        // اختبار أول بدقة 400 بكسل للكشف عن الوجه
+        if (analyserVisage(bitmapOriginal, 400)) {
+            return true;
+        }
+
+        // اختبار ثان بدقة 300 بكسل لتغطية الوجوه القريبة أو البعيدة
+        if (analyserVisage(bitmapOriginal, 300)) {
+            return true;
+        }
+
+        // اختبار ثالث بالدقة الأصلية إذا كانت كافية
+        if (bitmapOriginal.getWidth() >= 64 && analyserVisage(bitmapOriginal, bitmapOriginal.getWidth())) {
+            return true;
+        }
+
+        // في حال عدم وجود أي وجه بشري: يتم الرفض القاطع
+        return false;
+    }
+
+    /**
+     * 19. تشغيل خوارزمية FaceDetector على دقة محددة للتأكد من ملامح العينين
+     */
+    private boolean analyserVisage(Bitmap source, int largeurCible) {
         try {
-            int w = bitmap.getWidth();
-            int h = bitmap.getHeight();
+            int wSource = source.getWidth();
+            int hSource = source.getHeight();
+            if (wSource <= 0 || hSource <= 0) return false;
+
+            int hauteurCible = (hSource * largeurCible) / wSource;
+            if (largeurCible % 2 != 0) largeurCible++;
+            if (hauteurCible % 2 != 0) hauteurCible++;
+
+            Bitmap bitmapRedim = Bitmap.createScaledBitmap(source, largeurCible, hauteurCible, true);
+            Bitmap bitmap565 = bitmapRedim.copy(Bitmap.Config.RGB_565, false);
+
+            FaceDetector detector = new FaceDetector(largeurCible, hauteurCible, 1);
+            FaceDetector.Face[] visages = new FaceDetector.Face[1];
+            int nombre = detector.findFaces(bitmap565, visages);
+
+            return (nombre > 0 && visages[0] != null && visages[0].confidence() >= 0.30f);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * 20. رسم إطار بيومتري دائري بلون سيان حول الوجه المكتشف لإثبات رصده بدقة
+     */
+    private Bitmap dessinerCiblageVisage(Bitmap sourceOriginal) {
+        try {
+            int w = sourceOriginal.getWidth();
+            int h = sourceOriginal.getHeight();
             if (w % 2 != 0) w--;
+            if (h % 2 != 0) h--;
+            if (w <= 0 || h <= 0) return sourceOriginal;
 
-            Bitmap b565 = bitmap.copy(Bitmap.Config.RGB_565, true);
-            if (b565.getWidth() % 2 != 0) {
-                b565 = Bitmap.createScaledBitmap(b565, w, h, false);
-            }
+            Bitmap b565 = Bitmap.createScaledBitmap(sourceOriginal, w, h, true).copy(Bitmap.Config.RGB_565, false);
+            FaceDetector detector = new FaceDetector(w, h, 1);
+            FaceDetector.Face[] visages = new FaceDetector.Face[1];
+            int count = detector.findFaces(b565, visages);
 
-            android.media.FaceDetector detector = new android.media.FaceDetector(b565.getWidth(), b565.getHeight(), 1);
-            android.media.FaceDetector.Face[] faces = new android.media.FaceDetector.Face[1];
-            int count = detector.findFaces(b565, faces);
-            if (count > 0) {
-                return true;
+            if (count > 0 && visages[0] != null) {
+                Bitmap resultat = sourceOriginal.copy(Bitmap.Config.ARGB_8888, true);
+                Canvas canvas = new Canvas(resultat);
+                PointF pointMilieu = new PointF();
+                visages[0].getMidPoint(pointMilieu);
+                float distanceYeux = visages[0].eyesDistance();
+
+                Paint paintCercle = new Paint();
+                paintCercle.setColor(Color.parseColor("#00E5FF"));
+                paintCercle.setStyle(Paint.Style.STROKE);
+                paintCercle.setStrokeWidth(3.5f);
+                paintCercle.setAntiAlias(true);
+
+                // رسم دائرة الهدف البيومتري حول الوجه المكتشف
+                canvas.drawCircle(pointMilieu.x, pointMilieu.y, distanceYeux * 1.25f, paintCercle);
+
+                // رسم علامة الصليب في المركز
+                canvas.drawLine(pointMilieu.x - 10, pointMilieu.y, pointMilieu.x + 10, pointMilieu.y, paintCercle);
+                canvas.drawLine(pointMilieu.x, pointMilieu.y - 10, pointMilieu.x, pointMilieu.y + 10, paintCercle);
+
+                return resultat;
             }
         } catch (Exception ignored) {
         }
-
-        // فحص بيومتري بديل لتباين الألوان: التأكد أن الصورة ليست شاشة سوداء أو مساحة بلون واحد
-        return verifierVarianceImage(bitmap);
+        return sourceOriginal;
     }
 
     /**
-     * 19. فحص تباين البكسلات للتأكد أن العدسة ليست مغطاة بالكامل
-     */
-    private boolean verifierVarianceImage(Bitmap bitmap) {
-        int w = bitmap.getWidth();
-        int h = bitmap.getHeight();
-        int echantillons = 20;
-        int pasX = Math.max(1, w / echantillons);
-        int pasY = Math.max(1, h / echantillons);
-
-        int premierPixel = bitmap.getPixel(w / 2, h / 2);
-        int pixelsDifferents = 0;
-
-        for (int x = 0; x < w; x += pasX) {
-            for (int y = 0; y < h; y += pasY) {
-                int pixel = bitmap.getPixel(x, y);
-                int diffR = Math.abs(Color.red(pixel) - Color.red(premierPixel));
-                int diffG = Math.abs(Color.green(pixel) - Color.green(premierPixel));
-                int diffB = Math.abs(Color.blue(pixel) - Color.blue(premierPixel));
-                if (diffR + diffG + diffB > 45) {
-                    pixelsDifferents++;
-                }
-            }
-        }
-
-        return pixelsDifferents > 20;
-    }
-
-    /**
-     * 20. تطبيق الرفض الشامل لكافة أنواع السفر عند غياب الوجه
+     * 21. تطبيق الرفض الشامل لكافة أنواع السفر عند غياب الوجه
      */
     private void appliquerRefusAbsoluSansVisage() {
         visageHumainValide = false;
@@ -206,11 +252,11 @@ public class VerificationActivity extends AppCompatActivity {
         tvAlerteParadoxeYf.setTextColor(getColor(R.color.time_red));
         tvAlerteParadoxeYf.setBackgroundResource(R.drawable.bg_paradox_warning);
 
-        Toast.makeText(this, R.string.toast_refus_sans_visage, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Alerte de securite : Aucun visage detecte ! Tous les voyages sont refuses.", Toast.LENGTH_LONG).show();
     }
 
     /**
-     * 21. دالة ربط عناصر الواجهة بالمعرفات الخاصة بالطالب
+     * 22. دالة ربط عناصر الواجهة بالمعرفات الخاصة بالطالب
      */
     private void initialiserVues() {
         ivHologrammePasseportYf = findViewById(R.id.iv_hologramme_passeport_yf);
@@ -228,7 +274,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 22. استخراج البيانات المنقولة باستخدام المفاتيح الديناميكية
+     * 23. استخراج البيانات المنقولة باستخدام المفاتيح الديناميكية
      */
     private void recupererDonneesIntent() {
         Intent intent = getIntent();
@@ -248,7 +294,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 23. دالة حسابية للتحقق مما إذا كان العدد أولياً (Nombre Premier)
+     * 24. دالة حسابية للتحقق مما إذا كان العدد أولياً (Nombre Premier)
      */
     private boolean isNombrePremier(int nombre) {
         int n = Math.abs(nombre);
@@ -264,7 +310,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 24. معالجة البيانات، توليد الباركود وتطبيق الرفض المبدئي لحين التحقق من الوجه
+     * 25. معالجة البيانات، توليد الباركود وتطبيق الرفض المبدئي لحين التحقق من الوجه
      */
     private void traiterEtAfficherDonnees() {
         int differenceBrute = anneeDestination - anneeNaissance;
@@ -303,7 +349,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 25. تقييم الشروط المشتركة بعد تأكيد وجود الوجه البشري
+     * 26. تقييم الشروط المشتركة بعد تأكيد وجود الوجه البشري
      */
     private void evaluerConditionsVoyage() {
         boolean estMotifModification = "Modification du passé".equalsIgnoreCase(motifVoyage)
@@ -330,7 +376,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 26. وميض المسح الليزري للوجه
+     * 27. وميض المسح الليزري للوجه
      */
     private void animerScannerFacial() {
         ObjectAnimator animateurScan = ObjectAnimator.ofFloat(ivHologrammePasseportYf, "alpha", 0.55f, 1.0f);
@@ -341,7 +387,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 27. التحقق من صلاحية الكاميرا وفتحها
+     * 28. التحقق من صلاحية الكاميرا وفتحها
      */
     private void verifierEtLancerCamera() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -352,7 +398,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 28. فتح تطبيق الكاميرا لالتقاط صورة الوجه
+     * 29. فتح تطبيق الكاميرا لالتقاط صورة الوجه
      */
     private void ouvrirAppareilPhoto() {
         Intent intentPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -374,10 +420,9 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 29. إعداد أحداث النقر للأزرار مع فرض شرط الوجه لمنع الموافقة للروبوتات
+     * 30. إعداد أحداث النقر للأزرار مع فرض شرط الوجه لمنع الموافقة للروبوتات
      */
     private void configurerActions() {
-        // فتح الكاميرا عند النقر على الزر أو على صورة الجواز
         btnScannerCameraYf.setOnClickListener(v -> verifierEtLancerCamera());
         ivHologrammePasseportYf.setOnClickListener(v -> verifierEtLancerCamera());
 
@@ -385,7 +430,6 @@ public class VerificationActivity extends AppCompatActivity {
         btnApprouverYf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // شرط عدم التنازل: إذا لم يكن هناك وجه معتمد، يُمنع العبور إطلاقاً
                 if (!visageHumainValide) {
                     Toast.makeText(VerificationActivity.this, R.string.toast_refus_sans_visage, Toast.LENGTH_LONG).show();
                     return;
@@ -404,7 +448,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 30. إنشاء نية صريحة نحو ResultActivity مع نقل الحكم النهائي واسم المسافر
+     * 31. إنشاء نية صريحة نحو ResultActivity مع نقل الحكم النهائي واسم المسافر
      */
     private void ouvrirResultat(boolean verdictFinal) {
         Intent intentResultat = new Intent(VerificationActivity.this, ResultActivity.class);
