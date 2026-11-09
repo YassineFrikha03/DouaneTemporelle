@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    <!-- Cercle externe alerte -->
+    <path
+        android:fillColor="#15EF4444"
+        android:pathData="M48,4 A44,44 0 1,0 48,92 A44,44 0 1,0 48,4 Z" />
+    <path
+        android:strokeColor="#EF4444"
+        android:strokeWidth="3"
+        android:pathData="M48,8 A40,40 0 1,0 48,88 A40,40 0 1,0 48,8 Z" />
+    <!-- Triangle d'alerte / Bouclier de verrouillage -->
+    <path
+        android:fillColor="#25EF4444"
+        android:strokeColor="#F87171"
+        android:strokeWidth="2.5"
+        android:pathData="M48,18 L68,26 V46 C68,60 59,71 48,76 C37,71 28,60 28,46 V26 Z" />
+    <!-- Croix d'interdiction / Menottes / Verrou -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M38,38 L58,58 M58,38 L38,58" />
+</vector>
+

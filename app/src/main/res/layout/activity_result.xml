@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    النشاط الثالث : شاشة الحكم النهائي (ResultActivity)
+    شاشة بسيطة يتغير لون خلفيتها ديناميكياً حسب الحكم المستلم:
+    - أخضر (Green) في حال قبول القفزة الزمنية
+    - أحمر (Red) في حال رفض القفزة والاشتباه في مفارقة
+    جميع المعرفات تنتهي بـ _yf (أحرف الطالب ياسين فريخة)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_racine_resultat_yf"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_verdict_approuve"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <!-- شارة الوزارة / الجمارك الزمنية -->
+    <TextView
+        android:id="@+id/tv_badge_douane_yf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#20FFFFFF"
+        android:letterSpacing="0.08"
+        android:paddingStart="12dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="5dp"
+        android:text="@string/badge_verdict"
+        android:textColor="@color/time_text_secondary"
+        android:textSize="10.5sp"
+        android:textStyle="bold" />
+
+    <!-- أيقونة الحكم الديناميكية (درع القبول أو درع التوقيف والحظر) -->
+    <ImageView
+        android:id="@+id/iv_icone_verdict_yf"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/titre_verdict_approuve"
+        android:src="@drawable/ic_verdict_approved" />
+
+    <!-- عنوان حالة الحكم (مقبول / مرفوض) -->
+    <TextView
+        android:id="@+id/tv_titre_verdict_yf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:letterSpacing="0.05"
+        android:text="@string/titre_verdict_approuve"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- بطاقة القرار والرسالة المخصصة باسم المسافر -->
+    <LinearLayout
+        android:id="@+id/ll_carte_verdict_yf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/bg_card_verdict_approved"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- الرسالة المخصصة حسب الشرط: "Bon voyage [Nom]" أو "[Nom] est en état d'arrestation temporelle" -->
+        <TextView
+            android:id="@+id/tv_message_personnalise_yf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="Bon voyage Marty McFly" />
+
+        <!-- تفاصيل بروتوكول Douane Temporelle الإضافية -->
+        <TextView
+            android:id="@+id/tv_details_verdict_yf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:text="@string/details_verdict_approuve"
+            android:textColor="@color/time_text_secondary"
+            android:textSize="12.5sp" />
+
+    </LinearLayout>
+
+    <!-- زر "مسافر جديد" للعودة إلى MainActivity مع إغلاق الأنشطة السابقة -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_nouveau_voyageur_yf"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:letterSpacing="0.04"
+        android:text="@string/btn_nouveau_voyageur"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:backgroundTint="#25FFFFFF"
+        app:cornerRadius="12dp"
+        app:icon="@drawable/ic_refresh"
+        app:iconGravity="textStart"
+        app:iconPadding="10dp"
+        app:iconTint="@color/white"
+        app:strokeColor="#50FFFFFF"
+        app:strokeWidth="1.5dp" />
+
+</LinearLayout>
+

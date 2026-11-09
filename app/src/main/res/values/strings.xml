@@ -60,4 +60,14 @@
     <string name="alerte_paradoxe_safe">CONTROLE DE SECURITE CONFORME : Aucun paradoxe critique detecte.</string>
     <string name="btn_approuver">APPROUVER LE SAUT TEMPOREL</string>
     <string name="btn_refuser">REFUSER (RISQUE DE PARADOXE)</string>
+
+    <!-- Activite 3 : Le Verdict (ResultActivity) -->
+    <string name="badge_verdict">MINISTERE DU TEMPS • VERDICT OFFICIEL</string>
+    <string name="titre_verdict_approuve">SAUT TEMPOREL APPROUVE</string>
+    <string name="titre_verdict_refuse">SAUT TEMPOREL REFUSE</string>
+    <string name="message_bon_voyage">Bon voyage %1$s</string>
+    <string name="message_arrestation">%1$s est en état d\'arrestation temporelle</string>
+    <string name="details_verdict_approuve">Autorisation de transit spatio-temporel accordee. Votre trajectoire chronologique est validee. Veuillez franchir le portail en toute serenite.</string>
+    <string name="details_verdict_refuse">Alerte critique de securite : Risque imminent de perturbation temporelle ou tentative d\'alteration du continuum. L\'unite de police chronologique a ete deployee.</string>
+    <string name="btn_nouveau_voyageur">NOUVEAU VOYAGEUR</string>
 </resources>

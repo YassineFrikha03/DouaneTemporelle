@@ -25,4 +25,12 @@
     <color name="time_text_primary">#F8FAFC</color>
     <color name="time_text_secondary">#94A3B8</color>
     <color name="time_text_muted">#64748B</color>
+
+    <!-- Couleurs d'arriere-plan du verdict (Activite 3) -->
+    <color name="bg_verdict_approuve">#042F24</color>
+    <color name="bg_verdict_refuse">#3B070B</color>
+    <color name="card_verdict_approuve">#0A4A38</color>
+    <color name="card_verdict_refuse">#551216</color>
+    <color name="border_verdict_approuve">#10B981</color>
+    <color name="border_verdict_refuse">#EF4444</color>
 </resources>

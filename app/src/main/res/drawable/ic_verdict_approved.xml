@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    <!-- Cercle externe -->
+    <path
+        android:fillColor="#1510B981"
+        android:pathData="M48,4 A44,44 0 1,0 48,92 A44,44 0 1,0 48,4 Z" />
+    <path
+        android:strokeColor="#10B981"
+        android:strokeWidth="3"
+        android:pathData="M48,8 A40,40 0 1,0 48,88 A40,40 0 1,0 48,8 Z" />
+    <!-- Bouclier de validation -->
+    <path
+        android:fillColor="#2510B981"
+        android:strokeColor="#34D399"
+        android:strokeWidth="2.5"
+        android:pathData="M48,18 L68,26 V46 C68,60 59,71 48,76 C37,71 28,60 28,46 V26 Z" />
+    <!-- Coche de validation -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M38,46 L45,53 L58,38" />
+</vector>
+
