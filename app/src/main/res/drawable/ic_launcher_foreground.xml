@@ -4,10 +4,10 @@
     android:viewportWidth="108"
     android:viewportHeight="108">
     <group
-        android:scaleX="0.65"
-        android:scaleY="0.65"
-        android:translateX="18.9"
-        android:translateY="18.9">
+        android:scaleX="0.52"
+        android:scaleY="0.52"
+        android:translateX="20.7"
+        android:translateY="20.7">
         <!-- Cercle extérieur et lueur néon temporelle -->
         <path
             android:fillColor="#1500E5FF"
@@ -16,6 +16,12 @@
             android:strokeColor="#00E5FF"
             android:strokeWidth="2.5"
             android:pathData="M64,12 A52,52 0 1,0 64,116 A52,52 0 1,0 64,12 Z" />
+
+        <!-- Anneau intermédiaire violet quantique -->
+        <path
+            android:strokeColor="#818CF8"
+            android:strokeWidth="1.5"
+            android:pathData="M64,20 A44,44 0 1,0 64,108 A44,44 0 1,0 64,20 Z" />
 
         <!-- Bouclier de Douane Temporelle -->
         <path
@@ -35,9 +41,14 @@
             android:fillColor="#00E5FF"
             android:pathData="M56,67 H72 L64,58 Z" />
 
-        <!-- Étoile centrale -->
+        <!-- Étoile centrale / Balise de synchronisation -->
         <path
             android:fillColor="#FFFFFF"
             android:pathData="M64,53 L65.5,56 L68,56 L66,57.5 L67,60 L64,58.5 L61,60 L62,57.5 L60,56 L62.5,56 Z" />
+
+        <!-- Repères horaires chronologiques -->
+        <path
+            android:fillColor="#38BDF8"
+            android:pathData="M62,14 H66 V20 H62 Z M62,108 H66 V114 H62 Z M14,62 H20 V66 H14 Z M108,62 H114 V66 H108 Z" />
     </group>
 </vector>

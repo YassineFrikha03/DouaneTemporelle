@@ -6,17 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/time_space_dark"
-    android:padding="24dp"
+    android:paddingStart="20dp"
+    android:paddingTop="20dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="24dp"
     tools:context=".IntroActivity">
 
-    <!-- En-tête : Badge Secteur Temporel -->
+    <!-- En-tete : Badge Secteur Temporel -->
     <TextView
         android:id="@+id/tv_badge_poste_intro_yf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/bg_badge_sector"
         android:drawableStart="@drawable/ic_verified_badge"
         android:drawablePadding="8dp"
@@ -26,7 +29,7 @@
         android:textSize="11sp"
         android:textStyle="bold" />
 
-    <!-- Bloc Central : Logo + Titre + Chargement -->
+    <!-- Bloc Central : Logo avec halo + Titre + Chargement -->
     <LinearLayout
         android:id="@+id/ll_centre_intro_yf"
         android:layout_width="match_parent"
@@ -35,32 +38,45 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <!-- Logo Officiel de la Douane Temporelle -->
-        <ImageView
-            android:id="@+id/iv_logo_intro_yf"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:contentDescription="@string/titre_intro"
-            android:src="@drawable/ic_app_logo" />
+        <!-- Conteneur Logo avec halo lumineux -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <View
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_logo_glow" />
+
+            <ImageView
+                android:id="@+id/iv_logo_intro_yf"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/titre_intro"
+                android:src="@drawable/ic_app_logo" />
+        </FrameLayout>
 
         <!-- Titre Principal de l'Application -->
         <TextView
             android:id="@+id/tv_titre_intro_yf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="sans-serif-black"
             android:letterSpacing="0.08"
             android:text="@string/titre_intro"
             android:textColor="@color/time_text_primary"
             android:textSize="26sp" />
 
-        <!-- Sous-titre Ministériel -->
+        <!-- Sous-titre Ministeriel -->
         <TextView
             android:id="@+id/tv_sous_titre_intro_yf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
             android:letterSpacing="0.04"
             android:text="@string/sous_titre_intro"
             android:textColor="@color/time_text_secondary"
@@ -73,11 +89,11 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="220dp"
             android:layout_height="6dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="32dp"
             android:indeterminate="true"
             android:indeterminateTint="@color/time_cyan" />
 
-        <!-- Statut d'initialisation -->
+        <!-- Statut d'initialisation dynamique -->
         <TextView
             android:id="@+id/tv_status_chargement_intro_yf"
             android:layout_width="wrap_content"
@@ -89,36 +105,43 @@
 
     </LinearLayout>
 
-    <!-- Bouton d'entrée rapide en bas -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_entrer_douane_yf"
+    <!-- Zone Bas de Page : Bouton d'entree rapide + Mention de securite -->
+    <LinearLayout
+        android:id="@+id/ll_bas_page_intro_yf"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_above="@id/tv_mention_securite_intro_yf"
-        android:layout_marginBottom="12dp"
-        android:backgroundTint="@color/time_cyan"
-        android:letterSpacing="0.06"
-        android:text="@string/btn_entrer_douane"
-        android:textColor="@color/time_space_dark"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:cornerRadius="14dp"
-        app:icon="@drawable/ic_time_portal"
-        app:iconGravity="textStart"
-        app:iconTint="@color/time_space_dark"
-        app:rippleColor="@color/white" />
-
-    <!-- Mention de sécurité bas de page -->
-    <TextView
-        android:id="@+id/tv_mention_securite_intro_yf"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:text="@string/mention_securite_intro"
-        android:textColor="@color/time_text_muted"
-        android:textSize="11sp" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Bouton d'acces direct -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_entrer_douane_yf"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/time_cyan"
+            android:letterSpacing="0.06"
+            android:text="@string/btn_entrer_douane"
+            android:textColor="@color/time_space_dark"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_time_portal"
+            app:iconGravity="textStart"
+            app:iconTint="@color/time_space_dark"
+            app:rippleColor="@color/white" />
+
+        <!-- Mention de securite bas de page -->
+        <TextView
+            android:id="@+id/tv_mention_securite_intro_yf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/mention_securite_intro"
+            android:textColor="@color/time_text_muted"
+            android:textSize="11sp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
-
