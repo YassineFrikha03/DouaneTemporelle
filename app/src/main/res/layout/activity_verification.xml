@@ -260,6 +260,28 @@
                     android:textSize="11sp"
                     android:textStyle="bold" />
 
+                <!-- زر تشغيل الكاميرا لإجراء فحص الوجه والتحقق ضد الروبوتات -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_scanner_camera_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginBottom="8dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/btn_scan_camera"
+                    android:textColor="@color/time_cyan"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#2000E5FF"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/ic_camera_scan"
+                    app:iconGravity="textStart"
+                    app:iconPadding="6dp"
+                    app:iconSize="14dp"
+                    app:iconTint="@color/time_cyan"
+                    app:strokeColor="@color/time_cyan"
+                    app:strokeWidth="1dp" />
+
                 <!-- عنصر الباركود الأمني المولد برمجياً بدقة عالية -->
                 <ImageView
                     android:id="@+id/iv_code_barre_yf"
