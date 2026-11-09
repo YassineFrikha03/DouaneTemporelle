@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    قيد المشروع الإجباري:
+    1. استخدام LinearLayout أفقي كجذر (Root)
+    2. عنصر صورة (ImageView) على اليسار بوزن 0.3
+    3. عنصر RelativeLayout على اليمين بوزن 0.7 يحتوي على النصوص والأزرار
+    4. تصميم يشبه تذكرة أو جواز سفر زمني
+    5. كل المعرفات (IDs) تنتهي بـ _yf (أحرف الطالب ياسين فريخة)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_racine_verification_yf"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/time_space_dark"
+    android:padding="8dp">
+
+    <!-- الجزء الأيسر: الصورة / هولوغرام جواز السفر بوزن 0.3 -->
+    <ImageView
+        android:id="@+id/iv_hologramme_passeport_yf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:background="@drawable/bg_ticket_stub_left"
+        android:contentDescription="@string/titre_passeport"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_passport_hologram" />
+
+    <!-- الجزء الأيمن: RelativeLayout بوزن 0.7 للبيانات والنصوص والأزرار -->
+    <RelativeLayout
+        android:id="@+id/rl_details_passeport_yf"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:background="@drawable/bg_ticket_details_right"
+        android:padding="12dp">
+
+        <!-- ترويسة التذكرة (أعلى الواجهة) -->
+        <LinearLayout
+            android:id="@+id/ll_entete_passeport_yf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_titre_passeport_yf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.06"
+                android:text="@string/titre_passeport"
+                android:textColor="@color/time_cyan"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_numero_visa_yf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:letterSpacing="0.04"
+                android:text="@string/numero_visa"
+                android:textColor="@color/time_purple"
+                android:textSize="10sp" />
+
+            <View
+                android:id="@+id/v_separateur_entete_yf"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/time_card_stroke" />
+        </LinearLayout>
+
+        <!-- أزرار اتخاذ القرار (أسفل الواجهة) -->
+        <LinearLayout
+            android:id="@+id/ll_actions_decision_yf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_approuver_yf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/btn_approuver"
+                android:textColor="@color/white"
+                android:textSize="10.5sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/time_green"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_check_circle"
+                app:iconGravity="textStart"
+                app:iconPadding="6dp"
+                app:iconTint="@color/white" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_refuser_yf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/btn_refuser"
+                android:textColor="@color/white"
+                android:textSize="10.5sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/time_red"
+                app:cornerRadius="8dp"
+                app:icon="@drawable/ic_cancel_circle"
+                app:iconGravity="textStart"
+                app:iconPadding="6dp"
+                app:iconTint="@color/white" />
+        </LinearLayout>
+
+        <!-- المحتوى الأوسط القابل للتمرير (تفاصيل الراكب + فحص المفارقة الزمنية) -->
+        <ScrollView
+            android:id="@+id/sv_contenu_textes_yf"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/ll_actions_decision_yf"
+            android:layout_below="@id/ll_entete_passeport_yf"
+            android:layout_marginBottom="8dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/ll_corps_passeport_yf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- اسم المسافر -->
+                <TextView
+                    android:id="@+id/tv_label_nom_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_voyageur_verif"
+                    android:textColor="@color/time_text_muted"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_valeur_nom_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/time_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    tools:text="Marty McFly" />
+
+                <!-- العمر الزمني المحسوب -->
+                <TextView
+                    android:id="@+id/tv_label_age_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_age_temporel"
+                    android:textColor="@color/time_text_muted"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_valeur_age_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/time_cyan"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    tools:text="60 ans" />
+
+                <!-- الإحداثيات الزمنية -->
+                <TextView
+                    android:id="@+id/tv_label_coordonnees_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_coordonnees"
+                    android:textColor="@color/time_text_muted"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_valeur_coordonnees_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="8dp"
+                    android:textColor="@color/time_text_secondary"
+                    android:textSize="11.5sp"
+                    tools:text="1990 → 2050 (60 ans)" />
+
+                <!-- سبب السفر المعلن -->
+                <TextView
+                    android:id="@+id/tv_label_motif_yf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_motif_verif"
+                    android:textColor="@color/time_text_muted"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_valeur_motif_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/time_purple"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="Modification du passé" />
+
+                <!-- بطاقة حالة التناقض الزمني (Paradox Check) -->
+                <TextView
+                    android:id="@+id/tv_alerte_paradoxe_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_paradox_safe"
+                    android:lineSpacingExtra="2dp"
+                    android:text="@string/alerte_paradoxe_safe"
+                    android:textColor="@color/time_green"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>

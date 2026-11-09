@@ -29,9 +29,14 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- النشاط الثاني : فاحص التحقق -->
+        <!-- النشاط الثاني : فاحص التحقق والتذكرة -->
         <activity
             android:name=".VerificationActivity"
+            android:exported="false" />
+
+        <!-- النشاط الثالث : شاشة الحكم النهائي -->
+        <activity
+            android:name=".ResultActivity"
             android:exported="false" />
 
     </application>
