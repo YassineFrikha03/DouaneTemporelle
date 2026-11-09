@@ -1,55 +1,81 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="128dp"
-    android:height="128dp"
-    android:viewportWidth="128"
-    android:viewportHeight="128">
+    android:width="160dp"
+    android:height="160dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
 
-    <!-- 1. Cercle extérieur et lueur néon temporelle -->
+    <!-- 1. Halo lumineux arriere-plan -->
     <path
-        android:fillColor="#1500E5FF"
-        android:pathData="M64,8 A56,56 0 1,0 64,120 A56,56 0 1,0 64,8 Z" />
+        android:fillColor="#1200E5FF"
+        android:pathData="M80,10 A70,70 0 1,0 80,150 A70,70 0 1,0 80,10 Z" />
+
+    <!-- 2. Couronne circulaire temporelle externe crantee (Horloge institutionnelle) -->
+    <path
+        android:strokeColor="#38BDF8"
+        android:strokeWidth="1.8"
+        android:pathData="M80,16 A64,64 0 1,0 80,144 A64,64 0 1,0 80,16 Z" />
     <path
         android:strokeColor="#00E5FF"
+        android:strokeWidth="1"
+        android:pathData="M80,22 A58,58 0 1,0 80,138 A58,58 0 1,0 80,22 Z" />
+
+    <!-- Repères cardinaux temporels de l'horloge -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M78,16 H82 V22 H78 Z M78,138 H82 V144 H78 Z M16,78 H22 V82 H16 Z M138,78 H144 V82 H138 Z" />
+
+    <!-- 3. Bouclier officiel de l'autorite douaniere -->
+    <!-- Fond du bouclier (Bleu nuit profond) -->
+    <path
+        android:fillColor="#0E1A30"
+        android:strokeColor="#E5B842"
         android:strokeWidth="2.5"
-        android:pathData="M64,12 A52,52 0 1,0 64,116 A52,52 0 1,0 64,12 Z" />
+        android:pathData="M80,30 L112,42 V78 C112,98 98,116 80,124 C62,116 48,98 48,78 V42 Z" />
 
-    <!-- 2. Anneau intermédiaire violet quantique -->
+    <!-- Bordure interne dore prestige -->
     <path
-        android:strokeColor="#818CF8"
-        android:strokeWidth="1.5"
-        android:pathData="M64,20 A44,44 0 1,0 64,108 A44,44 0 1,0 64,20 Z" />
-
-    <!-- 3. Bouclier de Douane Temporelle -->
-    <path
-        android:fillColor="#162035"
         android:strokeColor="#38BDF8"
-        android:strokeWidth="2"
-        android:pathData="M64,26 L88,36 V62 C88,78 78,92 64,98 C50,92 40,78 40,62 V36 Z" />
+        android:strokeWidth="1.2"
+        android:pathData="M80,36 L106,46 V76 C106,93 94,108 80,115 C66,108 54,93 54,76 V46 Z" />
 
-    <!-- 4. Sablier / Vortex Temporel au centre -->
+    <!-- 4. Etoile officielle au sommet du bouclier (Embleme de souverainete) -->
+    <path
+        android:fillColor="#E5B842"
+        android:pathData="M80,42 L82.5,48 L88,48.5 L84,52 L85,57.5 L80,54.5 L75,57.5 L76,52 L72,48.5 L77.5,48 Z" />
+
+    <!-- 5. Sablier et Vortex chronologique au coeur de la douane -->
+    <!-- Triangle superieur du sablier -->
     <path
         android:fillColor="#00E5FF"
-        android:pathData="M52,42 H76 L66,56 L76,70 H52 L62,56 Z" />
-    <path
-        android:fillColor="#818CF8"
-        android:pathData="M56,45 H72 L64,54 Z" />
-    <path
-        android:fillColor="#00E5FF"
-        android:pathData="M56,67 H72 L64,58 Z" />
-
-    <!-- 5. Étoile centrale / Balise de synchronisation -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M64,53 L65.5,56 L68,56 L66,57.5 L67,60 L64,58.5 L61,60 L62,57.5 L60,56 L62.5,56 Z" />
-
-    <!-- 6. Repères horaires chronologiques (Notches) -->
+        android:pathData="M66,62 H94 L80,77 Z" />
+    <!-- Triangle inferieur du sablier -->
     <path
         android:fillColor="#38BDF8"
-        android:pathData="M62,14 H66 V20 H62 Z M62,108 H66 V114 H62 Z M14,62 H20 V66 H14 Z M108,62 H114 V66 H108 Z" />
+        android:pathData="M66,92 H94 L80,77 Z" />
 
-    <!-- 7. Ailes latérales temporelles -->
+    <!-- Noyau quantique central (Lumiere temporelle) -->
     <path
-        android:strokeColor="#00E5FF"
-        android:strokeWidth="1.8"
-        android:pathData="M26,50 L38,54 M24,62 L36,62 M26,74 L38,70 M102,50 L90,54 M104,62 L92,62 M102,74 L90,70" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M80,75 A3,3 0 1,0 80,81 A3,3 0 1,0 80,75 Z" />
+
+    <!-- 6. Ailes institutionnelles laterales (Embleme douanier) -->
+    <!-- Aile gauche -->
+    <path
+        android:fillColor="#E5B842"
+        android:pathData="M44,60 C36,60 30,68 28,78 C34,75 40,75 44,76 Z" />
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M44,66 C38,67 34,73 32,82 C37,80 41,80 44,81 Z" />
+    <!-- Aile droite -->
+    <path
+        android:fillColor="#E5B842"
+        android:pathData="M116,60 C124,60 130,68 132,78 C126,75 120,75 116,76 Z" />
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M116,66 C122,67 126,73 128,82 C123,80 119,80 116,81 Z" />
+
+    <!-- 7. Inscription d'authentification douaniere sous le bouclier -->
+    <path
+        android:fillColor="#00E5FF"
+        android:pathData="M72,102 H88 V104 H72 Z" />
 </vector>
