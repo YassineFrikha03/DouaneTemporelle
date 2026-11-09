@@ -255,8 +255,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="6dp"
-                    android:text="@string/statut_scan_facial_conforme"
-                    android:textColor="@color/time_cyan"
+                    android:text="@string/statut_anti_robot_attente"
+                    android:textColor="@color/time_amber"
                     android:textSize="11sp"
                     android:textStyle="bold" />
 

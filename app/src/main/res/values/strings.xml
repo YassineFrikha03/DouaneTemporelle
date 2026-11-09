@@ -57,10 +57,13 @@
     <string name="valeur_age_format">%1$d ans</string>
     <string name="format_coordonnees">%1$d → %2$d (%3$d ans)</string>
     <string name="label_scan_facial">SCAN BIOMETRIQUE FACIAL :</string>
-    <string name="statut_scan_facial_conforme">IDENTITE CERTIFIEE • CONCORDANCE 99.8%</string>
     <string name="btn_scan_camera">SCANNER VISAGE (TEST ANTI-ROBOT)</string>
-    <string name="statut_anti_robot_attente">TEST ANTI-ROBOT : EN ATTENTE DE SCAN</string>
-    <string name="statut_anti_robot_valide">HUMAIN CONFIRME • TEST ANTI-ROBOT VALIDE</string>
+    <string name="statut_anti_robot_attente">NON VERIFIE • SCAN FACIAL OBLIGATOIRE</string>
+    <string name="statut_anti_robot_valide">HUMAIN CONFIRME • TEST ANTI-ROBOT REUSSI</string>
+    <string name="statut_anti_robot_echec">ECHEC DU TEST • AUCUN VISAGE DETECTE (ROBOT SUSPECTE)</string>
+    <string name="alerte_sans_visage">CONTROLE BIOMETRIQUE OBLIGATOIRE : Aucun visage humain detecte. Tout saut temporel (Tourisme, Modification ou Fuite) est strictement refuse tant que l\'identite humaine n\'est pas certifiee par camera.</string>
+    <string name="alerte_anti_robot_refus_total">REFUS DE TRANSIT SYSTEMATIQUE : Aucun visage detecte ! Tous les types de voyages sont categoriquement interdits et verrouilles pour les entites non humaines.</string>
+    <string name="toast_refus_sans_visage">Refus de transit : Absence de visage humain certifie. Voyage refuse.</string>
     <string name="desc_code_barre">Code-barres officiel du visa chronologique</string>
     <string name="alerte_paradoxe_danger">ALERTE CRITIQUE DE PARADOXE : La difference temporelle (%1$d ans) est un NOMBRE PREMIER avec motif de modification du passe. Approbation verrouillee !</string>
     <string name="alerte_paradoxe_safe">CONTROLE DE SECURITE CONFORME : Aucun paradoxe critique detecte.</string>
