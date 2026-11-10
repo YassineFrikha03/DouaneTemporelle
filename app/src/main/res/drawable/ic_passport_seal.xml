@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ختم وجواز المرور الزمني لنظام كرونوس 96dp -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="2.5"
+        android:pathData="M48,8 A40,40 0 1,1 8,48" />
+    <path
+        android:strokeColor="@color/chronos_violet"
+        android:strokeWidth="1.5"
+        android:pathData="M48,16 A32,32 0 1,1 16,48" />
+    <!-- درع التفتيش الزمني -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="2"
+        android:pathData="M48,26 L64,34 L64,52 C64,66 48,76 48,76 C48,76 32,66 32,52 L32,34 Z" />
+    <!-- عقارب التحكم الزمني في المنتصف -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M48,42 L48,50 L54,54" />
+</vector>

@@ -1,6 +1,7 @@
 package tn.fsegt.douanetemporelle;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -205,8 +207,40 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // إشعار نجاح التحقق في المرحلة 02 دون الانتقال أو إفراغ الحقول
-                    Toast.makeText(MainActivity.this, R.string.msg_formulaire_valide, Toast.LENGTH_SHORT).show();
+                    // المرحلة 03: استخراج القيم الصالحة وبناء القصد الصريح
+                    int anneeNaissance = 0;
+                    int anneeDestination = 0;
+                    try {
+                        if (edtAnneeNaissance != null) {
+                            anneeNaissance = Integer.parseInt(edtAnneeNaissance.getText().toString().trim());
+                        }
+                        if (edtAnneeDestination != null) {
+                            anneeDestination = Integer.parseInt(edtAnneeDestination.getText().toString().trim());
+                        }
+                    } catch (NumberFormatException e) {
+                        // تمت معالجة هذا الخطأ مسبقاً في التحقق
+                    }
+
+                    String motifSelectionne = "";
+                    if (rgMotif != null) {
+                        int selectedId = rgMotif.getCheckedRadioButtonId();
+                        RadioButton rbChoisi = findViewById(selectedId);
+                        if (rbChoisi != null) {
+                            motifSelectionne = rbChoisi.getText().toString();
+                        }
+                    }
+
+                    // إنشاء القصد الصريح لنقل البيانات إلى نشاط التحقق VerificationActivity
+                    Intent intent = new Intent(MainActivity.this, VerificationActivity.class);
+
+                    // إضافة البيانات بالاعتماد حصراً على الدالة الثابتة ورقم الطالب 1688
+                    intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_NOM_VOYAGEUR), nom);
+                    intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_ANNEE_NAISSANCE), anneeNaissance);
+                    intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_ANNEE_DESTINATION), anneeDestination);
+                    intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_MOTIF_VOYAGE), motifSelectionne);
+
+                    // تشغيل النشاط الثاني دون إغلاق النشاط الحالي للسماح بالعودة
+                    startActivity(intent);
                 }
             });
         }
