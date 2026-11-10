@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- واجهة عرض النتيجة النهائية لقرار الجمارك الزمنية - كرونوس -->
+<!-- المعرفات تنتهي بـ _oa وفق قواعد المشروع الصارمة -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_result_root_oa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_verdict_approved"
+    android:padding="24dp">
+
+    <!-- شارة رأس الصفحة لنظام كرونوس -->
+    <LinearLayout
+        android:id="@+id/header_result_oa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_chronos_verdict_badge_oa"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_chronos_crest" />
+
+        <TextView
+            android:id="@+id/txt_header_chronos_verdict_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:letterSpacing="0.15"
+            android:text="CHRONOS • DOUANE TEMPORELLE"
+            android:textColor="#CCFFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- البطاقة المركزية لعرض القرار والرسالة المخصصة -->
+    <LinearLayout
+        android:id="@+id/card_verdict_content_oa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!-- أيقونة النتيجة الكبيرة (قبول أو رفض) -->
+        <ImageView
+            android:id="@+id/img_verdict_icon_oa"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_verdict_approved" />
+
+        <!-- عنوان حالة القرار -->
+        <TextView
+            android:id="@+id/txt_verdict_title_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:letterSpacing="0.12"
+            android:text="@string/title_verdict_approuve"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- الرسالة المخصصة باسم المسافر -->
+        <TextView
+            android:id="@+id/txt_message_verdict_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            tools:text="Bon voyage Omar Ayachi" />
+
+        <!-- الشرح التوضيحي للقرار -->
+        <TextView
+            android:id="@+id/txt_desc_verdict_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/desc_verdict_approuve"
+            android:textColor="#D1E7DD"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- زر العودة لتسجيل مسافر جديد -->
+    <Button
+        android:id="@+id/btn_nouveau_voyageur_oa"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_btn_verdict"
+        android:letterSpacing="0.08"
+        android:text="@string/btn_nouveau_voyageur"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

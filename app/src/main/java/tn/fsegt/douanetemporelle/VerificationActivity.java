@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * النشاط 2: فاحص التناقض الزمني والتحقق من الهوية - نظام كرونوس
  * المرحلة 05: خوارزمية كشف التناقض الزمني بالعدد الأولي وتجميد زر الموافقة تلقائياً
+ * المرحلة 06: ربط زري الموافقة والرفض بشاشة النتيجة النهائية ResultActivity
  */
 public class VerificationActivity extends AppCompatActivity {
 
@@ -43,12 +44,14 @@ public class VerificationActivity extends AppCompatActivity {
             int anneeDestinationRecue = intent.getIntExtra(keyDestination, 0);
             String motifRecu = intent.getStringExtra(keyMotif);
 
+            final String nomFinal = (nomRecu != null && !nomRecu.trim().isEmpty()) ? nomRecu.trim() : "Voyageur non identifié";
+
             // حساب الفارق الزمني بدقة باستخدام نوع long لتفادي أي تجاوز عددي
             long differenceAnnees = (long) anneeDestinationRecue - (long) anneeNaissanceRecue;
 
             // عرض اسم المسافر
             if (txtValNom != null) {
-                txtValNom.setText(nomRecu != null && !nomRecu.trim().isEmpty() ? nomRecu : "Voyageur non identifié");
+                txtValNom.setText(nomFinal);
             }
 
             // عرض العمر الزمني المحسوب
@@ -108,7 +111,33 @@ public class VerificationActivity extends AppCompatActivity {
                     txtAlerteParadoxe.setVisibility(View.GONE);
                 }
             }
+
+            // ==============================================
+            // ربط زري اتخاذ القرار بشاشة النتيجة (المرحلة 06)
+            // ==============================================
+            if (btnApprouver != null) {
+                btnApprouver.setOnClickListener(v -> naviguerVersResultat(true, nomFinal));
+            }
+
+            if (btnRefuser != null) {
+                btnRefuser.setOnClickListener(v -> naviguerVersResultat(false, nomFinal));
+            }
         }
+    }
+
+    /**
+     * الانتقال إلى شاشة النتيجة النهائية ResultActivity مع تمرير القرار واسم المسافر
+     *
+     * @param verdict true للموافقة على السفر و false للرفض
+     * @param nom اسم المسافر
+     */
+    private void naviguerVersResultat(boolean verdict, String nom) {
+        Intent resultIntent = new Intent(VerificationActivity.this, ResultActivity.class);
+        String keyVerdict = ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_VERDICT_FINAL);
+        String keyNom = ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_NOM_VOYAGEUR);
+        resultIntent.putExtra(keyVerdict, verdict);
+        resultIntent.putExtra(keyNom, nom);
+        startActivity(resultIntent);
     }
 
     /**

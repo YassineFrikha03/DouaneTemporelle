@@ -56,4 +56,11 @@
     <string name="desc_biometric_strip">Bandeau biométrique et sceau officiel de la douane temporelle</string>
     <string name="btn_approuver_saut">Approuver le saut temporel</string>
     <string name="btn_refuser_paradoxe">Refuser (Risque de paradoxe)</string>
+
+    <!-- عناصر واجهة النتيجة النهائية - المرحلة 06 -->
+    <string name="btn_nouveau_voyageur">Nouveau voyageur</string>
+    <string name="title_verdict_approuve">SAUT TEMPOREL APPROUVÉ</string>
+    <string name="title_verdict_refuse">REFUS D\'ACCÈS TEMPOREL</string>
+    <string name="desc_verdict_approuve">Autorisation douanière accordée. Les lignes temporelles sont stables.</string>
+    <string name="desc_verdict_refuse">Infraction temporelle majeure ou risque de paradoxe détecté.</string>
 </resources>

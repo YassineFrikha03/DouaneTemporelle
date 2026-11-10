@@ -26,6 +26,12 @@
             android:exported="false"
             android:label="@string/app_name" />
 
+        <!-- النشاط 3: النتيجة النهائية وقرار العبور الزمني -->
+        <activity
+            android:name=".ResultActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+
     </application>
 
 </manifest>

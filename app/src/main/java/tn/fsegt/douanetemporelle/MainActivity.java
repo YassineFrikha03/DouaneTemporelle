@@ -15,18 +15,26 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 /**
  * النشاط الرئيسي 1: بوابة تسجيل المسافرين عبر الزمن - نظام كرونوس
- * المرحلة 02: التحقق الشامل من صحة مدخلات الاستمارة مع الحفاظ على الهيكل والمظهر المتقدم
+ * المرحلة 02: التحقق الشامل من صحة مدخلات الاستمارة
+ * المرحلة 03: نقل البيانات عبر القصد الصريح بالاعتماد على المفاتيح الديناميكية
+ * المرحلة 06: تصفير وتجهيز الاستمارة عند استقبال مسافر جديد عبر onNewIntent
  */
 public class MainActivity extends AppCompatActivity {
 
     // متغير لتتبع حالة المظهر المظلم أو التكتيكي الفاتح
     private boolean isDarkMode = true;
+
+    // مراجع عناصر الاستمارة لإتاحة إعادة الضبط السلس
+    private EditText edtNomVoyageur;
+    private EditText edtAnneeNaissance;
+    private EditText edtAnneeDestination;
+    private RadioGroup rgMotif;
+    private TextView txtErreurMotif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,13 +113,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // ==============================================
-        // المرحلة 02: ربط عناصر الاستمارة والتحقق من صحتها
+        // ربط عناصر الاستمارة والتحقق من صحتها
         // ==============================================
-        final EditText edtNomVoyageur = findViewById(R.id.edt_nom_voyageur_oa);
-        final EditText edtAnneeNaissance = findViewById(R.id.edt_annee_naissance_oa);
-        final EditText edtAnneeDestination = findViewById(R.id.edt_annee_destination_oa);
-        final RadioGroup rgMotif = findViewById(R.id.rg_motif_oa);
-        final TextView txtErreurMotif = findViewById(R.id.txt_erreur_motif_oa);
+        edtNomVoyageur = findViewById(R.id.edt_nom_voyageur_oa);
+        edtAnneeNaissance = findViewById(R.id.edt_annee_naissance_oa);
+        edtAnneeDestination = findViewById(R.id.edt_annee_destination_oa);
+        rgMotif = findViewById(R.id.rg_motif_oa);
+        txtErreurMotif = findViewById(R.id.txt_erreur_motif_oa);
         final Button btnInspecter = findViewById(R.id.btn_inspecter_oa);
 
         // إخفاء رسالة خطأ السبب تلقائياً عند تحديد أي خيار
@@ -207,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // المرحلة 03: استخراج القيم الصالحة وبناء القصد الصريح
+                    // استخراج القيم الصالحة وبناء القصد الصريح
                     int anneeNaissance = 0;
                     int anneeDestination = 0;
                     try {
@@ -243,6 +251,41 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        // تصفير النموذج بالكامل عند العودة من شاشة النتيجة لتسجيل مسافر جديد
+        reinitialiserFormulaire();
+    }
+
+    /**
+     * إعادة ضبط وتصفير حقول الاستمارة لتحضير تسجيل مسافر جديد
+     */
+    private void reinitialiserFormulaire() {
+        if (edtNomVoyageur != null) {
+            edtNomVoyageur.setText("");
+            edtNomVoyageur.setError(null);
+        }
+        if (edtAnneeNaissance != null) {
+            edtAnneeNaissance.setText("");
+            edtAnneeNaissance.setError(null);
+        }
+        if (edtAnneeDestination != null) {
+            edtAnneeDestination.setText("");
+            edtAnneeDestination.setError(null);
+        }
+        if (rgMotif != null) {
+            rgMotif.clearCheck();
+        }
+        if (txtErreurMotif != null) {
+            txtErreurMotif.setVisibility(View.GONE);
+        }
+        if (edtNomVoyageur != null) {
+            edtNomVoyageur.requestFocus();
         }
     }
 }
