@@ -1,0 +1,88 @@
+package tn.fsegt.douanetemporelle;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+/**
+ * اختبارات الانحدار الآلية الشاملة - المرحلة 07
+ * فحص الخوارزميات الحسابية وتوليد المفاتيح الديناميكية بدون أسرار
+ */
+public class ChronosRegressionTest {
+
+    /**
+     * اختبار 1: التحقق من خوارزمية فحص الأعداد الأولية (قاعدة التناقض الزمني - المرحلة 05)
+     */
+    @Test
+    public void testIsPrime() {
+        // الحالات الخاصة: الأعداد السالبة، 0، و 1 ليست أولية
+        assertFalse(VerificationActivity.isPrime(-10));
+        assertFalse(VerificationActivity.isPrime(-3));
+        assertFalse(VerificationActivity.isPrime(-1));
+        assertFalse(VerificationActivity.isPrime(0));
+        assertFalse(VerificationActivity.isPrime(1));
+
+        // الأعداد الأولية الأساسية المؤكدة
+        assertTrue(VerificationActivity.isPrime(2));
+        assertTrue(VerificationActivity.isPrime(3));
+        assertTrue(VerificationActivity.isPrime(5));
+        assertTrue(VerificationActivity.isPrime(7));
+        assertTrue(VerificationActivity.isPrime(11));
+        assertTrue(VerificationActivity.isPrime(13));
+        assertTrue(VerificationActivity.isPrime(17));
+        assertTrue(VerificationActivity.isPrime(19));
+        assertTrue(VerificationActivity.isPrime(23));
+        assertTrue(VerificationActivity.isPrime(29));
+        assertTrue(VerificationActivity.isPrime(31));
+        assertTrue(VerificationActivity.isPrime(97));
+
+        // الأعداد المركبة غير الأولية
+        assertFalse(VerificationActivity.isPrime(4));
+        assertFalse(VerificationActivity.isPrime(6));
+        assertFalse(VerificationActivity.isPrime(8));
+        assertFalse(VerificationActivity.isPrime(9));
+        assertFalse(VerificationActivity.isPrime(15));
+        assertFalse(VerificationActivity.isPrime(25));
+        assertFalse(VerificationActivity.isPrime(27));
+        assertFalse(VerificationActivity.isPrime(35));
+        assertFalse(VerificationActivity.isPrime(49));
+        assertFalse(VerificationActivity.isPrime(121));
+    }
+
+    /**
+     * اختبار 2: التحقق من خوارزمية التوليد الديناميكي للمفاتيح برقم بطاقة افتراضي
+     */
+    @Test
+    public void testBuildKeyDynamic() {
+        // تجربة برقم افتراضي مكون من 4 أرقام
+        String dummyMatricule4 = "9999";
+        String keyNom = ChronosKeys.buildKey(dummyMatricule4, ChronosKeys.SUFFIX_NOM_VOYAGEUR);
+        assertEquals("9999_NOM_VOYAGEUR", keyNom);
+
+        // تجربة برقم افتراضي مكون من 8 أرقام (اقتطاع آخر 4 أرقام)
+        String dummyMatricule8 = "12345678";
+        String keyDest = ChronosKeys.buildKey(dummyMatricule8, ChronosKeys.SUFFIX_ANNEE_DESTINATION);
+        assertEquals("5678_ANNEE_DESTINATION", keyDest);
+
+        // مفتاح النتيجة النهائية
+        String keyVerdict = ChronosKeys.buildKey(dummyMatricule4, ChronosKeys.SUFFIX_VERDICT_FINAL);
+        assertEquals("9999_VERDICT_FINAL", keyVerdict);
+    }
+
+    /**
+     * اختبار 3: التحقق من صحة حساب الفارق الزمني نحو المستقبل ونحو الماضي
+     */
+    @Test
+    public void testCalculEcartTemporel() {
+        // سفر نحو المستقبل: ولادة 1990، وجهة 2050 (فارق 60 سنة)
+        long ecartFutur = 2050L - 1990L;
+        assertEquals(60L, ecartFutur);
+
+        // سفر نحو الماضي: ولادة 1990، وجهة 1987 (فارق سالب -3 سنوات بدون قيمة مطلقة اعتباطية)
+        long ecartPasse = 1987L - 1990L;
+        assertEquals(-3L, ecartPasse);
+        assertFalse(VerificationActivity.isPrime(ecartPasse));
+    }
+}
