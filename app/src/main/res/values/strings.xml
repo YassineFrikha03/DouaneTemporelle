@@ -45,4 +45,15 @@
     <string name="err_annee_destination_invalide">Année de destination invalide (nombre entier requis)</string>
     <string name="err_motif_requis">Veuillez sélectionner un motif de voyage obligatoire</string>
     <string name="msg_formulaire_valide">Formulaire valide — prêt pour la vérification.</string>
+
+    <!-- عناصر واجهة جواز السفر وفاحص التناقض - المرحلة 04 -->
+    <string name="passport_title">PASSEPORT TEMPOREL</string>
+    <string name="passport_subtitle">SCANNER DE PARADOXE • CHRONOS</string>
+    <string name="label_identite_voyageur">IDENTITÉ DU VOYAGEUR</string>
+    <string name="label_age_temporel">ÂGE TEMPOREL CALCULÉ</string>
+    <string name="label_motif_declare">MOTIF DÉCLARÉ</string>
+    <string name="mrz_passport_code">P&lt;CHRONOS&lt;&lt;DOUANE&lt;TEMPORELLE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</string>
+    <string name="desc_biometric_strip">Bandeau biométrique et sceau officiel de la douane temporelle</string>
+    <string name="btn_approuver_saut">Approuver le saut temporel</string>
+    <string name="btn_refuser_paradoxe">Refuser (Risque de paradoxe)</string>
 </resources>

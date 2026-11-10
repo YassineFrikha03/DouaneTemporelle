@@ -2,28 +2,33 @@ package tn.fsegt.douanetemporelle;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * النشاط 2: فاحص التناقض الزمني والتحقق من الهوية - نظام كرونوس
- * المرحلة 03: استقبال بيانات المسافر عبر القصد الصريح (Explicit Intent) والمفاتيح الديناميكية
+ * المرحلة 04: واجهة جواز السفر الزمني، حساب العمر الزمني، وربط زري القرار
  */
 public class VerificationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // تحميل واجهة التحقق بالهيكل الأفقي الإلزامي
+        // تحميل واجهة جواز السفر بالهيكل الأفقي الصارم (0.3 صورة يساراً و 0.7 نصوص يميناً)
         setContentView(R.layout.activity_verification);
 
-        // ربط عناصر العرض الخاصة باستقبال البيانات
-        TextView txtValNom = findViewById(R.id.txt_val_nom_recu_oa);
-        TextView txtValNaissance = findViewById(R.id.txt_val_naissance_recue_oa);
-        TextView txtValDestination = findViewById(R.id.txt_val_destination_recue_oa);
-        TextView txtValMotif = findViewById(R.id.txt_val_motif_recu_oa);
+        // ربط عناصر عرض بيانات جواز السفر الزمني
+        TextView txtValNom = findViewById(R.id.txt_val_nom_oa);
+        TextView txtValAge = findViewById(R.id.txt_val_age_oa);
+        TextView txtValTrajectoire = findViewById(R.id.txt_val_trajectoire_oa);
+        TextView txtValMotif = findViewById(R.id.txt_val_motif_oa);
 
-        // استخراج البيانات من القصد الصريح باستخدام الدالة الثابتة ورقم بطاقة الطالب 1688
+        // ربط زري اتخاذ القرار للمرحلة الحالية
+        Button btnApprouver = findViewById(R.id.btn_approuver_oa);
+        Button btnRefuser = findViewById(R.id.btn_refuser_oa);
+
+        // استخراج البيانات المستلمة عبر القصد الصريح بالاعتماد على المفاتيح الديناميكية ورقم الطالب 1688
         Intent intent = getIntent();
         if (intent != null) {
             String keyNom = ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_NOM_VOYAGEUR);
@@ -36,18 +41,30 @@ public class VerificationActivity extends AppCompatActivity {
             int anneeDestinationRecue = intent.getIntExtra(keyDestination, 0);
             String motifRecu = intent.getStringExtra(keyMotif);
 
-            // عرض البيانات المستلمة مع تفادي القيم الفارغة
+            // حساب العمر الزمني: الفارق بين سنة الوجهة وسنة الولادة
+            int differenceAnnees = anneeDestinationRecue - anneeNaissanceRecue;
+
+            // عرض اسم المسافر
             if (txtValNom != null) {
-                txtValNom.setText(nomRecu != null && !nomRecu.isEmpty() ? nomRecu : "Inconnu");
+                txtValNom.setText(nomRecu != null && !nomRecu.trim().isEmpty() ? nomRecu : "Voyageur non identifié");
             }
-            if (txtValNaissance != null) {
-                txtValNaissance.setText(String.valueOf(anneeNaissanceRecue));
+
+            // عرض العمر الزمني المحسوب
+            if (txtValAge != null) {
+                String ageAffiche = differenceAnnees + " ans";
+                txtValAge.setText(ageAffiche);
             }
-            if (txtValDestination != null) {
-                txtValDestination.setText(String.valueOf(anneeDestinationRecue));
+
+            // عرض مسار الرحلة الزمنية للتوضيح (سنة الولادة -> سنة الوجهة)
+            if (txtValTrajectoire != null) {
+                String trajectoire = anneeNaissanceRecue + " ➔ " + anneeDestinationRecue
+                        + " (" + (differenceAnnees >= 0 ? "+" : "") + differenceAnnees + " ans)";
+                txtValTrajectoire.setText(trajectoire);
             }
+
+            // عرض سبب السفر المصرح به
             if (txtValMotif != null) {
-                txtValMotif.setText(motifRecu != null && !motifRecu.isEmpty() ? motifRecu : "Non spécifié");
+                txtValMotif.setText(motifRecu != null && !motifRecu.trim().isEmpty() ? motifRecu : "Non spécifié");
             }
         }
     }

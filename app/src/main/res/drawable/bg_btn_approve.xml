@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- مظهر زر قبول القفزة الزمنية بلون أخضر مع تأثير التموج -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/white">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/chronos_green_online" />
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+</ripple>

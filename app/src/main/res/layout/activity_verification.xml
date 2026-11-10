@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- النشاط 2: فاحص التناقض الزمني والتحقق من الهوية - نظام كرونوس -->
-<!-- القيد الإلزامي: LinearLayout أفقي جذر بوزن 0.3 للصورة يساراً و 0.7 لـ RelativeLayout يميناً -->
+<!-- القيد الإلزامي الصارم: LinearLayout أفقي جذر يحتوي مباشرة على ImageView بوزن 0.3 و RelativeLayout بوزن 0.7 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_verification_root_oa"
     android:layout_width="match_parent"
@@ -9,175 +9,206 @@
     android:baselineAligned="false"
     android:orientation="horizontal">
 
-    <!-- القسم الأيسر: صورة ختم المراقبة الجمركية بوزن 0.3 الإلزامي -->
-    <LinearLayout
-        android:id="@+id/layout_image_container_oa"
+    <!-- العنصر 1 المباشر (يساراً): ImageView بوزن 0.3 الإلزامي لشريط القياسات الحيوية والختم الهولوغرافي -->
+    <ImageView
+        android:id="@+id/img_biometric_band_oa"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.3"
-        android:background="@color/bg_chronos_card"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="12dp">
+        android:contentDescription="@string/desc_biometric_strip"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_passport_sidebar" />
 
-        <ImageView
-            android:id="@+id/img_scanner_left_oa"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:contentDescription="@string/brand_chronos"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_passport_seal" />
-
-        <TextView
-            android:id="@+id/txt_badge_scanner_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:letterSpacing="0.08"
-            android:text="POSTE DE VÉRIFICATION"
-            android:textColor="@color/chronos_cyan"
-            android:textSize="9sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- القسم الأيمن: RelativeLayout بوزن 0.7 الإلزامي لعرض تفاصيل المسافر -->
+    <!-- العنصر 2 المباشر (يميناً): RelativeLayout بوزن 0.7 الإلزامي لكافة نصوص وبيانات وأزرار الجواز -->
     <RelativeLayout
-        android:id="@+id/layout_verification_details_oa"
+        android:id="@+id/layout_passport_content_oa"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.7"
-        android:padding="20dp">
+        android:background="@drawable/bg_passport_body"
+        android:paddingStart="14dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="12dp">
 
-        <!-- عنوان الشاشة -->
+        <!-- ============================================== -->
+        <!-- أ. ترويسة الجواز الزمني                        -->
+        <!-- ============================================== -->
         <TextView
-            android:id="@+id/txt_title_verification_oa"
+            android:id="@+id/txt_title_passport_oa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:letterSpacing="0.08"
-            android:text="DONNÉES DU VOYAGEUR"
+            android:text="@string/passport_title"
             android:textColor="@color/chronos_cyan"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_subtitle_verification_oa"
+            android:id="@+id/txt_subtitle_passport_oa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_title_verification_oa"
-            android:layout_marginTop="4dp"
-            android:text="Données transférées via Intent explicite"
+            android:layout_below="@id/txt_title_passport_oa"
+            android:layout_marginTop="2dp"
+            android:letterSpacing="0.04"
+            android:text="@string/passport_subtitle"
             android:textColor="@color/text_secondary"
-            android:textSize="11sp" />
+            android:textSize="9sp" />
 
-        <!-- فاصل أفقي ديكوري -->
+        <!-- فاصل أمني دقيق -->
         <View
-            android:id="@+id/view_separator_oa"
+            android:id="@+id/view_separator_passport_oa"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@id/txt_subtitle_verification_oa"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="16dp"
+            android:layout_below="@id/txt_subtitle_passport_oa"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/border_chronos_card" />
 
-        <!-- 1. اسم المسافر -->
-        <TextView
-            android:id="@+id/txt_lbl_nom_recu_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/view_separator_oa"
-            android:text="NOM COMPLET :"
-            android:textColor="@color/text_secondary"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+        <!-- ============================================== -->
+        <!-- ب. بيانات المسافر في الجواز                     -->
+        <!-- ============================================== -->
 
+        <!-- 1. هوية المسافر -->
         <TextView
-            android:id="@+id/txt_val_nom_recu_oa"
+            android:id="@+id/txt_lbl_identite_oa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_lbl_nom_recu_oa"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <!-- 2. سنة الولادة -->
-        <TextView
-            android:id="@+id/txt_lbl_naissance_recue_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_val_nom_recu_oa"
-            android:text="ANNÉE DE NAISSANCE :"
-            android:textColor="@color/text_secondary"
-            android:textSize="11sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txt_val_naissance_recue_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_lbl_naissance_recue_oa"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <!-- 3. سنة الوجهة -->
-        <TextView
-            android:id="@+id/txt_lbl_destination_recue_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_val_naissance_recue_oa"
-            android:text="ANNÉE DE DESTINATION :"
-            android:textColor="@color/text_secondary"
-            android:textSize="11sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txt_val_destination_recue_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_lbl_destination_recue_oa"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="@color/text_primary"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <!-- 4. سبب السفر -->
-        <TextView
-            android:id="@+id/txt_lbl_motif_recu_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_val_destination_recue_oa"
-            android:text="MOTIF DU VOYAGE :"
-            android:textColor="@color/text_secondary"
-            android:textSize="11sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txt_val_motif_recu_oa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_lbl_motif_recu_oa"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="16dp"
+            android:layout_below="@id/view_separator_passport_oa"
+            android:letterSpacing="0.06"
+            android:text="@string/label_identite_voyageur"
             android:textColor="@color/chronos_cyan"
-            android:textSize="15sp"
+            android:textSize="9sp"
             android:textStyle="bold" />
 
-        <!-- مؤشر فحص الاستقبال -->
         <TextView
-            android:id="@+id/txt_status_transfert_oa"
+            android:id="@+id/txt_val_nom_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_lbl_identite_oa"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_field_badge"
+            android:paddingStart="8dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <!-- 2. العمر الزمني المحسوب مع مسار الانتقال -->
+        <TextView
+            android:id="@+id/txt_lbl_age_oa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/txt_val_nom_oa"
+            android:letterSpacing="0.06"
+            android:text="@string/label_age_temporel"
+            android:textColor="@color/chronos_cyan"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_val_age_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_lbl_age_oa"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/bg_field_badge"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/chronos_violet"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_val_trajectoire_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_val_age_oa"
+            android:layout_marginBottom="8dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="9sp" />
+
+        <!-- 3. سبب السفر المصرح به -->
+        <TextView
+            android:id="@+id/txt_lbl_motif_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_val_trajectoire_oa"
+            android:letterSpacing="0.06"
+            android:text="@string/label_motif_declare"
+            android:textColor="@color/chronos_cyan"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_val_motif_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_lbl_motif_oa"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/bg_field_badge"
+            android:paddingStart="8dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- ============================================== -->
+        <!-- ج. الجزء السفلي: شفرة الجواز والأزرار الإلزامية -->
+        <!-- ============================================== -->
+
+        <!-- زر الرفض الإلزامي 2: Refuser (Risque de paradoxe) -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_refuser_oa"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
             android:layout_alignParentBottom="true"
-            android:text="• Transfert Intent explicite validé (STEP 03)"
-            android:textColor="@color/chronos_green_online"
-            android:textSize="10sp"
-            android:textStyle="italic" />
+            android:background="@drawable/bg_btn_refuse"
+            android:text="@string/btn_refuser_paradoxe"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- زر القبول الإلزامي 1: Approuver le saut temporel -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_approuver_oa"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_above="@id/btn_refuser_oa"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_btn_approve"
+            android:text="@string/btn_approuver_saut"
+            android:textAllCaps="false"
+            android:textColor="@color/bg_chronos_deep"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- شريط الشفرة البصرية للجواز (MRZ) -->
+        <TextView
+            android:id="@+id/txt_mrz_code_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_approuver_oa"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:letterSpacing="0.08"
+            android:text="@string/mrz_passport_code"
+            android:textColor="@color/text_muted"
+            android:textSize="7sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </LinearLayout>

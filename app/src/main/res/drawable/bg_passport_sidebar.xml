@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- شريط القياسات الحيوية والختم الهولوغرافي للجواز الزمني 120dp x 400dp -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="400dp"
+    android:viewportWidth="120"
+    android:viewportHeight="400">
+    <!-- خلفية الشريط الداكنة -->
+    <path
+        android:fillColor="#0D1524"
+        android:pathData="M0,0h120v400h-120z" />
+    <!-- خطوط أمان هولوغرافية جانبية -->
+    <path
+        android:strokeColor="#1E293B"
+        android:strokeWidth="1.5"
+        android:pathData="M15,0 L15,400 M105,0 L105,400" />
+    <!-- خط مسح ضوئي عمودي بلون السيان -->
+    <path
+        android:strokeColor="#3300D9FF"
+        android:strokeWidth="1"
+        android:pathData="M60,0 L60,400" />
+    <!-- رمز ختم المراقبة الجمركية في الجزء العلوي -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="2.5"
+        android:pathData="M60,40 A28,28 0 1,1 32,68" />
+    <path
+        android:strokeColor="@color/chronos_violet"
+        android:strokeWidth="2"
+        android:pathData="M60,46 A22,22 0 1,1 38,68" />
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="2"
+        android:pathData="M60,54 L60,68 L72,72" />
+    <!-- درع التفتيش في المنتصف -->
+    <path
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeWidth="2"
+        android:pathData="M60,180 L84,192 L84,218 C84,238 60,254 60,254 C60,254 36,238 36,218 L36,192 Z" />
+    <path
+        android:fillColor="@color/chronos_violet"
+        android:pathData="M60,202m-4,0a4,4 0 1,1 8,0a4,4 0 1,1 -8,0" />
+    <!-- شفرة أمان رقمية سفلية -->
+    <path
+        android:strokeColor="#64748B"
+        android:strokeWidth="2"
+        android:pathData="M30,320h60 M30,330h40 M30,340h50 M30,350h30 M30,360h60" />
+</vector>
