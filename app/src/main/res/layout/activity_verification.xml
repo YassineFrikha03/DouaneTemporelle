@@ -196,6 +196,21 @@
             android:textSize="12sp"
             android:textStyle="bold" />
 
+        <!-- رسالة تنبيه عند اكتشاف مفارقة زمنية (عدد أولي + تعديل الماضي) -->
+        <TextView
+            android:id="@+id/txt_alerte_paradoxe_oa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/txt_mrz_code_oa"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/bg_field_badge"
+            android:padding="6dp"
+            android:gravity="center"
+            android:textColor="@color/chronos_red_alert"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
         <!-- شريط الشفرة البصرية للجواز (MRZ) -->
         <TextView
             android:id="@+id/txt_mrz_code_oa"
