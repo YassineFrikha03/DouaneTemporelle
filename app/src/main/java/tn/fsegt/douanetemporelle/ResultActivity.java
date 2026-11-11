@@ -106,12 +106,11 @@ public class ResultActivity extends AppCompatActivity {
                     .start();
         }
 
-        // إعداد زر "مسافر جديد" للعودة إلى النشاط الرئيسي وتصفير النموذج
+        // إعداد زر "مسافر جديد" لبدء الانتقال الزمني عبر النفق قبل العودة للاستمارة (المرحلة 11)
         btnNouveauVoyageur.setOnClickListener(v -> {
-            Intent returnIntent = new Intent(ResultActivity.this, MainActivity.class);
-            // إغلاق كافة الأنشطة السابقة في المكدس لضمان العودة النظيفة
-            returnIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(returnIntent);
+            Intent returnTunnelIntent = new Intent(ResultActivity.this, TemporalReturnActivity.class);
+            startActivity(returnTunnelIntent);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
         });
     }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- مظهر زر تخطي النفق الزمني أحادي اللون - كرونوس المرحلة 11 -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#40FFFFFF">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="20dp" />
+            <solid android:color="#33000000" />
+            <stroke
+                android:width="1dp"
+                android:color="#66FFFFFF" />
+            <padding
+                android:left="18dp"
+                android:top="8dp"
+                android:right="18dp"
+                android:bottom="8dp" />
+        </shape>
+    </item>
+</ripple>

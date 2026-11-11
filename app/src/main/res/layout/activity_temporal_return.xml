@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- الواجهة الانتقالية للنفق الزمني عند العودة إلى النشاط الرئيسي - كرونوس المرحلة 11 -->
+<!-- المعرفات تنتهي بـ _oa وفق قواعد المشروع الصارمة -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_temporal_return_root_oa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- مكوّن دوامة النفق الزمني والساعات ثلاثية الأبعاد -->
+    <tn.fsegt.douanetemporelle.TemporalTunnelView
+        android:id="@+id/view_temporal_tunnel_oa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/desc_temporal_tunnel" />
+
+    <!-- زر تخطي النفق الزمني والانتقال الفوري إلى الاستمارة -->
+    <Button
+        android:id="@+id/btn_skip_tunnel_oa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_btn_tunnel_skip_oa"
+        android:letterSpacing="0.08"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:text="@string/btn_skip_tunnel"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

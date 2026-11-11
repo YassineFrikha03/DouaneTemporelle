@@ -86,4 +86,8 @@
     <string name="intro_text_philosophy">Chaque vie est un voyage à travers le temps…</string>
     <string name="intro_text_callout">Votre voyage commence ici.</string>
     <string name="btn_skip_intro">Passer l\'introduction</string>
+
+    <!-- عناصر النفق الزمني لرحلة العودة - المرحلة 11 -->
+    <string name="btn_skip_tunnel">Passer</string>
+    <string name="desc_temporal_tunnel">Animation du tunnel temporel et vortex de cadrans</string>
 </resources>

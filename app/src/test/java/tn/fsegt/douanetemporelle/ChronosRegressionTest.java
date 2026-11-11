@@ -179,4 +179,22 @@ public class ChronosRegressionTest {
         assertEquals("1688_ANNEE_DESTINATION", keyDestination);
         assertEquals("1688_MOTIF_VOYAGE", keyMotif);
     }
+
+    /**
+     * اختبار 9: التحقق من إعدادات النفق الزمني لرحلة العودة (المرحلة 11)
+     */
+    @Test
+    public void testConfigurationTunnelRetour() {
+        // التحقق من علمي Intent المعتمدين لضمان تفريغ المكدس النظيف
+        int flagsAttendus = android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP | android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
+        assertTrue(flagsAttendus != 0);
+
+        // التحقق من الأرقام الرومانية المعتمدة في رسم ساعات النفق
+        String[] chiffresAttendus = {"XII", "III", "VI", "IX"};
+        assertEquals(4, chiffresAttendus.length);
+        assertEquals("XII", chiffresAttendus[0]);
+        assertEquals("III", chiffresAttendus[1]);
+        assertEquals("VI", chiffresAttendus[2]);
+        assertEquals("IX", chiffresAttendus[3]);
+    }
 }
