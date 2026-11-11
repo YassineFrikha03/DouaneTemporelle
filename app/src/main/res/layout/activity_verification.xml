@@ -240,47 +240,85 @@
                     android:layout_marginBottom="8dp"
                     android:background="@color/time_card_stroke" />
 
+                <!-- بطاقة reCAPTCHA التفاعلية للتحقق ضد الروبوتات -->
                 <TextView
-                    android:id="@+id/tv_label_scan_facial_yf"
+                    android:id="@+id/tv_label_recaptcha_yf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/label_scan_facial"
+                    android:text="@string/label_recaptcha"
                     android:textColor="@color/time_text_muted"
                     android:textSize="9.5sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_valeur_scan_facial_yf"
+                <!-- صندوق reCAPTCHA التفاعلي (انقر للاختبار) -->
+                <LinearLayout
+                    android:id="@+id/ll_recaptcha_box_yf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="6dp"
-                    android:text="@string/statut_anti_robot_attente"
-                    android:textColor="@color/time_amber"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/bg_recaptcha_box"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <!-- زر تشغيل الكاميرا لإجراء فحص الوجه والتحقق ضد الروبوتات -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btn_scanner_camera_yf"
+                    <!-- مربع التحقق التفاعلي -->
+                    <ImageView
+                        android:id="@+id/iv_recaptcha_check_yf"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:contentDescription="reCAPTCHA Checkbox"
+                        android:src="@drawable/ic_recaptcha_unchecked" />
+
+                    <!-- نص "Je ne suis pas un robot" -->
+                    <TextView
+                        android:id="@+id/tv_recaptcha_texte_yf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/recaptcha_checkbox_label"
+                        android:textColor="@color/time_text_primary"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold" />
+
+                    <!-- شعار reCAPTCHA الرسمي والتفاصيل -->
+                    <LinearLayout
+                        android:id="@+id/ll_recaptcha_branding_yf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_recaptcha_logo_yf"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="reCAPTCHA Logo"
+                            android:src="@drawable/ic_recaptcha_logo" />
+
+                        <TextView
+                            android:id="@+id/tv_recaptcha_brand_text_yf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lineSpacingExtra="1dp"
+                            android:text="@string/recaptcha_subtext"
+                            android:textColor="@color/time_text_muted"
+                            android:textSize="7sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_statut_recaptcha_yf"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:text="@string/btn_scan_camera"
-                    android:textColor="@color/time_cyan"
-                    android:textSize="9sp"
-                    android:textStyle="bold"
-                    app:backgroundTint="#2000E5FF"
-                    app:cornerRadius="6dp"
-                    app:icon="@drawable/ic_camera_scan"
-                    app:iconGravity="textStart"
-                    app:iconPadding="6dp"
-                    app:iconSize="14dp"
-                    app:iconTint="@color/time_cyan"
-                    app:strokeColor="@color/time_cyan"
-                    app:strokeWidth="1dp" />
+                    android:text="@string/statut_recaptcha_attente"
+                    android:textColor="@color/time_amber"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
                 <!-- عنصر الباركود الأمني المولد برمجياً بدقة عالية -->
                 <ImageView

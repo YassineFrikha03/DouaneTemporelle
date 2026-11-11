@@ -112,6 +112,15 @@ public class MainActivity extends AppCompatActivity {
         try {
             int anneeNaissance = Integer.parseInt(strNaissance);
             int anneeDestination = Integer.parseInt(strDestination);
+            int anneeActuelle = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+
+            if (anneeNaissance > anneeActuelle) {
+                String messageErreur = getString(R.string.erreur_annee_naissance_futur, anneeActuelle);
+                tvApercuTemporelYf.setText(messageErreur);
+                tvApercuTemporelYf.setTextColor(getColor(R.color.time_red));
+                return;
+            }
+
             int difference = anneeDestination - anneeNaissance;
 
             if (difference > 0) {
@@ -171,7 +180,15 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // 13. التحقق من صحة سنة الوجهة
+        // 13. قيد المشروع الإلزامي: التحقق من أن سنة الميلاد لا تتجاوز السنة الحالية
+        int anneeActuelle = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+        if (anneeNaissance > anneeActuelle) {
+            tilNaissanceYf.setError(getString(R.string.erreur_annee_naissance_futur, anneeActuelle));
+            etNaissanceYf.requestFocus();
+            return;
+        }
+
+        // 14. التحقق من صحة سنة الوجهة
         if (strDestination.isEmpty()) {
             tilDestinationYf.setError(getString(R.string.erreur_annee_destination));
             etDestinationYf.requestFocus();

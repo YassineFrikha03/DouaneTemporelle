@@ -26,6 +26,7 @@
     <string name="label_annee_naissance">Origine (Annee de naissance)</string>
     <string name="hint_annee_naissance">Ex: 1990</string>
     <string name="erreur_annee_naissance">Annee de naissance requise !</string>
+    <string name="erreur_annee_naissance_futur">L\'annee de naissance ne peut pas depasser l\'annee actuelle (%1$d) !</string>
 
     <string name="label_annee_destination">Arrivee (Annee de destination)</string>
     <string name="hint_annee_destination">Ex: 2050</string>
@@ -56,14 +57,15 @@
     <string name="label_motif_verif">MOTIF DECLARE :</string>
     <string name="valeur_age_format">%1$d ans</string>
     <string name="format_coordonnees">%1$d → %2$d (%3$d ans)</string>
-    <string name="label_scan_facial">SCAN BIOMETRIQUE FACIAL :</string>
-    <string name="btn_scan_camera">SCANNER VISAGE (TEST ANTI-ROBOT)</string>
-    <string name="statut_anti_robot_attente">NON VERIFIE • SCAN FACIAL OBLIGATOIRE</string>
-    <string name="statut_anti_robot_valide">HUMAIN CONFIRME • TEST ANTI-ROBOT REUSSI</string>
-    <string name="statut_anti_robot_echec">ECHEC DU TEST • AUCUN VISAGE DETECTE (ROBOT SUSPECTE)</string>
-    <string name="alerte_sans_visage">CONTROLE BIOMETRIQUE OBLIGATOIRE : Aucun visage humain detecte. Tout saut temporel (Tourisme, Modification ou Fuite) est strictement refuse tant que l\'identite humaine n\'est pas certifiee par camera.</string>
-    <string name="alerte_anti_robot_refus_total">REFUS DE TRANSIT SYSTEMATIQUE : Aucun visage detecte ! Tous les types de voyages sont categoriquement interdits et verrouilles pour les entites non humaines.</string>
-    <string name="toast_refus_sans_visage">Refus de transit : Absence de visage humain certifie. Voyage refuse.</string>
+    <string name="label_recaptcha">TEST ANTI-ROBOT • PROTOCOLE RECAPTCHA :</string>
+    <string name="recaptcha_checkbox_label">Je ne suis pas un robot / cyborg</string>
+    <string name="recaptcha_subtext">reCAPTCHA Temporel\nMinistere du Temps • Protection</string>
+    <string name="statut_recaptcha_attente">TEST RECAPTCHA EN ATTENTE : Touchez la case pour certifier votre identite</string>
+    <string name="statut_recaptcha_valide">HUMAIN CERTIFIE • TEST RECAPTCHA VALIDE</string>
+    <string name="statut_recaptcha_echec">ECHEC DU TEST RECAPTCHA • CODE INCORRECT (ROBOT SUSPECTE)</string>
+    <string name="alerte_sans_recaptcha">CONTROLE RECAPTCHA OBLIGATOIRE : Test anti-robot non valide. Tout saut temporel (Tourisme, Modification ou Fuite) est strictement refuse tant que le test reCAPTCHA n\'est pas valide.</string>
+    <string name="alerte_recaptcha_refus_total">REFUS DE TRANSIT SYSTEMATIQUE : Echec du test reCAPTCHA ! Tous les types de voyages sont categoriquement interdits et verrouilles pour les entites non humaines.</string>
+    <string name="toast_refus_sans_recaptcha">Refus de transit : Test reCAPTCHA obligatoire non valide. Voyage refuse.</string>
     <string name="desc_code_barre">Code-barres officiel du visa chronologique</string>
     <string name="alerte_paradoxe_danger">ALERTE CRITIQUE DE PARADOXE : La difference temporelle (%1$d ans) est un NOMBRE PREMIER avec motif de modification du passe. Approbation verrouillee !</string>
     <string name="alerte_paradoxe_safe">CONTROLE DE SECURITE CONFORME : Aucun paradoxe critique detecte.</string>

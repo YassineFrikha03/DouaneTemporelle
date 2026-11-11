@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_dialog_recaptcha_yf"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#10192A"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <!-- En-tête de la boîte de dialogue -->
+    <LinearLayout
+        android:id="@+id/ll_entete_dialog_captcha_yf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_dialog_logo_recaptcha_yf"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="reCAPTCHA"
+            android:src="@drawable/ic_recaptcha_logo" />
+
+        <TextView
+            android:id="@+id/tv_dialog_titre_captcha_yf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:letterSpacing="0.04"
+            android:text="VERIFICATION DE SECURITE RECAPTCHA"
+            android:textColor="@color/time_cyan"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_dialog_consigne_captcha_yf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="14dp"
+        android:lineSpacingExtra="2dp"
+        android:text="Recopiez le code de sécurité temporel ci-dessous pour certifier votre identité humaine et déverrouiller le saut :"
+        android:textColor="@color/time_text_secondary"
+        android:textSize="11.5sp" />
+
+    <!-- Cadre d'affichage de l'image CAPTCHA et bouton de renouvellement -->
+    <LinearLayout
+        android:id="@+id/ll_zone_image_captcha_yf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#16233B"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/iv_image_captcha_preview_yf"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:contentDescription="Code CAPTCHA"
+            android:scaleType="fitCenter" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_rafraichir_captcha_yf"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            app:icon="@drawable/ic_refresh"
+            app:iconTint="@color/time_cyan" />
+    </LinearLayout>
+
+    <!-- Champ de saisie du code -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_reponse_captcha_yf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/time_text_muted"
+        app:boxBackgroundColor="#1A2744"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxStrokeColor="@color/time_cyan"
+        app:hintTextColor="@color/time_cyan">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_reponse_captcha_yf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Saisissez le code (6 caractères)"
+            android:inputType="textCapCharacters|textNoSuggestions"
+            android:letterSpacing="0.15"
+            android:maxLength="6"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Actions Valider / Annuler -->
+    <LinearLayout
+        android:id="@+id/ll_actions_dialog_captcha_yf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_annuler_captcha_yf"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ANNULER"
+            android:textColor="@color/time_text_muted"
+            android:textSize="11sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_valider_captcha_yf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="VALIDER L\'IDENTITE"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/time_cyan_dark"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+</LinearLayout>
+
