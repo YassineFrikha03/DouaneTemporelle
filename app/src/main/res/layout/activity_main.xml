@@ -224,6 +224,7 @@
                     android:textColorHint="@color/text_hint"
                     android:textColor="@color/text_primary"
                     android:inputType="number"
+                    android:maxLength="4"
                     android:paddingStart="14dp"
                     android:paddingEnd="14dp"
                     android:textSize="14sp"

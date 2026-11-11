@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
@@ -17,11 +19,12 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import java.util.Calendar;
 import java.util.Random;
 
 /**
  * النشاط الرئيسي 1: بوابة تسجيل المسافرين عبر الزمن - نظام كرونوس
- * المرحلة 02: التحقق الشامل من صحة مدخلات الاستمارة
+ * المرحلة 02 ومتابعتها: التحقق الصارم في الوقت الفعلي وعند الإرسال من صحة الاسم وسنة الولادة
  * المرحلة 03: نقل البيانات عبر القصد الصريح بالاعتماد على المفاتيح الديناميكية
  * المرحلة 06: تصفير وتجهيز الاستمارة عند استقبال مسافر جديد عبر onNewIntent
  * المرحلة 08: محاكاة محلية لكابتشا التحكم البشري الحسابي قبل فحص الملف
@@ -162,6 +165,49 @@ public class MainActivity extends AppCompatActivity {
         txtErreurMotif = findViewById(R.id.txt_erreur_motif_oa);
         final Button btnInspecter = findViewById(R.id.btn_inspecter_oa);
 
+        // مراقبة حقل الاسم في الوقت الفعلي لمنع وإظهار الأحرف غير المسموحة
+        if (edtNomVoyageur != null) {
+            edtNomVoyageur.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    if (s != null && s.length() > 0) {
+                        if (!contientUniquementLettresEtEspaces(s.toString())) {
+                            edtNomVoyageur.setError(getString(R.string.err_nom_lettres_espaces));
+                        } else {
+                            edtNomVoyageur.setError(null);
+                        }
+                    } else {
+                        edtNomVoyageur.setError(null);
+                    }
+                }
+            });
+        }
+
+        // مراقبة حقل سنة الولادة في الوقت الفعلي للسماح بالكتابة التدريجية لـ 4 أرقام
+        if (edtAnneeNaissance != null) {
+            edtAnneeNaissance.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    // مسح الخطأ السابق فور قيام المستخدم بتعديل الحقل
+                    if (edtAnneeNaissance.getError() != null) {
+                        edtAnneeNaissance.setError(null);
+                    }
+                }
+            });
+        }
+
         // إخفاء رسالة خطأ السبب تلقائياً عند تحديد أي خيار
         if (rgMotif != null && txtErreurMotif != null) {
             rgMotif.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -189,27 +235,48 @@ public class MainActivity extends AppCompatActivity {
                     boolean isValid = true;
                     View firstErrorView = null;
 
-                    // 1. التحقق من اسم المسافر (غير فارغ ولا يحتوي فقط على مسافات)
-                    String nom = "";
+                    // 1. التحقق الصارم من اسم المسافر (حروف ومسافات فقط، غير فارغ، وتنظيف الأطراف)
+                    String nomBrut = "";
+                    String nomNettoye = "";
                     if (edtNomVoyageur != null) {
-                        nom = edtNomVoyageur.getText().toString().trim();
-                        if (nom.isEmpty()) {
-                            edtNomVoyageur.setError(getString(R.string.err_nom_requis));
+                        nomBrut = edtNomVoyageur.getText().toString();
+                        nomNettoye = nomBrut.trim();
+                        if (nomNettoye.isEmpty()) {
+                            edtNomVoyageur.setError(getString(R.string.err_nom_obligatoire));
+                            isValid = false;
+                            firstErrorView = edtNomVoyageur;
+                        } else if (!contientUniquementLettresEtEspaces(nomBrut)) {
+                            edtNomVoyageur.setError(getString(R.string.err_nom_lettres_espaces));
                             isValid = false;
                             firstErrorView = edtNomVoyageur;
                         }
                     }
 
-                    // 2. التحقق من سنة الولادة (قيمة عددية صحيحة مع تفادي الاستثناءات)
+                    // 2. التحقق الصارم من سنة الولادة (4 أرقام بالضبط، رفض 0000، وعدم تجاوز السنة الحالية)
+                    int anneeNaissance = 0;
                     if (edtAnneeNaissance != null) {
                         String naissStr = edtAnneeNaissance.getText().toString().trim();
-                        if (naissStr.isEmpty()) {
-                            edtAnneeNaissance.setError(getString(R.string.err_annee_naissance_requise));
+                        if (naissStr.length() != 4) {
+                            edtAnneeNaissance.setError(getString(R.string.err_annee_naissance_4_chiffres));
+                            isValid = false;
+                            if (firstErrorView == null) firstErrorView = edtAnneeNaissance;
+                        } else if ("0000".equals(naissStr)) {
+                            edtAnneeNaissance.setError(getString(R.string.err_annee_naissance_invalide));
                             isValid = false;
                             if (firstErrorView == null) firstErrorView = edtAnneeNaissance;
                         } else {
                             try {
-                                Integer.parseInt(naissStr);
+                                anneeNaissance = Integer.parseInt(naissStr);
+                                int anneeCourante = Calendar.getInstance().get(Calendar.YEAR);
+                                if (anneeNaissance <= 0) {
+                                    edtAnneeNaissance.setError(getString(R.string.err_annee_naissance_invalide));
+                                    isValid = false;
+                                    if (firstErrorView == null) firstErrorView = edtAnneeNaissance;
+                                } else if (anneeNaissance > anneeCourante) {
+                                    edtAnneeNaissance.setError(getString(R.string.err_annee_naissance_futur));
+                                    isValid = false;
+                                    if (firstErrorView == null) firstErrorView = edtAnneeNaissance;
+                                }
                             } catch (NumberFormatException e) {
                                 edtAnneeNaissance.setError(getString(R.string.err_annee_naissance_invalide));
                                 isValid = false;
@@ -218,7 +285,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    // 3. التحقق من سنة الوجهة (قيمة عددية صحيحة مع السماح بالسفر نحو الماضي)
+                    // 3. التحقق من سنة الوجهة (قيمة عددية صحيحة مع السماح بالسفر نحو الماضي والمستقبل)
+                    int anneeDestination = 0;
                     if (edtAnneeDestination != null) {
                         String destStr = edtAnneeDestination.getText().toString().trim();
                         if (destStr.isEmpty()) {
@@ -227,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
                             if (firstErrorView == null) firstErrorView = edtAnneeDestination;
                         } else {
                             try {
-                                Integer.parseInt(destStr);
+                                anneeDestination = Integer.parseInt(destStr);
                             } catch (NumberFormatException e) {
                                 edtAnneeDestination.setError(getString(R.string.err_annee_destination_invalide));
                                 isValid = false;
@@ -311,20 +379,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     genererNouveauCaptcha();
 
-                    // استخراج القيم الصالحة وبناء القصد الصريح
-                    int anneeNaissance = 0;
-                    int anneeDestination = 0;
-                    try {
-                        if (edtAnneeNaissance != null) {
-                            anneeNaissance = Integer.parseInt(edtAnneeNaissance.getText().toString().trim());
-                        }
-                        if (edtAnneeDestination != null) {
-                            anneeDestination = Integer.parseInt(edtAnneeDestination.getText().toString().trim());
-                        }
-                    } catch (NumberFormatException e) {
-                        // تمت معالجة هذا الخطأ مسبقاً في التحقق
-                    }
-
+                    // استخراج سبب السفر المحدد
                     String motifSelectionne = "";
                     if (rgMotif != null) {
                         int selectedId = rgMotif.getCheckedRadioButtonId();
@@ -337,8 +392,8 @@ public class MainActivity extends AppCompatActivity {
                     // إنشاء القصد الصريح لنقل البيانات إلى نشاط التحقق VerificationActivity
                     Intent intent = new Intent(MainActivity.this, VerificationActivity.class);
 
-                    // إضافة البيانات بالاعتماد حصراً على الدالة الثابتة ورقم الطالب 1688 دون إرسال بيانات الكابتشا
-                    intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_NOM_VOYAGEUR), nom);
+                    // إضافة البيانات بالاعتماد حصراً على الدالة الثابتة ورقم الطالب 1688 والاسم المنظف
+                    intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_NOM_VOYAGEUR), nomNettoye);
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_ANNEE_NAISSANCE), anneeNaissance);
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_ANNEE_DESTINATION), anneeDestination);
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_MOTIF_VOYAGE), motifSelectionne);
@@ -348,6 +403,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    /**
+     * فحص هل يحتوي النص حصراً على حروف ومسافات وفق متطلبات المشروع
+     *
+     * @param s النص المراد فحصه
+     * @return true إذا كان النص يحتوي حصراً على حروف ومسافات
+     */
+    public static boolean contientUniquementLettresEtEspaces(String s) {
+        if (s == null) return false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (!Character.isLetter(c) && c != ' ') {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

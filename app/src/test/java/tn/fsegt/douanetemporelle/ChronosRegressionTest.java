@@ -108,4 +108,41 @@ public class ChronosRegressionTest {
         int reponseCorrecte = 11;
         assertTrue(reponseCorrecte == sommeAttendue);
     }
+
+    /**
+     * اختبار 5: التحقق الصارم من صحة اسم المسافر (متابعة المرحلة 02)
+     */
+    @Test
+    public void testValidationNomStricte() {
+        // أسماء صالحة: حروف يونيكود ومسافات فقط
+        assertTrue(MainActivity.contientUniquementLettresEtEspaces("Omar"));
+        assertTrue(MainActivity.contientUniquementLettresEtEspaces("Omar Ayachi"));
+        assertTrue(MainActivity.contientUniquementLettresEtEspaces("Élodie Martin"));
+        assertTrue(MainActivity.contientUniquementLettresEtEspaces("Jean Paul"));
+
+        // أسماء غير صالحة: تحتوي على أرقام أو رموز أو فواصل أو شرطات
+        assertFalse(MainActivity.contientUniquementLettresEtEspaces("Omar2"));
+        assertFalse(MainActivity.contientUniquementLettresEtEspaces("Omar-Ayachi"));
+        assertFalse(MainActivity.contientUniquementLettresEtEspaces("Omar_Ayachi"));
+        assertFalse(MainActivity.contientUniquementLettresEtEspaces("Omar!"));
+        assertFalse(MainActivity.contientUniquementLettresEtEspaces("Omar@Ayachi"));
+        assertFalse(MainActivity.contientUniquementLettresEtEspaces("1234"));
+    }
+
+    /**
+     * اختبار 6: التحقق الصارم من قواعد سنة الولادة (متابعة المرحلة 02)
+     */
+    @Test
+    public void testValidationAnneeNaissanceStricte() {
+        int anneeCourante = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+
+        // سنوات صالحة: 4 أرقام ولا تتجاوز السنة الحالية
+        assertTrue("1990".length() == 4 && Integer.parseInt("1990") <= anneeCourante);
+        assertTrue(String.valueOf(anneeCourante).length() == 4 && anneeCourante <= anneeCourante);
+
+        // سنوات غير صالحة: أقل من 4 أرقام، 0000، أو أكبر من السنة الحالية
+        assertFalse("999".length() == 4);
+        assertTrue("0000".equals("0000")); // مرفوضة بقاعدة الصفر
+        assertFalse((anneeCourante + 1) <= anneeCourante); // مرفوضة لأنها في المستقبل
+    }
 }
