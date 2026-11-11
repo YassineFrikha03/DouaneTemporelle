@@ -322,12 +322,15 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     /**
-     * 23. إنشاء نية صريحة نحو ResultActivity مع نقل الحكم النهائي واسم المسافر
+     * 23. إنشاء نية صريحة نحو ResultActivity مع نقل الحكم النهائي، اسم المسافر والإحداثيات الزمنية
      */
     private void ouvrirResultat(boolean verdictFinal) {
         Intent intentResultat = new Intent(VerificationActivity.this, ResultActivity.class);
         intentResultat.putExtra(IntentKeys.getNomKey(MATRICULE_ETUDIANT), nomVoyageur);
         intentResultat.putExtra(IntentKeys.getVerdictKey(MATRICULE_ETUDIANT), verdictFinal);
+        intentResultat.putExtra(IntentKeys.getAnneeNaissanceKey(MATRICULE_ETUDIANT), anneeNaissance);
+        intentResultat.putExtra(IntentKeys.getAnneeDestinationKey(MATRICULE_ETUDIANT), anneeDestination);
+        intentResultat.putExtra(IntentKeys.getMotifKey(MATRICULE_ETUDIANT), motifVoyage);
         startActivity(intentResultat);
     }
 }

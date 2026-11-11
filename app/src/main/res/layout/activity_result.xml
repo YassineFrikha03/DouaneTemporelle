@@ -1,115 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    النشاط الثالث : شاشة الحكم النهائي (ResultActivity)
-    شاشة بسيطة يتغير لون خلفيتها ديناميكياً حسب الحكم المستلم:
-    - أخضر (Green) في حال قبول القفزة الزمنية
-    - أحمر (Red) في حال رفض القفزة والاشتباه في مفارقة
+    النشاط الثالث : شاشة الحكم النهائي مع خلفية متحركة تعكس نمط حياة السكان في العصر المختار (ResultActivity)
+    تحتوي على عنصر AnimatedBackgroundView يرسم رسومات تفاعلية متحركة حسب سنة الوجهة أو حالة التوقيف.
     جميع المعرفات تنتهي بـ _yf (أحرف الطالب ياسين فريخة)
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ll_racine_resultat_yf"
+    android:id="@+id/fl_racine_resultat_yf"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_verdict_approved"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
-    <!-- شارة الوزارة / الجمارك الزمنية -->
-    <TextView
-        android:id="@+id/tv_badge_douane_yf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#20FFFFFF"
-        android:letterSpacing="0.08"
-        android:paddingStart="12dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="5dp"
-        android:text="@string/badge_verdict"
-        android:textColor="@color/time_text_secondary"
-        android:textSize="10.5sp"
-        android:textStyle="bold" />
-
-    <!-- أيقونة الحكم الديناميكية (درع القبول أو درع التوقيف والحظر) -->
-    <ImageView
-        android:id="@+id/iv_icone_verdict_yf"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/titre_verdict_approuve"
-        android:src="@drawable/ic_verdict_approved" />
-
-    <!-- عنوان حالة الحكم (مقبول / مرفوض) -->
-    <TextView
-        android:id="@+id/tv_titre_verdict_yf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:letterSpacing="0.05"
-        android:text="@string/titre_verdict_approuve"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <!-- بطاقة القرار والرسالة المخصصة باسم المسافر -->
-    <LinearLayout
-        android:id="@+id/ll_carte_verdict_yf"
+    <!-- 1. الخلفية الحركية التفاعلية المتكيفة مع نمط حياة العصر وسنة الوجهة -->
+    <com.example.douanetemporelle.AnimatedBackgroundView
+        android:id="@+id/view_background_anime_yf"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/bg_card_verdict_approved"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent" />
 
-        <!-- الرسالة المخصصة حسب الشرط: "Bon voyage [Nom]" أو "[Nom] est en état d'arrestation temporelle" -->
+    <!-- 2. واجهة عناصر التحكم والقرار فوق الخلفية المتحركة -->
+    <LinearLayout
+        android:id="@+id/ll_racine_resultat_yf"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp">
+
+        <!-- شارة الوزارة / الجمارك الزمنية -->
         <TextView
-            android:id="@+id/tv_message_personnalise_yf"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_badge_douane_yf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#20FFFFFF"
+            android:letterSpacing="0.08"
+            android:paddingStart="12dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="4dp"
+            android:text="@string/badge_verdict"
+            android:textColor="@color/time_text_secondary"
+            android:textSize="9.5sp"
+            android:textStyle="bold" />
+
+        <!-- أيقونة الحكم الديناميكية (درع القبول أو درع التوقيف والحظر) -->
+        <ImageView
+            android:id="@+id/iv_icone_verdict_yf"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/titre_verdict_approuve"
+            android:src="@drawable/ic_verdict_approved" />
+
+        <!-- عنوان حالة الحكم (مقبول / مرفوض) -->
+        <TextView
+            android:id="@+id/tv_titre_verdict_yf"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:lineSpacingExtra="3dp"
+            android:letterSpacing="0.05"
+            android:text="@string/titre_verdict_approuve"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
-            tools:text="Bon voyage Marty McFly" />
+            android:textStyle="bold" />
 
-        <!-- تفاصيل بروتوكول Douane Temporelle الإضافية -->
-        <TextView
-            android:id="@+id/tv_details_verdict_yf"
+        <!-- منطقة التفاصيل القابلة للتمرير لمنع التداخل على الشاشات المختلفة -->
+        <ScrollView
+            android:id="@+id/sv_details_resultat_yf"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="12dp"
-            android:gravity="center"
-            android:lineSpacingExtra="2dp"
-            android:text="@string/details_verdict_approuve"
-            android:textColor="@color/time_text_secondary"
-            android:textSize="12.5sp" />
+            android:layout_marginBottom="12dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <!-- بطاقة القرار ونمط حياة سنة الوجهة -->
+            <LinearLayout
+                android:id="@+id/ll_carte_verdict_yf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_verdict_approved"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- الرسالة المخصصة: "Bon voyage [Nom]" أو "[Nom] est en état d'arrestation temporelle" -->
+                <TextView
+                    android:id="@+id/tv_message_personnalise_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    tools:text="Bon voyage Marty McFly" />
+
+                <!-- عداد القفزة الزمنية الحركي نحو سنة الوجهة (خاص بحالة القبول) -->
+                <LinearLayout
+                    android:id="@+id/ll_compteur_temporel_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_libelle_saut_yf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.06"
+                        android:text="SAUT VERS L'ANNEE DE DESTINATION :"
+                        android:textColor="@color/time_text_muted"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_compteur_annee_yf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:letterSpacing="0.08"
+                        android:textColor="@color/time_cyan"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        tools:text="2050" />
+                </LinearLayout>
+
+                <!-- بطاقة نمط حياة السكان في سنة الوجهة (Lifestyle & Era Theme) -->
+                <LinearLayout
+                    android:id="@+id/ll_epoque_lifestyle_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#22000000"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_badge_epoque_yf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.05"
+                        android:textColor="@color/time_cyan"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold"
+                        tools:text="DESTINATION : ANNEE 2050 • ERE CYBERNETIQUE" />
+
+                    <TextView
+                        android:id="@+id/tv_description_style_vie_yf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"
+                        android:textColor="@color/white"
+                        android:textSize="11.5sp"
+                        tools:text="Mode de vie : Mégapoles suspendues, intelligence artificielle omniprésente, véhicules à lévitation magnétique et énergies propres." />
+                </LinearLayout>
+
+                <!-- تفاصيل بروتوكول Douane Temporelle الإضافية -->
+                <TextView
+                    android:id="@+id/tv_details_verdict_yf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="@string/details_verdict_approuve"
+                    android:textColor="@color/time_text_secondary"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- زر "مسافر جديد" للعودة إلى MainActivity مع إغلاق الأنشطة السابقة -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_nouveau_voyageur_yf"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:letterSpacing="0.04"
+            android:text="@string/btn_nouveau_voyageur"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:backgroundTint="#25FFFFFF"
+            app:cornerRadius="10dp"
+            app:icon="@drawable/ic_refresh"
+            app:iconGravity="textStart"
+            app:iconPadding="8dp"
+            app:iconTint="@color/white"
+            app:strokeColor="#50FFFFFF"
+            app:strokeWidth="1.5dp" />
 
     </LinearLayout>
-
-    <!-- زر "مسافر جديد" للعودة إلى MainActivity مع إغلاق الأنشطة السابقة -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_nouveau_voyageur_yf"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:letterSpacing="0.04"
-        android:text="@string/btn_nouveau_voyageur"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:backgroundTint="#25FFFFFF"
-        app:cornerRadius="12dp"
-        app:icon="@drawable/ic_refresh"
-        app:iconGravity="textStart"
-        app:iconPadding="10dp"
-        app:iconTint="@color/white"
-        app:strokeColor="#50FFFFFF"
-        app:strokeWidth="1.5dp" />
-
-</LinearLayout>
-
+</FrameLayout>
