@@ -17,12 +17,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import java.util.Random;
 
 /**
  * النشاط الرئيسي 1: بوابة تسجيل المسافرين عبر الزمن - نظام كرونوس
  * المرحلة 02: التحقق الشامل من صحة مدخلات الاستمارة
  * المرحلة 03: نقل البيانات عبر القصد الصريح بالاعتماد على المفاتيح الديناميكية
  * المرحلة 06: تصفير وتجهيز الاستمارة عند استقبال مسافر جديد عبر onNewIntent
+ * المرحلة 08: محاكاة محلية لكابتشا التحكم البشري الحسابي قبل فحص الملف
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +37,22 @@ public class MainActivity extends AppCompatActivity {
     private EditText edtAnneeDestination;
     private RadioGroup rgMotif;
     private TextView txtErreurMotif;
+
+    // مراجع عناصر الكابتشا الزمني المحلي
+    private TextView txtCaptchaQuestion;
+    private EditText edtCaptchaReponse;
+    private TextView txtErreurCaptcha;
+
+    // معاملا العملية الحسابية للكابتشا (أرقام بين 1 و 9)
+    private int captchaOperande1 = 0;
+    private int captchaOperande2 = 0;
+
+    // مفاتيح حفظ واسترجاع حالة الكابتشا عند تدوير الشاشة
+    private static final String STATE_CAPTCHA_OP1 = "state_captcha_op1_oa";
+    private static final String STATE_CAPTCHA_OP2 = "state_captcha_op2_oa";
+
+    // مولد الأرقام العشوائية المحلي
+    private final Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +98,22 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayout cardForm = findViewById(R.id.card_form_oa);
         final TextView txtIntroTitle = findViewById(R.id.txt_intro_title_oa);
 
+        // ربط عناصر الكابتشا
+        txtCaptchaQuestion = findViewById(R.id.txt_captcha_question_oa);
+        edtCaptchaReponse = findViewById(R.id.edt_captcha_reponse_oa);
+        txtErreurCaptcha = findViewById(R.id.txt_erreur_captcha_oa);
+
+        // استعادة حالة الكابتشا عند تدوير الجهاز أو توليد مسألة جديدة لأول مرة
+        if (savedInstanceState != null) {
+            captchaOperande1 = savedInstanceState.getInt(STATE_CAPTCHA_OP1, 0);
+            captchaOperande2 = savedInstanceState.getInt(STATE_CAPTCHA_OP2, 0);
+        }
+        if (captchaOperande1 < 1 || captchaOperande1 > 9 || captchaOperande2 < 1 || captchaOperande2 > 9) {
+            genererNouveauCaptcha();
+        } else {
+            mettreAJourAffichageCaptcha();
+        }
+
         if (btnThemeToggle != null) {
             btnThemeToggle.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
                         if (txtIntroTitle != null) {
                             txtIntroTitle.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.text_primary));
                         }
+                        if (txtCaptchaQuestion != null) {
+                            txtCaptchaQuestion.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.text_primary));
+                        }
                     } else {
                         btnThemeToggle.setImageResource(R.drawable.ic_moon);
                         if (rootMain != null) {
@@ -106,6 +143,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if (txtIntroTitle != null) {
                             txtIntroTitle.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.text_primary_light));
+                        }
+                        if (txtCaptchaQuestion != null) {
+                            txtCaptchaQuestion.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.text_primary_light));
                         }
                     }
                 }
@@ -139,11 +179,12 @@ public class MainActivity extends AppCompatActivity {
             btnInspecter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // تصفير مؤشرات الأخطاء السابقة
+                    // تصفير مؤشرات الأخطاء السابقة للاستمارة والكابتشا
                     if (edtNomVoyageur != null) edtNomVoyageur.setError(null);
                     if (edtAnneeNaissance != null) edtAnneeNaissance.setError(null);
                     if (edtAnneeDestination != null) edtAnneeDestination.setError(null);
                     if (txtErreurMotif != null) txtErreurMotif.setVisibility(View.GONE);
+                    if (txtErreurCaptcha != null) txtErreurCaptcha.setVisibility(View.GONE);
 
                     boolean isValid = true;
                     View firstErrorView = null;
@@ -207,13 +248,68 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    // توجيه المؤشر نحو أول حقل به خطأ
+                    // أولوية التحقق: إذا كانت استمارة المسافر غير صالحة نتوقف فوراً دون فحص الكابتشا أو تغييره
                     if (!isValid) {
                         if (firstErrorView != null) {
                             firstErrorView.requestFocus();
                         }
                         return;
                     }
+
+                    // ==============================================
+                    // المرحلة 08: فحص إجابة الكابتشا الزمني المحلي
+                    // ==============================================
+                    String reponseStr = "";
+                    if (edtCaptchaReponse != null) {
+                        reponseStr = edtCaptchaReponse.getText().toString().trim();
+                    }
+
+                    // في حالة عدم إدخال إجابة
+                    if (reponseStr.isEmpty()) {
+                        if (txtErreurCaptcha != null) {
+                            txtErreurCaptcha.setText(R.string.err_captcha_requis);
+                            txtErreurCaptcha.setVisibility(View.VISIBLE);
+                        }
+                        if (edtCaptchaReponse != null) {
+                            edtCaptchaReponse.requestFocus();
+                        }
+                        return;
+                    }
+
+                    int reponseSaisie;
+                    try {
+                        reponseSaisie = Integer.parseInt(reponseStr);
+                    } catch (NumberFormatException e) {
+                        reponseSaisie = Integer.MIN_VALUE;
+                    }
+
+                    int reponseAttendue = captchaOperande1 + captchaOperande2;
+
+                    // في حالة إجابة خاطئة أو غير عددية
+                    if (reponseSaisie != reponseAttendue) {
+                        if (edtCaptchaReponse != null) {
+                            edtCaptchaReponse.setText("");
+                        }
+                        if (txtErreurCaptcha != null) {
+                            txtErreurCaptcha.setText(R.string.err_captcha_incorrect);
+                            txtErreurCaptcha.setVisibility(View.VISIBLE);
+                        }
+                        // تجديد المسألة الحسابية بمسألة مختلفة مع الحفاظ التام على بيانات الاستمارة
+                        genererNouveauCaptcha();
+                        if (edtCaptchaReponse != null) {
+                            edtCaptchaReponse.requestFocus();
+                        }
+                        return;
+                    }
+
+                    // عند صحة الكابتشا: استهلاك التحدي الحالي وتجهيز مسألة جديدة لاحتمال الرجوع
+                    if (edtCaptchaReponse != null) {
+                        edtCaptchaReponse.setText("");
+                    }
+                    if (txtErreurCaptcha != null) {
+                        txtErreurCaptcha.setVisibility(View.GONE);
+                    }
+                    genererNouveauCaptcha();
 
                     // استخراج القيم الصالحة وبناء القصد الصريح
                     int anneeNaissance = 0;
@@ -241,7 +337,7 @@ public class MainActivity extends AppCompatActivity {
                     // إنشاء القصد الصريح لنقل البيانات إلى نشاط التحقق VerificationActivity
                     Intent intent = new Intent(MainActivity.this, VerificationActivity.class);
 
-                    // إضافة البيانات بالاعتماد حصراً على الدالة الثابتة ورقم الطالب 1688
+                    // إضافة البيانات بالاعتماد حصراً على الدالة الثابتة ورقم الطالب 1688 دون إرسال بيانات الكابتشا
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_NOM_VOYAGEUR), nom);
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_ANNEE_NAISSANCE), anneeNaissance);
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_ANNEE_DESTINATION), anneeDestination);
@@ -255,6 +351,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // حفظ حدي مسألة الكابتشا لضمان التوافق التام عند تدوير الشاشة
+        outState.putInt(STATE_CAPTCHA_OP1, captchaOperande1);
+        outState.putInt(STATE_CAPTCHA_OP2, captchaOperande2);
+    }
+
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
@@ -263,7 +367,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * إعادة ضبط وتصفير حقول الاستمارة لتحضير تسجيل مسافر جديد
+     * توليد مسألة كابتشا جديدة محلياً بأرقام بين 1 و 9 مختلفة عن السابقة
+     */
+    private void genererNouveauCaptcha() {
+        int nouveauOp1;
+        int nouveauOp2;
+        // ضمان ألا تكون المسألة الجديدة متطابقة تماماً مع المسألة السابقة
+        do {
+            nouveauOp1 = 1 + random.nextInt(9);
+            nouveauOp2 = 1 + random.nextInt(9);
+        } while (nouveauOp1 == captchaOperande1 && nouveauOp2 == captchaOperande2);
+
+        captchaOperande1 = nouveauOp1;
+        captchaOperande2 = nouveauOp2;
+        mettreAJourAffichageCaptcha();
+    }
+
+    /**
+     * تحديث نص السؤال الحسابي على الواجهة
+     */
+    private void mettreAJourAffichageCaptcha() {
+        if (txtCaptchaQuestion != null) {
+            txtCaptchaQuestion.setText(getString(R.string.format_captcha_question, captchaOperande1, captchaOperande2));
+        }
+    }
+
+    /**
+     * إعادة ضبط وتصفير حقول الاستمارة وتوليد تحدي كابتشا جديد
      */
     private void reinitialiserFormulaire() {
         if (edtNomVoyageur != null) {
@@ -284,6 +414,15 @@ public class MainActivity extends AppCompatActivity {
         if (txtErreurMotif != null) {
             txtErreurMotif.setVisibility(View.GONE);
         }
+        if (edtCaptchaReponse != null) {
+            edtCaptchaReponse.setText("");
+        }
+        if (txtErreurCaptcha != null) {
+            txtErreurCaptcha.setVisibility(View.GONE);
+        }
+        // توليد مسألة كابتشا جديدة ونظيفة للمسافر الجديد
+        genererNouveauCaptcha();
+
         if (edtNomVoyageur != null) {
             edtNomVoyageur.requestFocus();
         }

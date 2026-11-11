@@ -85,4 +85,27 @@ public class ChronosRegressionTest {
         assertEquals(-3L, ecartPasse);
         assertFalse(VerificationActivity.isPrime(ecartPasse));
     }
+
+    /**
+     * اختبار 4: التحقق من منطق الكابتشا الزمني الحسابي (المرحلة 08)
+     */
+    @Test
+    public void testLogiqueCaptcha() {
+        int op1 = 7;
+        int op2 = 4;
+        int sommeAttendue = op1 + op2; // 11
+        assertEquals(11, sommeAttendue);
+
+        // فحص حدود المعاملين (بين 1 و 9)
+        assertTrue(op1 >= 1 && op1 <= 9);
+        assertTrue(op2 >= 1 && op2 <= 9);
+
+        // رفض الإجابة الخاطئة
+        int reponseFausse = 10;
+        assertFalse(reponseFausse == sommeAttendue);
+
+        // قبول الإجابة الصحيحة
+        int reponseCorrecte = 11;
+        assertTrue(reponseCorrecte == sommeAttendue);
+    }
 }

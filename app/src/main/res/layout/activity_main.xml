@@ -327,6 +327,84 @@
                     android:textSize="12sp"
                     android:visibility="gone"
                     android:layout_marginTop="6dp" />
+
+                <!-- فاصل خفيف لتحدي الكابتشا الزمني -->
+                <View
+                    android:id="@+id/view_separator_captcha_oa"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#1E293B"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- تحدي الكابتشا الزمني - محاكاة محلية للمراقبة البشرية (المرحلة 08) -->
+                <LinearLayout
+                    android:id="@+id/layout_captcha_card_oa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_captcha_header_oa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_captcha_temporal"
+                        android:textColor="@color/chronos_cyan"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.08"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:id="@+id/txt_captcha_question_oa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_field_captcha_oa"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_input_field"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp">
+
+                        <EditText
+                            android:id="@+id/edt_captcha_reponse_oa"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:hint="@string/hint_captcha_reponse"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:textColor="@color/text_primary"
+                            android:textColorHint="@color/text_hint"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/txt_erreur_captcha_oa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/chronos_red_alert"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        android:layout_marginTop="6dp" />
+
+                    <TextView
+                        android:id="@+id/txt_captcha_notice_oa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/notice_captcha_pedagogique"
+                        android:textColor="@color/text_muted"
+                        android:textSize="10sp"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- D. Action principale : Inspecter le profil -->

@@ -63,4 +63,12 @@
     <string name="title_verdict_refuse">REFUS D\'ACCÈS TEMPOREL</string>
     <string name="desc_verdict_approuve">Autorisation douanière accordée. Les lignes temporelles sont stables.</string>
     <string name="desc_verdict_refuse">Infraction temporelle majeure ou risque de paradoxe détecté.</string>
+
+    <!-- عناصر تحدي الكابتشا الزمني - المرحلة 08 -->
+    <string name="title_captcha_temporal">CAPTCHA TEMPOREL — CONTRÔLE HUMAIN</string>
+    <string name="format_captcha_question">Calculez le décalage temporel : %1$d + %2$d = ?</string>
+    <string name="hint_captcha_reponse">Réponse</string>
+    <string name="err_captcha_requis">Veuillez répondre au contrôle temporel.</string>
+    <string name="err_captcha_incorrect">Réponse incorrecte. Nouveau décalage temporel généré.</string>
+    <string name="notice_captcha_pedagogique">Simulation pédagogique locale — aucune donnée n\'est envoyée.</string>
 </resources>
