@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -97,6 +98,18 @@ public class VerificationActivity extends AppCompatActivity {
                 });
                 scanAnimator.start();
             });
+        }
+
+        // تطبيق تأثير كشف جواز السفر بسلاسة وهدوء (المرحلة 10)
+        if (layoutPassportContent != null && android.animation.ValueAnimator.areAnimatorsEnabled()) {
+            layoutPassportContent.setAlpha(0.2f);
+            layoutPassportContent.setTranslationY(24f);
+            layoutPassportContent.animate()
+                    .alpha(1.0f)
+                    .translationY(0f)
+                    .setDuration(450L)
+                    .setInterpolator(new DecelerateInterpolator())
+                    .start();
         }
 
         // استخراج البيانات المستلمة عبر القصد الصريح بالاعتماد على المفاتيح الديناميكية ورقم الطالب 1688

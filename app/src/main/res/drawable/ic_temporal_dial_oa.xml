@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- قرص الساعة البوابة الزمنية - كرونوس المرحلة 10 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="160dp"
+    android:height="160dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
+
+    <!-- الحلقة الخارجية المضيئة -->
+    <path
+        android:pathData="M 80,8 A 72,72 0 1,1 79.9,8"
+        android:strokeWidth="2"
+        android:strokeColor="@color/chronos_cyan" />
+
+    <!-- الحلقة الثانوية البنفسجية -->
+    <path
+        android:pathData="M 80,20 A 60,60 0 1,1 79.9,20"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet" />
+
+    <!-- الحلقة الداخلية الرقيقة -->
+    <path
+        android:pathData="M 80,34 A 46,46 0 1,1 79.9,34"
+        android:strokeWidth="1"
+        android:strokeColor="#4000D9FF" />
+
+    <!-- علامات الساعات الرئيسية الأربع (0، 90، 180، 270 درجة) -->
+    <path
+        android:pathData="M 80,8 L 80,18"
+        android:strokeWidth="3"
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 152,80 L 142,80"
+        android:strokeWidth="3"
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 80,152 L 80,142"
+        android:strokeWidth="3"
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 8,80 L 18,80"
+        android:strokeWidth="3"
+        android:strokeColor="@color/chronos_cyan"
+        android:strokeLineCap="round" />
+
+    <!-- علامات الساعات الفرعية المائلة 30 و 60 درجة -->
+    <path
+        android:pathData="M 116,18 L 111,27"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 142,44 L 133,49"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 142,116 L 133,111"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 116,142 L 111,133"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 44,142 L 49,133"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 18,116 L 27,111"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 18,44 L 27,49"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M 44,18 L 49,27"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/chronos_violet"
+        android:strokeLineCap="round" />
+
+    <!-- محور الارتكاز المركزي -->
+    <path
+        android:pathData="M 80,80 m -4,0 a 4,4 0 1,1 8,0 a 4,4 0 1,1 -8,0"
+        android:fillColor="@color/chronos_cyan" />
+</vector>

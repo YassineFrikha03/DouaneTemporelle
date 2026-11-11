@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- الواجهة السينمائية: رحلة عبر الزمن قبل فحص الجواز - كرونوس المرحلة 10 -->
+<!-- المعرفات تنتهي بـ _oa وفق قواعد المشروع الصارمة -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_intro_root_oa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_chronos_deep"
+    android:padding="24dp">
+
+    <!-- الحاوية المركزية لقرص البوابة الزمنية والنصوص التعريفية -->
+    <LinearLayout
+        android:id="@+id/layout_intro_center_oa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <!-- مجمع القرص الزمني وهالة النبض والعقرب الدوار -->
+        <FrameLayout
+            android:id="@+id/container_temporal_clock_oa"
+            android:layout_width="160dp"
+            android:layout_height="160dp">
+
+            <!-- هالة النبض المتمددة -->
+            <View
+                android:id="@+id/view_temporal_pulse_oa"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:background="@drawable/bg_temporal_pulse_oa" />
+
+            <!-- قرص الساعة الزمني الثابت -->
+            <ImageView
+                android:id="@+id/img_temporal_dial_oa"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:contentDescription="@string/title_cinematic_intro"
+                android:src="@drawable/ic_temporal_dial_oa" />
+
+            <!-- عقرب الملاحة الزمني الدوار -->
+            <ImageView
+                android:id="@+id/img_temporal_needle_oa"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:contentDescription="@string/title_cinematic_intro"
+                android:src="@drawable/ic_temporal_needle_oa" />
+        </FrameLayout>
+
+        <!-- عنوان التجربة السينمائية الرسمي -->
+        <TextView
+            android:id="@+id/txt_intro_title_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:alpha="0"
+            android:gravity="center"
+            android:letterSpacing="0.16"
+            android:text="@string/title_cinematic_intro"
+            android:textColor="@color/chronos_cyan"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- العبارة الفلسفية للعبور الزمني -->
+        <TextView
+            android:id="@+id/txt_intro_philosophy_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:alpha="0"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/intro_text_philosophy"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- عبارة انطلاق الرحلة -->
+        <TextView
+            android:id="@+id/txt_intro_callout_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:alpha="0"
+            android:gravity="center"
+            android:letterSpacing="0.06"
+            android:text="@string/intro_text_callout"
+            android:textColor="@color/chronos_neon_green"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- زر تخطي المقدمة السينمائية والانتقال الفوري إلى جواز السفر -->
+    <Button
+        android:id="@+id/btn_skip_intro_oa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_btn_skip_oa"
+        android:letterSpacing="0.08"
+        android:minHeight="48dp"
+        android:text="@string/btn_skip_intro"
+        android:textAllCaps="false"
+        android:textColor="@color/chronos_cyan"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

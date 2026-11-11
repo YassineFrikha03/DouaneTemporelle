@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- مظهر زر تخطي المقدمة السينمائية - كرونوس المرحلة 10 -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/chronos_cyan_glow">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="24dp" />
+            <solid android:color="#141E293B" />
+            <stroke
+                android:width="1.5dp"
+                android:color="#4D00D9FF" />
+            <padding
+                android:left="20dp"
+                android:top="10dp"
+                android:right="20dp"
+                android:bottom="10dp" />
+        </shape>
+    </item>
+</ripple>

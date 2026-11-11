@@ -389,8 +389,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    // إنشاء القصد الصريح لنقل البيانات إلى نشاط التحقق VerificationActivity
-                    Intent intent = new Intent(MainActivity.this, VerificationActivity.class);
+                    // إنشاء القصد الصريح لنقل البيانات إلى النشاط السينمائي التمهيدي TemporalJourneyIntroActivity (المرحلة 10)
+                    Intent intent = new Intent(MainActivity.this, TemporalJourneyIntroActivity.class);
 
                     // إضافة البيانات بالاعتماد حصراً على الدالة الثابتة ورقم الطالب 1688 والاسم المنظف
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_NOM_VOYAGEUR), nomNettoye);
@@ -398,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_ANNEE_DESTINATION), anneeDestination);
                     intent.putExtra(ChronosKeys.buildKey(ChronosKeys.STUDENT_ID, ChronosKeys.SUFFIX_MOTIF_VOYAGE), motifSelectionne);
 
-                    // تشغيل النشاط الثاني دون إغلاق النشاط الحالي للسماح بالعودة
+                    // تشغيل النشاط التمهيدي دون إغلاق النشاط الحالي للسماح بالعودة
                     startActivity(intent);
                 }
             });

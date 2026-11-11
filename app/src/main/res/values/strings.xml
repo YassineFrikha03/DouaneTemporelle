@@ -80,4 +80,10 @@
     <string name="format_numero_passeport">PASSEPORT N° : %1$s</string>
     <string name="stamp_verdict_approuve">SAUT APPROUVÉ</string>
     <string name="stamp_verdict_refuse">VOYAGE REFUSÉ</string>
+
+    <!-- عناصر السلسلة السينمائية للرحلة عبر الزمن - المرحلة 10 -->
+    <string name="title_cinematic_intro">A JOURNEY THROUGH TIME</string>
+    <string name="intro_text_philosophy">Chaque vie est un voyage à travers le temps…</string>
+    <string name="intro_text_callout">Votre voyage commence ici.</string>
+    <string name="btn_skip_intro">Passer l\'introduction</string>
 </resources>

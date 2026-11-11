@@ -20,6 +20,12 @@
             </intent-filter>
         </activity>
 
+        <!-- النشاط الانتقالي: الرحلة السينمائية عبر الزمن (المرحلة 10) -->
+        <activity
+            android:name=".TemporalJourneyIntroActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+
         <!-- النشاط 2: فاحص التناقض الزمني والتحقق من الهوية -->
         <activity
             android:name=".VerificationActivity"

@@ -162,4 +162,21 @@ public class ChronosRegressionTest {
         assertEquals(12, numPasseport.length()); // 4 خانات لـ "CHR-" + 8 خانات
         assertTrue(numPasseport.matches("^CHR-[A-Z0-9]{8}$"));
     }
+
+    /**
+     * اختبار 8: التحقق من تناسق مفاتيح نقل البيانات للنشاط التمهيدي السينمائي (المرحلة 10)
+     */
+    @Test
+    public void testClesTransmissionIntroCinematique() {
+        String dummyMatricule = "1688";
+        String keyNom = ChronosKeys.buildKey(dummyMatricule, ChronosKeys.SUFFIX_NOM_VOYAGEUR);
+        String keyNaissance = ChronosKeys.buildKey(dummyMatricule, ChronosKeys.SUFFIX_ANNEE_NAISSANCE);
+        String keyDestination = ChronosKeys.buildKey(dummyMatricule, ChronosKeys.SUFFIX_ANNEE_DESTINATION);
+        String keyMotif = ChronosKeys.buildKey(dummyMatricule, ChronosKeys.SUFFIX_MOTIF_VOYAGE);
+
+        assertEquals("1688_NOM_VOYAGEUR", keyNom);
+        assertEquals("1688_ANNEE_NAISSANCE", keyNaissance);
+        assertEquals("1688_ANNEE_DESTINATION", keyDestination);
+        assertEquals("1688_MOTIF_VOYAGE", keyMotif);
+    }
 }
