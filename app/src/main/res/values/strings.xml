@@ -75,4 +75,9 @@
     <string name="err_captcha_requis">Veuillez répondre au contrôle temporel.</string>
     <string name="err_captcha_incorrect">Réponse incorrecte. Nouveau décalage temporel généré.</string>
     <string name="notice_captcha_pedagogique">Simulation pédagogique locale — aucune donnée n\'est envoyée.</string>
+
+    <!-- عناصر التأثيرات المبتكرة - المرحلة 09 -->
+    <string name="format_numero_passeport">PASSEPORT N° : %1$s</string>
+    <string name="stamp_verdict_approuve">SAUT APPROUVÉ</string>
+    <string name="stamp_verdict_refuse">VOYAGE REFUSÉ</string>
 </resources>

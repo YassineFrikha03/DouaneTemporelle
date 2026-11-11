@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- إطار ومظهر طابع الموافقة الجمركية الرسمية باللون الأخضر النيون -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="8dp" />
+    <solid android:color="#2622C55E" />
+    <stroke
+        android:width="2.5dp"
+        android:color="#4ADE80" />
+    <padding
+        android:left="14dp"
+        android:top="6dp"
+        android:right="14dp"
+        android:bottom="6dp" />
+</shape>

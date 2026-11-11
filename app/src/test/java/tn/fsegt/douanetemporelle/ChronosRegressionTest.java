@@ -145,4 +145,21 @@ public class ChronosRegressionTest {
         assertTrue("0000".equals("0000")); // مرفوضة بقاعدة الصفر
         assertFalse((anneeCourante + 1) <= anneeCourante); // مرفوضة لأنها في المستقبل
     }
+
+    /**
+     * اختبار 7: التحقق من صيغة رقم جواز السفر الزمني المولد محلياً (المرحلة 09)
+     */
+    @Test
+    public void testNumeroPasseportFormatEtCle() {
+        // فحص المفتاح الديناميكي لرقم الجواز
+        String dummyMatricule = "1688";
+        String keyPassport = ChronosKeys.buildKey(dummyMatricule, ChronosKeys.SUFFIX_NUMERO_PASSEPORT);
+        assertEquals("1688_NUMERO_PASSEPORT", keyPassport);
+
+        // فحص توليد رقم الجواز وصيغته الرسمية: يبدأ بـ CHR- متبوعاً بـ 8 خانات سداسية عشرية كبيرة
+        String numPasseport = VerificationActivity.generatePassportNumber();
+        assertTrue(numPasseport.startsWith("CHR-"));
+        assertEquals(12, numPasseport.length()); // 4 خانات لـ "CHR-" + 8 خانات
+        assertTrue(numPasseport.matches("^CHR-[A-Z0-9]{8}$"));
+    }
 }

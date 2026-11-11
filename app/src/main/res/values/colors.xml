@@ -26,6 +26,7 @@
     <!-- États futurs et alertes -->
     <color name="chronos_green_online">#22C55E</color>
     <color name="chronos_green_glow">#4022C55E</color>
+    <color name="chronos_neon_green">#00E676</color>
     <color name="chronos_red_alert">#EF4444</color>
 
     <!-- Typographie et contrastes -->

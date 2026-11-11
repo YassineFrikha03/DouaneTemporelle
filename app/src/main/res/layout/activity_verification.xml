@@ -56,12 +56,24 @@
             android:textColor="@color/text_secondary"
             android:textSize="9sp" />
 
+        <!-- المعرف الرسمي لجواز السفر الزمني (المرحلة 09) -->
+        <TextView
+            android:id="@+id/txt_numero_passeport_verif_oa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_subtitle_passport_oa"
+            android:layout_marginTop="3dp"
+            android:letterSpacing="0.08"
+            android:textColor="@color/chronos_cyan"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
         <!-- فاصل أمني دقيق -->
         <View
             android:id="@+id/view_separator_passport_oa"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@id/txt_subtitle_passport_oa"
+            android:layout_below="@id/txt_numero_passeport_verif_oa"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
             android:background="@color/border_chronos_card" />
@@ -224,6 +236,15 @@
             android:textColor="@color/text_muted"
             android:textSize="7sp"
             android:textStyle="bold" />
+
+        <!-- شعاع المسح الضوئي الزمني لجواز السفر (المرحلة 09) -->
+        <View
+            android:id="@+id/view_scan_line_oa"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/bg_scan_line"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 </LinearLayout>

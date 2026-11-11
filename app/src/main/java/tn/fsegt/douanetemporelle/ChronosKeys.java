@@ -15,6 +15,7 @@ public final class ChronosKeys {
     public static final String SUFFIX_ANNEE_DESTINATION = "ANNEE_DESTINATION";
     public static final String SUFFIX_MOTIF_VOYAGE = "MOTIF_VOYAGE";
     public static final String SUFFIX_VERDICT_FINAL = "VERDICT_FINAL";
+    public static final String SUFFIX_NUMERO_PASSEPORT = "NUMERO_PASSEPORT";
 
     private ChronosKeys() {
         // منع إنشاء كائنات من هذه الفئة المساعدة
